@@ -23,7 +23,7 @@
 			</ul>
 	<br>
 	<center>
-		<form class="form-horizontal" style="width:450px" method="post" onsubmit="return check()">
+		<form class="form-horizontal" style="width:450px" method="post" onsubmit="return check()" action="/ModifySelfInfo">
 	  		<div class="form-group" >
 			    <label for="email" class="col-sm-2 control-label">EmailID</label>
 			    <div class="col-sm-9">

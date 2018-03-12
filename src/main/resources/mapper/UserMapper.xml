@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace为UserMapper的接口类路径-->
+<mapper namespace="com.Ecom.dao.UserMapper">
+
+	<select id="checkLogin" parameterType="user" resultType="user">
+		select email, password
+		from user
+		where email = #{email} and password =#{password}
+	</select>
+
+	<insert id="register" parameterType="user">
+		insert into user(email,name,password,role,actual_name,phone,gender,status)
+		values(#{email},#{name},#{password},#{role},#{actual_name},#{phone},#{gender},#{status})
+	</insert>
+</mapper>
+

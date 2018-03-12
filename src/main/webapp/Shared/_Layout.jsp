@@ -24,7 +24,7 @@
                 {
                     %>
                         <li class="right1">
-                            <a href="#"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
+                            <a href="<%=basePath%>/Seller/ManageIndex.jsp?email=<%=user.getEmail()%>"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
                         </li>
                         <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?email=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
                         <li><a onclick="confirmAct()"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>

@@ -30,10 +30,10 @@
 			</div>
 			<div id="collapseOne" class="panel-collapse collapse in">
 				<div class="panel-body">
-					<a>Modify SelfInformation</a>
+					<a href="../Seller/ModifySelfInfo.jsp">Modify SelfInformation</a>
 				</div>
 				<div class="panel-body">
-					<a>Modify password</a>
+					<a href="../Seller/ModifySelfPayPwd.jsp">Modify password</a>
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse">
 				<div class="panel-body">
-					<a>Product List</a>
+					<a href="../Seller/ProductList.jsp">Product List</a>
 				</div>
 				<div class="panel-body">
 					<a>Data List</a>

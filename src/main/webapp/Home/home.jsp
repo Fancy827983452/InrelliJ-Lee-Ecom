@@ -139,7 +139,7 @@
                         <div class="women">
                             <div class="women-top">
                                 <span>Women</span>
-                                <h6><a href="single.html">At vero eos</a></h6>
+                                <h6><a href="../Shop/ProductInfo.jsp">At vero eos</a></h6>
                             </div>
                             <div class="img item_add">
                                 <a href="#"><img src="../images/ca.png" alt=""></a>

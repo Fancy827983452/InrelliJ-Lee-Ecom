@@ -1,3 +1,4 @@
+<%@ page import="com.Ecom.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% String path = request.getContextPath();
@@ -17,15 +18,16 @@
 			<li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> Contact</a></li>
 
             <%
-                String userName=request.getParameter("name");
-                //System.out.println(userName);
-                if (userName != null && !"".equals(userName))
+                User user=(User)session.getAttribute("user");
+                //System.out.println("User : "+user.getName());
+                if (user != null && !"".equals(user))
                 {
                     %>
                         <li class="right1">
-                            <a href="<%=basePath%>/Shop/ShopIndex.jsp"><span class="glyphicon glyphicon-user"></span> <%= userName%></a>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
                         </li>
-                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?email=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                        <li><a onclick="confirmAct()"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>
                     <%
                 }
                 else
@@ -41,8 +43,6 @@
                 }
             %>
         </ul>
-
-        ${param.username}
 
         <!-- 模态框（Modal） -->
                     <div class="modal fade" id="MyRegistration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -151,3 +151,16 @@
 <script src="../js/simpleCart.min.js" type="text/javascript"></script>
 <script src="../js/uisearch.js" type="text/javascript"></script>
 <script src="../js/modernizr.custom.72111.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    function confirmAct()
+    {
+        if(confirm('Are you sure to Exit?'))
+        {
+            window.location.href= "<%=basePath%>/Home/LogOut.jsp";
+            return true;
+        }
+        else
+            return false;
+    }
+</script>

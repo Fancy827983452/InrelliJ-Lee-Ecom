@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +23,8 @@ import java.io.PrintWriter;
 public class LoginController {
 
     @RequestMapping(value="login",method = { RequestMethod.POST, RequestMethod.GET })
-    public ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password, HttpServletResponse response,ModelMap map) throws IOException {
+    public ModelAndView login(@RequestParam("email") String email, @RequestParam("password") String password,
+                              HttpServletResponse response, ModelMap map, HttpServletRequest request) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -45,9 +47,10 @@ public class LoginController {
             thisUser=mapper.showDetails(email);
             session.close();
             map.put("Message",LoginMessage);
-            map.addAttribute("name",thisUser.getName());
+//            map.put("user",thisUser);
+            request.getSession().setAttribute("user",thisUser);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
-            return new ModelAndView("redirect:/Home/home.jsp",map);
+            return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }
         else
         {

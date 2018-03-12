@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Home</title>
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
@@ -508,7 +508,7 @@
                             message: 'Username can not be empty.'
                         },
                         stringLength: {
-                            /*????*/
+                            /*长度提示*/
                             min: 1,
                             max: 10,
                             message: 'Username must be between 1 and 10 characters in length.'
@@ -521,7 +521,7 @@
                             message: 'Password can not be blank'
                         },
                         stringLength: {
-                            /*????*/
+                            /*长度提示*/
                             min: 6,
                             max: 20,
                             message: 'The password must be 6-20 in length'
@@ -543,11 +543,11 @@
                             max: 20,
                             message: 'The password must be 6-20 in length.'
                         },
-                        identical: {//??
+                        identical: {//相同
                             field: 'Pwd',
                             message: 'The password is inconsistent twice'
                         },
-                        regexp: {//????
+                        regexp: {//匹配规则
                             regexp: /^[a-zA-Z0-9_\.]+$/,
                             message: 'The password consists of alphanumeric characters,_and.'
                         }

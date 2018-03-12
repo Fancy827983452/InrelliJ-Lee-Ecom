@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
 	<center>
 		<form  method="post" action="" class="form-horizontal" style="width:450px" onsubmit="return check()">
 			<div class="form-group">
-			    <label for="Old Password" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Password</label>
+			    <label for="password" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Password</label>
 			    <div class="col-sm-9">
 			      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
 			    </div>

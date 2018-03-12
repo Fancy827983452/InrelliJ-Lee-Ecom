@@ -438,16 +438,16 @@
                         }
                     }
                 },
-                Pwd: {
+                password: {
                     validators: {
                         notEmpty: {
                             message: 'Password can not be blank'
                         },
                         stringLength: {
                             /*长度提示*/
-                            min: 6,
+                            min: 3,
                             max: 20,
-                            message: 'The password must be 6-20 in length'
+                            message: 'The password must be 3-20 in length'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
@@ -462,12 +462,12 @@
                             message: 'Password can not be blank'
                         },
                         stringLength: {
-                            min: 6,
+                            min: 3,
                             max: 20,
-                            message: 'The password must be 6-20 in length.'
+                            message: 'The password must be 3-20 in length.'
                         },
                         identical: {//相同
-                            field: 'Pwd',
+                            field: 'password',
                             message: 'The password is inconsistent twice'
                         },
                         regexp: {//匹配规则

@@ -24,9 +24,9 @@
                 {
                     %>
                         <li class="right1">
-                            <a href="<%=basePath%>/Seller/ManageIndex.jsp?email=<%=user.getEmail()%>"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
+                            <a href="<%=basePath%>/User/ManageIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
                         </li>
-                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?email=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
                         <li><a onclick="confirmAct()"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>
                     <%
                 }

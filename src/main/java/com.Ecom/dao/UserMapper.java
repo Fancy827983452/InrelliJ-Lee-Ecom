@@ -14,10 +14,10 @@ public interface UserMapper {
     public void register(User user);
 
     @Update("update user set name=#{name},phone=#{phone} where email=#{email}")
-    public void update(User user);
+    public int update(User user);
 
     @Delete("delete from user where email=#{email}")
-    public void delete(String email);
+    public int delete(String email);
 
     @Select("select * from user where email=#{email}")
     public User showDetails(String email);

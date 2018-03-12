@@ -23,9 +23,9 @@
                 {
                     %>
                         <li class="right1">
-                            <a role="button"><span class="glyphicon glyphicon-user"></span> <%= userName%></a>
+                            <a href="<%=basePath%>/Shop/ShopIndex.jsp"><span class="glyphicon glyphicon-user"></span> <%= userName%></a>
                         </li>
-                        <li><a href="#"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
                     <%
                 }
                 else

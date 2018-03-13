@@ -17,7 +17,7 @@
     </li>
 </ul>
 
-<button type="button"  class="btn btn-info">Details
+<button type="button"  class="btn btn-info">Confirm Received
 </button>
 <table class="table table-striped table-hover">
     <thead>
@@ -58,7 +58,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+   <a href="SelfOrderDetails.jsp"><tr>
         <td class="tb2_td1">
             <input type = "checkbox" name = "check"/>
         </td>
@@ -92,8 +92,8 @@
         <td>
             Default
         </td>
-    </tr>
-    <tr class="success">
+    </tr></a>
+   <tr class="success">
         <td class="tb2_td1">
             <input type = "checkbox" name = "check"/>
         </td>

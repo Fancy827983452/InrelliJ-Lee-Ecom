@@ -18,7 +18,7 @@
 	</ul>
 	<br>
 	<center>
-		<form  method="post" action="" class="form-horizontal" style="width:450px" onsubmit="return check()">
+		<form  method="post" action="/" class="form-horizontal" style="width:450px">
 			<div class="form-group">
 			    <label for="payPassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Pay Password</label>
 			    <div class="col-sm-9">

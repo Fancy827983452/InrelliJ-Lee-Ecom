@@ -36,7 +36,7 @@
         <div class="col-lg-2">
             <h2>Shop Name</h2>
             <div class="list-group">
-                <a href="#" class="list-group-item">Category 1</a>
+                <a href="../Seller/ProductList.jsp" class="list-group-item">Category 1</a>
                 <a href="#" class="list-group-item">Category 2</a>
                 <a href="#" class="list-group-item">Category 3</a>
             </div>
@@ -415,7 +415,7 @@
 
             fields: {
 
-                Email: {
+                email: {
                     validators: {
                         notEmpty: {
                             message: 'Mail can not be empty.'
@@ -425,7 +425,7 @@
                         }
                     }
                 },
-                UName: {
+                name: {
                     validators: {
                         notEmpty: {
                             message: 'Username can not be empty.'

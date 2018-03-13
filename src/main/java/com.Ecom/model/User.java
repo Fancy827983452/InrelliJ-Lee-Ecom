@@ -11,7 +11,7 @@ public class User {
 	private String phone;
 	private int gender;
 	private Blob profile;
-	private int payPassword;
+	private int pay_password;
 	private int status;
 
 	public String getEmail() {
@@ -58,12 +58,8 @@ public class User {
 	public void setProfile(Blob profile) {
 		this.profile = profile;
 	}
-	public int getPayPassword() {
-		return payPassword;
-	}
-	public void setPayPassword(int payPassword) {
-		this.payPassword = payPassword;
-	}
+	public int getPay_password() { return pay_password; }
+	public void setPay_password(int pay_password) { this.pay_password = pay_password; }
 	public int getStatus() {
 		return status;
 	}

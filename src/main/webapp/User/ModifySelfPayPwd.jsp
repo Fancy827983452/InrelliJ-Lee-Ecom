@@ -20,19 +20,19 @@
 	<center>
 		<form  method="post" action="" class="form-horizontal" style="width:450px" onsubmit="return check()">
 			<div class="form-group">
-			    <label for="Old Password" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Password</label>
+			    <label for="payPassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Pay Password</label>
 			    <div class="col-sm-9">
-			      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			      <input type="password" class="form-control" id="payPassword" name="payPassword" placeholder="Pay Password">
 			    </div>
 		  	</div>
 			<div class="form-group">
-			    <label for="password" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>New Password</label>
+			    <label for="newpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>New Pay Password</label>
 			    <div class="col-sm-9">
 			      <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password">
 			    </div>
 		  	</div>
 		  `	<div class="form-group" style="margin-top:-20px;">
-			    <label for="cpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Confirm Password</label>
+			    <label for="cpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Confirm Pay Password</label>
 			    <div class="col-sm-9">
 		     		<input type="password" class="form-control" id="cpassword" name="cpassword"  placeholder="Confirm Password">
 			    </div>

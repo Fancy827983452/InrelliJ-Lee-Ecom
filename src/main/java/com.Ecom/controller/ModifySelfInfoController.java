@@ -22,13 +22,11 @@ public class ModifySelfInfoController {
         SqlSession session= MySqlSession.getMySession(response);
 
         UserMapper mapper = session.getMapper(UserMapper.class);
-        System.out.println("Name: "+model.getName());
         int i=mapper.updateUserInfo(model);
         session.commit();
         request.getSession().setAttribute("user",model);
         session.close();
 
-        System.out.println("i= "+i);
         if(i>0)
             map.put("ModifySelfInfoMessage","Update Info Successfully!");
         else

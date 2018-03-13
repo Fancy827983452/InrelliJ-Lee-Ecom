@@ -60,7 +60,7 @@
 				</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-		<table class="table table-hover">
+		<table class="table table-hover" id="addresstable">
 			<thead>
 				<tr>
 					<th>Consignee</th>
@@ -81,7 +81,7 @@
 						<a role="button" herf="">modify</a>&nbsp;|
 						<a role="button" herf="">delete</a>
             		</td>
-            		<td><input class="btn1" type="button" value="default address"/></td>
+            		<td><input id="add" class="btn1" type="button" value="default address"/></td>
 				</tr>
 				<tr>
 					<td>Sachin</td>
@@ -91,7 +91,7 @@
 					<td><a role="button" herf="">modify</a>&nbsp;|
 						<a role="button" herf="">delete</a>
 					</td>
-					<td><input class="btn1" type="button" value="Use as Default"/></td>
+					<td><input id="add" class="btn1" type="button" value="Use as Default"/></td>
 				</tr>
 				<tr>
 					<td>Uma</td>
@@ -101,7 +101,7 @@
 					<td><a role="button" herf="">modify</a>&nbsp;|
 						<a role="button" herf="">delete</a>
 					</td>
-					<td><input class="btn1" type="button" value="Use as Default"/></td>
+					<td><input id="add" class="btn1" type="button" value="Use as Default" /></td>
 				</tr>
 			</tbody>
 		</table>

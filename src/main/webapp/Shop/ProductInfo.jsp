@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Home</title>
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
@@ -193,10 +193,10 @@
 		<div class="content-top1">
 			<div class="col-md-4 col-md3">
 				<div class="col-md1 simpleCart_shelfItem">
-					<a href="single.html">
+					<a href="../Shop/ProductInfo.jsp">
 						<img class="img-responsive" src="../images/pi6.png" alt="" />
 					</a>
-					<h3><a href="single.html">Jeans</a></h3>
+					<h3><a href="../Shop/ProductInfo.jsp">Jeans</a></h3>
 					<div class="price">
 						<h5 class="item_price">$300</h5>
 						<a href="#" class="item_add">Add To Cart</a>
@@ -206,10 +206,10 @@
 			</div>
 			<div class="col-md-4 col-md3">
 				<div class="col-md1 simpleCart_shelfItem">
-					<a href="single.html">
+					<a href="../Shop/ProductInfo.jsp">
 						<img class="img-responsive" src="../images/pi7.png" alt="" />
 					</a>
-					<h3><a href="single.html">Tops</a></h3>
+					<h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
 					<div class="price">
 						<h5 class="item_price">$300</h5>
 						<a href="#" class="item_add">Add To Cart</a>
@@ -220,10 +220,10 @@
 			</div>
 			<div class="col-md-4 col-md3">
 				<div class="col-md1 simpleCart_shelfItem">
-					<a href="single.html">
+					<a href="../Shop/ProductInfo.jsp">
 						<img class="img-responsive" src="../images/pi.png" alt="" />
 					</a>
-					<h3><a href="single.html">Tops</a></h3>
+					<h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
 					<div class="price">
 						<h5 class="item_price">$300</h5>
 						<a href="#" class="item_add">Add To Cart</a>
@@ -243,38 +243,38 @@
 			<ul class="menu-drop">
 				<li class="item1"><a href="#">Men </a>
 					<ul class="cute">
-						<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-						<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-						<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
 					</ul>
 				</li>
 				<li class="item2"><a href="#">Women </a>
 					<ul class="cute">
-						<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-						<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-						<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
 					</ul>
 				</li>
 				<li class="item3"><a href="#">Kids</a>
 					<ul class="cute">
-						<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-						<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-						<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
+						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
 					</ul>
 				</li>
 				<li class="item4"><a href="#">Accesories</a>
 					<ul class="cute">
-						<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-						<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-						<li class="subitem3"><a href="single.html">Automatic Fails</a></li>
+						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
 					</ul>
 				</li>
 
 				<li class="item4"><a href="#">Shoes</a>
 					<ul class="cute">
-						<li class="subitem1"><a href="single.html">Cute Kittens </a></li>
-						<li class="subitem2"><a href="single.html">Strange Stuff </a></li>
-						<li class="subitem3"><a href="single.html">Automatic Fails </a></li>
+						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
 					</ul>
 				</li>
 			</ul>
@@ -305,40 +305,40 @@
 			<h3 class="cate">Best Sellers</h3>
 			<div class="product-go">
 				<div class=" fashion-grid">
-					<a href="single.html"><img class="img-responsive " src="../images/pr.jpg" alt=""></a>
+					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr.jpg" alt=""></a>
 				</div>
 				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
 					<span class=" price-in1"> $40.00</span>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="product-go">
 				<div class=" fashion-grid">
-					<a href="single.html"><img class="img-responsive " src="../images/pr1.jpg" alt=""></a>
+					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr1.jpg" alt=""></a>
 				</div>
 				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
 					<span class=" price-in1"> $40.00</span>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="product-go">
 				<div class=" fashion-grid">
-					<a href="single.html"><img class="img-responsive " src="../images/pr2.jpg" alt=""></a>
+					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr2.jpg" alt=""></a>
 				</div>
 				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
 					<span class=" price-in1"> $40.00</span>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="product-go">
 				<div class=" fashion-grid">
-					<a href="single.html"><img class="img-responsive " src="../images/pr3.jpg" alt=""></a>
+					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr3.jpg" alt=""></a>
 				</div>
 				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="single.html" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
 					<span class=" price-in1"> $40.00</span>
 				</div>
 				<div class="clearfix"> </div>
@@ -508,7 +508,7 @@
                             message: 'Username can not be empty.'
                         },
                         stringLength: {
-                            /*????*/
+                            /*长度提示*/
                             min: 1,
                             max: 10,
                             message: 'Username must be between 1 and 10 characters in length.'
@@ -521,7 +521,7 @@
                             message: 'Password can not be blank'
                         },
                         stringLength: {
-                            /*????*/
+                            /*长度提示*/
                             min: 6,
                             max: 20,
                             message: 'The password must be 6-20 in length'
@@ -543,11 +543,11 @@
                             max: 20,
                             message: 'The password must be 6-20 in length.'
                         },
-                        identical: {//??
+                        identical: {//相同
                             field: 'Pwd',
                             message: 'The password is inconsistent twice'
                         },
-                        regexp: {//????
+                        regexp: {//匹配规则
                             regexp: /^[a-zA-Z0-9_\.]+$/,
                             message: 'The password consists of alphanumeric characters,_and.'
                         }

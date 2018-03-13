@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +9,7 @@
 	<link href="../css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="../css/fileinput.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
 </head>
 <body>
@@ -23,9 +24,9 @@
 			</ul>
 			
 
-				<button type="button" class="btn btn-primary" onclick="javascrtpt:window.location.href='Add.jsp'">
-				<span><img src="../images/t01.png" /></span> Add
-				</button>
+            <button type="button" class="btn btn-primary" onclick="javascrtpt:window.location.href='Add.jsp'">
+            <span><img src="../images/t01.png" /></span> Add
+            </button>
 
 			<button type="button" class="btn btn-info">
 			<span><img src="../images/t02.png" /></span> Edit
@@ -33,9 +34,6 @@
 			<button type="button"  class="btn btn-danger">
 			<span><img src="../images/t03.png" /></span> Delete
 			</button>
-
-
-
 
 			<table class="table table-striped table-hover">
 				<thead>

@@ -39,14 +39,14 @@
 			<img src="../images/pc.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 		</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 			</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -71,14 +71,14 @@
 			<img src="../images/pc1.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc1.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">At vero eos</a></h6>
+				<h6><a href="ProductInfo.jsp">At vero eos</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -103,14 +103,14 @@
 			<img src="../images/pc2.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc2.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Men</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -135,14 +135,14 @@
 			<img src="../images/pc3.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">On the other</a></h6>
+				<h6><a href="ProductInfo.jsp">On the other</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -170,14 +170,14 @@
 			<img src="../images/pc.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 		</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 			</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -202,14 +202,14 @@
 			<img src="../images/pc1.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc1.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">At vero eos</a></h6>
+				<h6><a href="ProductInfo.jsp">At vero eos</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -234,14 +234,14 @@
 			<img src="../images/pc2.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc2.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Men</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -266,14 +266,14 @@
 		<img src="../images/pc3.jpg" class="img-responsive" alt="">
 		<div class="zoom-icon ">
 		<a class="picture" href="../images/pc3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-		<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+		<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 		</div>
 		</div>
 		<div class="mid-1">
 		<div class="women">
 		<div class="women-top">
 			<span>Women</span>
-			<h6><a href="single.html">On the other</a></h6>
+			<h6><a href="ProductInfo.jsp">On the other</a></h6>
 			</div>
 			<div class="img item_add">
 				<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -301,14 +301,14 @@
 			<img src="../images/pc.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 		</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 			</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -333,14 +333,14 @@
 			<img src="../images/pc1.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc1.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Women</span>
-				<h6><a href="single.html">At vero eos</a></h6>
+				<h6><a href="ProductInfo.jsp">At vero eos</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -365,14 +365,14 @@
 			<img src="../images/pc2.jpg" class="img-responsive" alt="">
 			<div class="zoom-icon ">
 			<a class="picture" href="../images/pc2.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-			<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+			<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 			</div>
 			</div>
 			<div class="mid-1">
 			<div class="women">
 			<div class="women-top">
 				<span>Men</span>
-				<h6><a href="single.html">Sed ut perspiciati</a></h6>
+				<h6><a href="ProductInfo.jsp">Sed ut perspiciati</a></h6>
 				</div>
 				<div class="img item_add">
 					<a href="#"><img src="../images/ca.png" alt=""></a>
@@ -397,14 +397,14 @@
 		<img src="../images/pc3.jpg" class="img-responsive" alt="">
 		<div class="zoom-icon ">
 		<a class="picture" href="../images/pc3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-		<a href="single.html"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+		<a href="ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
 		</div>
 		</div>
 		<div class="mid-1">
 		<div class="women">
 		<div class="women-top">
 			<span>Women</span>
-			<h6><a href="single.html">On the other</a></h6>
+			<h6><a href="ProductInfo.jsp">On the other</a></h6>
 			</div>
 			<div class="img item_add">
 				<a href="#"><img src="../images/ca.png" alt=""></a>

@@ -11,26 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Controller
-public class UpdateController {
-
-    @RequestMapping(value="update",method = { RequestMethod.POST, RequestMethod.GET })
-    public ModelAndView update(@ModelAttribute User user, HttpServletResponse response, ModelMap map) throws IOException {
+public class ModifySelfInfoController {
+    @RequestMapping(value="ModifySelfInfo",method = RequestMethod.POST)
+    public ModelAndView ModifySelfInfo(@ModelAttribute User model, HttpServletResponse response, ModelMap map, HttpServletRequest request) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
+
         UserMapper mapper = session.getMapper(UserMapper.class);
-        int i=mapper.updateUserInfo(user);
+        int i=mapper.updateUserInfo(model);
+        session.commit();
+        request.getSession().setAttribute("user",model);
         session.close();
 
-        ModelAndView mv = new ModelAndView();
-
-        if(i==1)
-            map.put("Message", "Update Successfully!");
+        if(i>0)
+            map.put("ModifySelfInfoMessage","Update Info Successfully!");
         else
-            map.put("Message", "Update Failed!");
-
-        return new ModelAndView("redirect:index.jsp", map);
+            map.put("ModifySelfInfoMessage","Update Info Failed!");
+        ModelAndView mv = new ModelAndView();
+        return new ModelAndView("redirect:/User/ModifySelfInfo.jsp",map);
     }
 }

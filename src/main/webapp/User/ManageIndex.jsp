@@ -1,1 +1,2 @@
-<jsp:include page="../Shared/_SellerManagement.jsp" />
+
+<jsp:include page="ModifySelfInfo.jsp" />

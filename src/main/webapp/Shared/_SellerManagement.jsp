@@ -34,7 +34,7 @@
 					<a href="../User/ModifySelfInfo.jsp">Modify Self Information</a>
 				</div>
 				<div class="panel-body">
-					<a href="../User/ModifySelfPayPwd.jsp">Modify Password</a>
+					<a href="../User/ModifySelfPwd.jsp">Modify Password</a>
 				</div>
 				<div class="panel-body">
 					<a href="../User/ModifySelfPic.jsp">Modify Profile</a>

@@ -11,6 +11,7 @@
     <title>Management</title>
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/mystyle.css" rel="stylesheet">
+
   </head>
 
 <body>
@@ -33,7 +34,7 @@
 					<a href="../User/ModifySelfInfo.jsp">Modify Self Information</a>
 				</div>
 				<div class="panel-body">
-					<a href="../User/ModifySelfPayPwd.jsp">Modify Password</a>
+					<a href="../User/ModifySelfPwd.jsp">Modify Password</a>
 				</div>
 				<div class="panel-body">
 					<a href="../User/ModifySelfPic.jsp">Modify Profile</a>
@@ -52,16 +53,22 @@
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion" 
 				   	href="#collapseTwo">
-						Product Management
+						View My Order
 					</a>
 				</h4>
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse">
 				<div class="panel-body">
-					<a href="../User/ProductList.jsp">Product List</a>
+					<a href="../User/SelfOrder.jsp">All Orders</a>
 				</div>
 				<div class="panel-body">
-					<a>Data List</a>
+					<a href="../User/SelfOrderWaitForSend.jsp">Wait for sending</a>
+				</div>
+				<div class="panel-body">
+					<a href="../User/SelfOrderWaitForReceive.jsp">Wait for receiving</a>
+				</div>
+				<div class="panel-body">
+					<a href="../User/SelfOrderWaitForComment.jsp">Wait for Comment</a>
 				</div>
 			</div>
 		</div>

@@ -6,9 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
-<%
-	User user=(User)request.getSession().getAttribute("user");
-%>
+<%--<%--%>
+	<%--User user=(User)request.getSession().getAttribute("user");--%>
+<%--%>--%>
 </head>
 <body>
 <jsp:include page="../Shared/_SellerManagement.jsp" />
@@ -27,21 +27,21 @@
 	  		<div class="form-group" >
 			    <label for="email" class="col-sm-2 control-label">EmailID</label>
 			    <div class="col-sm-9">
-			      <input type="text" class="form-control" name="email" readonly="readonly" id="email" placeholder="EmailID" value="<%=user.getEmail()%>"></input>
+			      <input type="text" class="form-control" name="email" readonly="readonly" id="email" placeholder="EmailID" value="${user.email}"></input>
 			    </div>
 			  </div>
 	  		
 	  		<div class="form-group" >
 	    		<label for="name" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Name</label>
 	    		<div class="col-sm-9">
-	      			<input type="text" class="form-control" id="name" name="name" value="<%=user.getName()%>" placeholder="Name"></input>
+	      			<input type="text" class="form-control" id="name" name="name" value="${user.name}" placeholder="Name"></input>
 	    		</div>
 	  		</div>
 	  		
 	  		<div class="form-group" >
 	    		<label for="actual_name" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Actual Name</label>
 	    		<div class="col-sm-9">
-	      			<input type="text" readonly="readonly" class="form-control" id="actual_name" name="actual_name" value="<%=user.getActual_name()%>" placeholder="ActualName"></input>
+	      			<input type="text" readonly="readonly" class="form-control" id="actual_name" name="actual_name" value="${user.actual_name}" placeholder="ActualName"></input>
 	    		</div>
 	  		</div>
 			<div class="form-group">
@@ -58,7 +58,7 @@
 	  		<div class="form-group" >
 	    		<label for="phone" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Phone</label>
 	    		<div class="col-sm-9">      
-	      			<input type="text" class="form-control" id="phone" name="phone" value="<%=user.getPhone()%>" placeholder="Phone" onchange="checkPhone()"/>
+	      			<input type="text" class="form-control" id="phone" name="phone" value="${user.phone}" placeholder="Phone" onchange="checkPhone()"/>
 	    		</div>
 	    		<div class="col-sm-1">
 					<span id="pw" style="color:red;display: none;float:left;margin-left:-25px;margin-top:7px;"><span class='glyphicon glyphicon-remove'></span></span>
@@ -77,52 +77,70 @@
 	  	</center>
 	</div>
 <script>
-    function check() {
-    	 if(document.getElementById("name").value=="") {    
-             alert('User Name cannot be null!');
-             return false;
-         }    
-    	 if(document.getElementById("phone").value=="") {
-             alert('Password cannot be null!');
-             return false;
-         }
-        
-        var phone=document.getElementById("phone").value;
-    	var re = /^1\d{10}$/;
-    	if(phone=="") {return true;}
-    	else {
-            if (!re.test(phone)) {
-                alert("Please enter correct phone number!");
-                return false;
-            }
-        }
-    }
+    // function check() {
+    //     if($("#name").val()) {
+    //         alert('User Name cannot be null!');
+    //         //alert("$(\"#name\").val()="+$("#name").val());
+    //         return false;}
+    //     if($("#phone").val().length==0) {
+    //         alert('Phone cannot be null!');
+    //         return false;}
+    //
+    //      // if(document.getElementById("name").value=="") {
+    //      //     alert('User Name cannot be null!');
+    //      //     return false;
+    //      // }
+    //      // if(document.getElementById("phone").value=="") {
+    //      //     alert('Password cannot be null!');
+    //      //     return false;
+    //      // }
+    //
+    //     var phone=$("#phone").val();
+    // 	var re = /^1\d{10}$/;
+    // 	if(phone.length==0) {return true;}
+    // 	else {
+    //         if (!re.test(phone)) {
+    //             alert("Please enter correct phone number!");
+    //             return false;
+    //         }
+    //     }
+    // }
     
-    function checkPhone() {
-    	var phone=document.getElementById("phone").value;
-    	var re = /^1\d{10}$/;
-    	if (!re.test(phone)) {
-    		document.getElementById("pw").style.display="";
-    		document.getElementById("pr").style.display="none";
-    		return false;
-    	}
-    	else {
-	   		document.getElementById("pr").style.display="";
-	   		document.getElementById("pw").style.display="none";
-	   		return false;
-   		}
-    }
+    // function checkPhone() {
+    // 	var phone=document.getElementById("phone").value;
+    // 	var re = /^1\d{10}$/;
+    // 	if (!re.test(phone)) {
+    // 		document.getElementById("pw").style.display="";
+    // 		document.getElementById("pr").style.display="none";
+    // 		return false;
+    // 	}
+    // 	else {
+	 //   		document.getElementById("pr").style.display="";
+	 //   		document.getElementById("pw").style.display="none";
+	 //   		return false;
+   	// 	}
+    // }
     $(document).ready(//操作单选框选中状态
     function setRadio() {
-		var gender=<%=user.getGender()%>;
-        var rd1=document.getElementById("rd1");
-        var rd2=document.getElementById("rd2");
-		if(gender=="0")
-		    rd1.checked=true;
-		else
-		    rd2.checked=true;
+        var gender ="${user.gender}";
+        var rd1 = document.getElementById("rd1");
+        var rd2 = document.getElementById("rd2");
+        if (gender == "0")
+            rd1.checked = true;
+        else
+            rd2.checked = true;
     });
-    
+    window.onload=function showmsg() {
+        var message="${param.ModifySelfInfoMessage}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+    };
 </script>
 
 </body>

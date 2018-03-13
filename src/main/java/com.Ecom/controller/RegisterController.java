@@ -20,13 +20,16 @@ public class RegisterController {
     @RequestMapping(value="register",method= RequestMethod.POST)
     public ModelAndView register(@ModelAttribute User user, HttpServletResponse response, ModelMap map) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
-
         UserMapper mapper = session.getMapper(UserMapper.class);
-        mapper.register(user);
-
+        int i=mapper.register(user);
+        session.commit();
         session.close();
+
+        if(i>0)
+            map.put("Message","Register Successfully!");
+        else
+            map.put("Message","Register Failed!");
         ModelAndView mv = new ModelAndView();
-        map.put("Message","Register Successfully!");
         return new ModelAndView("redirect:/Home/home.jsp",map);
     }
 }

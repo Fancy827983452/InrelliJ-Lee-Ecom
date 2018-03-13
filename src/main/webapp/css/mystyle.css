@@ -52,3 +52,7 @@ body {
 	text-align: center;
 	vertical-align: middle!important;
 }
+#detailtable img{
+	height:80px;
+	width:65px;
+}

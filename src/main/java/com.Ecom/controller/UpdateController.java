@@ -20,19 +20,17 @@ public class UpdateController {
     @RequestMapping(value="update",method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView update(@ModelAttribute User user, HttpServletResponse response, ModelMap map) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
-
         UserMapper mapper = session.getMapper(UserMapper.class);
-        int i=mapper.update(user);
+        int i=mapper.updateUserInfo(user);
         session.close();
+
         ModelAndView mv = new ModelAndView();
 
-        if(i==1) {
+        if(i==1)
             map.put("Message", "Update Successfully!");
-        }
         else
-        {
             map.put("Message", "Update Failed!");
-        }
+
         return new ModelAndView("redirect:index.jsp", map);
     }
 }

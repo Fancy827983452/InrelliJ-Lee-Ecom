@@ -11,10 +11,10 @@ public interface UserMapper {
 
     @Insert("insert into user(email,name,password,role,actual_name,phone,gender,status) " +
             "values(#{email},#{name},#{password},#{role},#{actual_name},#{phone},#{gender},#{status})")
-    public void register(User user);
+    public int register(User user);
 
-    @Update("update user set name=#{name},phone=#{phone} where email=#{email}")
-    public int update(User user);
+    @Update("update user set name=#{name},actual_name=#{actual_name},gender=#{gender},phone=#{phone} where email=#{email}")
+    public int updateUserInfo(User user);
 
     @Delete("delete from user where email=#{email}")
     public int delete(String email);

@@ -17,14 +17,9 @@
     </li>
 </ul>
 
-<button type="button"  class="btn btn-info">Comment
-</button>
 <table class="table table-striped table-hover">
     <thead>
     <tr>
-        <th>
-            <input type = "checkbox" id = "allCheck"/>
-        </th>
         <th>
             OrderID
         </th>
@@ -59,9 +54,6 @@
     </thead>
     <tbody>
     <tr>
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
         <td>
             1
         </td>
@@ -94,9 +86,6 @@
         </td>
     </tr>
     <tr class="success">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
         <td>
             2
         </td>
@@ -129,9 +118,6 @@
         </td>
     </tr>
     <tr class="error">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
         <td>
             3
         </td>
@@ -164,9 +150,6 @@
         </td>
     </tr>
     <tr class="warning">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
         <td>
             4
         </td>
@@ -199,9 +182,6 @@
         </td>
     </tr>
     <tr class="info">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
         <td>
             5
         </td>
@@ -236,32 +216,4 @@
     </tbody>
 </table>
 </body>
-<script>
-    $("#allCheck").click(function(){
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        if(a.checked){
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = true;
-            }
-        }else{
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = false;
-            }
-        }
-    })
-    //单选框
-    $("input[name='check']").click(function(){
-        var flag = true;
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        for(var i = 0; i < b.length; i++){
-            if(!b[i].checked){
-                flag = false;
-                break;
-            }
-        }
-        a.checked = flag;
-    });
-</script>
 </html>

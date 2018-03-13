@@ -8,6 +8,20 @@
 .jz2{ width:100px; height:100%; line-height:46px; text-align:center; font-size:18px; color:#fff; background:#ee0000; display:block; float:right;}
 .tb3_td4{ width:110px;text-align:center;}
 
+.btn1{
+	color: white;
+	background-color: white;
+	padding: 0px 1em;
+	height: 22px;
+	margin-left: 10px;
+	border: 0px solid black;
+	border-radius: 5px;
+}
+.btn1:hover {
+	background-color: #ff0000;
+}
+/*active 要在后面 否则会被hover覆盖*/
+
 
 
 

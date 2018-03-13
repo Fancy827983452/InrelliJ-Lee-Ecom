@@ -20,9 +20,46 @@
 			</li>
 		</ul>
 
-		<button type="button" class="btn btn-primary">
-			<span><img src="../images/t01.png" /></span> Add
-		</button>
+		<a role="button" data-toggle="modal" data-target="#addaddress">
+			<span class="glyphicon glyphicon-plus" style="font-size: 18px;">Address</span>
+		</a>
+
+		<div class="modal fade" id="addaddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Add Address</h4>
+					</div>
+					<div class="modal-body">
+
+						<form class="form-horizontal">
+							<div class="form-group row">
+								<label for="name" class="col-md-offset-2 col-md-2 control-label" >Name:</label>
+								<div class="col-md-6"><input type="text" class="form-control" id="name" name="email"></div>
+							</div>
+							<div class="form-group row">
+								<label for="address" class="col-md-offset-2 col-md-2 control-label" >Address:</label>
+								<div class="col-md-6"><input type="text" class="form-control" id="address" name="email"></div>
+							</div>
+							<div class="form-group row">
+								<label for="phone" class="col-md-offset-2 col-md-2 control-label" >Phone:</label>
+								<div class="col-md-6"><input type="text" class="form-control" id="phone" name="email"></div>
+							</div>
+							<div class="form-group row">
+								<label for="postcode" class="col-md-offset-2 col-md-2 control-label" >Postcode:</label>
+								<div class="col-md-6"><input type="text" class="form-control" id="postcode" name="email"></div>
+							</div>
+							<div class="modal-footer">
+								<!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
+								<center><button type="submit" class="btn btn-primary">Add</button></center>
+							</div>
+						</form>
+					</div>
+
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -37,30 +74,34 @@
 			<tbody>
 				<tr>
 					<td>Tanmay</td>
-					<td>Bangalorefdjhfgiudhgoidlhgfikhdfihsughdfjkgjfghkjdzkh,gzidgh</td>
+					<td>Bangalorefdjhfgiudhgoidlhgfikhkjdzkh,gzidgh</td>
 					<td>560001</td>
 					<td>374687264</td>
 					<td>
-						<a herf="">modify</a>&nbsp;|
-						<a herf="">delete</a>
+						<a role="button" herf="">modify</a>&nbsp;|
+						<a role="button" herf="">delete</a>
             		</td>
-            		<td><input type="button" value="Use as default" ></td>
+            		<td><input class="btn1" type="button" value="default address"/></td>
 				</tr>
 				<tr>
 					<td>Sachin</td>
 					<td>Mumbai</td>
 					<td>400003</td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>7435634754597</td>
+					<td><a role="button" herf="">modify</a>&nbsp;|
+						<a role="button" herf="">delete</a>
+					</td>
+					<td><input class="btn1" type="button" value="Use as Default"/></td>
 				</tr>
 				<tr>
 					<td>Uma</td>
 					<td>Pune</td>
 					<td>411027</td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>7435634754597</td>
+					<td><a role="button" herf="">modify</a>&nbsp;|
+						<a role="button" herf="">delete</a>
+					</td>
+					<td><input class="btn1" type="button" value="Use as Default"/></td>
 				</tr>
 			</tbody>
 		</table>

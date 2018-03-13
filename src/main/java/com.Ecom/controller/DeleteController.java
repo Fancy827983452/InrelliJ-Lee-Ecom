@@ -18,19 +18,15 @@ public class DeleteController {
     @RequestMapping(value="delete",method = { RequestMethod.POST, RequestMethod.GET })
     public ModelAndView update(@RequestParam("email") String email, HttpServletResponse response, ModelMap map) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
-
         UserMapper mapper = session.getMapper(UserMapper.class);
         int i=mapper.delete(email);
         session.close();
+
         ModelAndView mv = new ModelAndView();
-        if(i==1) {
+        if(i==1)
             map.put("Message", "Delete Successfully!");
-            return new ModelAndView("redirect:index.jsp", map);
-        }
         else
-        {
             map.put("Message", "Delete Failed!");
-            return new ModelAndView("redirect:index.jsp", map);
-        }
+        return new ModelAndView("redirect:index.jsp", map);
     }
 }

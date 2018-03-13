@@ -77,52 +77,62 @@
 	  	</center>
 	</div>
 <script>
-    function check() {
-    	 if(document.getElementById("name").value=="") {    
-             alert('User Name cannot be null!');
-             return false;
-         }    
-    	 if(document.getElementById("phone").value=="") {
-             alert('Password cannot be null!');
-             return false;
-         }
-        
-        var phone=document.getElementById("phone").value;
-    	var re = /^1\d{10}$/;
-    	if(phone=="") {return true;}
-    	else {
-            if (!re.test(phone)) {
-                alert("Please enter correct phone number!");
-                return false;
-            }
-        }
-    }
+    // function check() {
+    // 	 if(document.getElementById("name").value=="") {
+    //          alert('User Name cannot be null!');
+    //          return false;
+    //      }
+    // 	 if(document.getElementById("phone").value=="") {
+    //          alert('Password cannot be null!');
+    //          return false;
+    //      }
+    //
+    //     var phone=document.getElementById("phone").value;
+    // 	var re = /^1\d{10}$/;
+    // 	if(phone=="") {return true;}
+    // 	else {
+    //         if (!re.test(phone)) {
+    //             alert("Please enter correct phone number!");
+    //             return false;
+    //         }
+    //     }
+    // }
     
-    function checkPhone() {
-    	var phone=document.getElementById("phone").value;
-    	var re = /^1\d{10}$/;
-    	if (!re.test(phone)) {
-    		document.getElementById("pw").style.display="";
-    		document.getElementById("pr").style.display="none";
-    		return false;
-    	}
-    	else {
-	   		document.getElementById("pr").style.display="";
-	   		document.getElementById("pw").style.display="none";
-	   		return false;
-   		}
-    }
+    // function checkPhone() {
+    // 	var phone=document.getElementById("phone").value;
+    // 	var re = /^1\d{10}$/;
+    // 	if (!re.test(phone)) {
+    // 		document.getElementById("pw").style.display="";
+    // 		document.getElementById("pr").style.display="none";
+    // 		return false;
+    // 	}
+    // 	else {
+	 //   		document.getElementById("pr").style.display="";
+	 //   		document.getElementById("pw").style.display="none";
+	 //   		return false;
+   	// 	}
+    // }
     $(document).ready(//操作单选框选中状态
     function setRadio() {
-		var gender=<%=user.getGender()%>;
-        var rd1=document.getElementById("rd1");
-        var rd2=document.getElementById("rd2");
-		if(gender=="0")
-		    rd1.checked=true;
-		else
-		    rd2.checked=true;
+        var gender =<%=user.getGender()%>;
+        var rd1 = document.getElementById("rd1");
+        var rd2 = document.getElementById("rd2");
+        if (gender == "0")
+            rd1.checked = true;
+        else
+            rd2.checked = true;
     });
-    
+    window.onload=function showmsg() {
+        var message="${param.ModifySelfInfoMessage}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+    };
 </script>
 
 </body>

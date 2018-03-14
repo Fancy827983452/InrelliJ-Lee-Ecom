@@ -24,7 +24,23 @@
                         <li class="right1">
                             <a href="<%=basePath%>/User/ManageIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
                         </li>
-                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                    <%
+                        int shops=Integer.parseInt(session.getAttribute("shops").toString());
+                        System.out.println(shops);
+                        System.out.println(shops==0);
+                        if(shops==0)
+                        {
+                            %>
+                            <li><a href="<%=basePath%>/User/ShopRegister.jsp" onclick="javascript:confirm('You have not apply for a shop yet. Click yes to start a shop!');"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                            <%
+                        }
+                        else
+                        {
+                            %>
+                            <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span> My Shop</a></li>
+                            <%
+                        }
+                    %>
                         <li><a onclick="confirmAct()"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>
                     <%
                 }

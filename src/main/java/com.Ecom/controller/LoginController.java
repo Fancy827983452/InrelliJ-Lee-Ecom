@@ -1,6 +1,7 @@
 package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
+import com.Ecom.mapper.ShopMapper;
 import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
@@ -37,9 +38,12 @@ public class LoginController {
         {
             LoginMessage="Login Successfully!";
             user=mapper.selectUser(email);
+            ShopMapper shopMapper=session.getMapper(ShopMapper.class);
+            int shops=shopMapper.checkShopExist(email);
             session.close();
             map.put("Message",LoginMessage);
             request.getSession().setAttribute("user",user);
+            request.getSession().setAttribute("shops",shops);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
             return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }

@@ -22,7 +22,7 @@
             </li>
         </ul>
         <center>
-            <form class="form-horizontal" style="width:550px" method="post" onsubmit="" action="">
+            <form method="post" action="/ShopRegister" class="form-horizontal" style="width:550px">
 
                 <div class="form-group" >
                     <label for="email" class="col-sm-2 control-label">EmailID</label>
@@ -34,7 +34,7 @@
                 <div class="form-group" >
                     <label for="shop_name" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Shop Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Shop Name"></input>
+                        <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Shop Name" required></input>
                     </div>
                 </div>
 
@@ -50,12 +50,12 @@
                 <div class="form-group row" id="business_license_div">
                     <label for="business_license" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Business License</label>
                     <div class="col-sm-9">
-                        <input type='file' class="form-control" id="business_license" name="business_license" required/>
+                        <input type='file' class="form-control" id="business_license" name="business_license"/>
                     </div>
                 </div>
 
                 <div class="form-group" >
-                    <label for="description" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Description</label>
+                    <label for="description" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-9">
                         <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Description"></textarea>
                     </div>
@@ -80,12 +80,14 @@
     function setDiv() {
         var rd1 = document.getElementById("rd1");
         var rd2 = document.getElementById("rd2");
-        if(rd1.checked==false)//如果选中的是Company
+        if (rd1.checked == false)//如果选中的是Company
         {
-            document.getElementById("business_license_div").style.display="";//显示
+            document.getElementById("business_license_div").style.display = "";//显示
+            document.getElementById("business_license_div").setAttribute("required",true);
         }
-        else
-            document.getElementById("business_license_div").style.display="none";//隐藏
+        else {
+            document.getElementById("business_license_div").style.display = "none";//隐藏
+        }
     }
 </SCRIPT>
 </body>

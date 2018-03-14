@@ -12,7 +12,7 @@ public interface ShopMapper {
     @Select("select count(*) from shop where email=#{email}")
     public int checkShopExist(String email);
 
-    @Insert("insert into shop(email,shop_name,type,business_license,establish_date,status) " +
-            "values(#{email},#{shop_name},#{type},#{business_license},#{establish_date},#{status})")
+    @Insert("insert into shop(email,shop_name,type,business_license,establish_date,description,status) " +
+            "values(#{email},#{shop_name},#{type},#{business_license},#{establish_date},#{description},#{status})")
     public int registerShop(Shop shop);
 }

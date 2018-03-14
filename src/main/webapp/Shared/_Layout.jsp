@@ -1,6 +1,7 @@
 <%@ page import="com.Ecom.model.User" %>
 <% String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; %>
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+%>
 
 <div class="row">
 	<nav class="navbar navbar-default" role="navigation">
@@ -17,7 +18,6 @@
 
             <%
                 User user=(User)session.getAttribute("user");
-                //System.out.println("User : "+user.getName());
                 if (user != null && !"".equals(user))
                 {
                     %>
@@ -26,8 +26,6 @@
                         </li>
                     <%
                         int shops=Integer.parseInt(session.getAttribute("shops").toString());
-                        System.out.println(shops);
-                        System.out.println(shops==0);
                         if(shops==0)
                         {
                             %>

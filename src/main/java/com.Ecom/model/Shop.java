@@ -1,7 +1,5 @@
 package com.Ecom.model;
 
-import java.sql.Date;
-
 public class Shop {
 
     private int shop_id;
@@ -9,9 +7,9 @@ public class Shop {
     private String shop_name;
     private int type;
     private byte[] business_license;
-    private Date establish_date;
+    private String establish_date;
     private String description;
-    private int status;
+    private int status;//店铺状态，0--待审核，1--正常，2--锁定
 
     public int getShop_id() {
         return shop_id;
@@ -53,11 +51,11 @@ public class Shop {
         this.business_license = business_license;
     }
 
-    public Date getEstablish_date() {
+    public String getEstablish_date() {
         return establish_date;
     }
 
-    public void setEstablish_date(Date establish_date) {
+    public void setEstablish_date(String establish_date) {
         this.establish_date = establish_date;
     }
 

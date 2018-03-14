@@ -15,7 +15,10 @@
 <div class="container">
     <jsp:include page="../Shared/_SellerManagement.jsp" />
     <ul class="breadcrumb">
-        <li class="active" style="font-size:20px;">
+        <li class="active">
+            User Management
+        </li>
+        <li class="active">
             Address
         </li>
     </ul>

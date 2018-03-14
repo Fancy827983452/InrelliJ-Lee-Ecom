@@ -1,7 +1,7 @@
 package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
-import com.Ecom.dao.UserMapper;
+import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;

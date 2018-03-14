@@ -19,6 +19,7 @@
 	<jsp:include page="../Shared/_Layout.jsp" />
 	<div class="row clearfix">
 	<div class="col-md-3 column">
+		<img src="image.jsp">
 		<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			<div class="panel-heading">

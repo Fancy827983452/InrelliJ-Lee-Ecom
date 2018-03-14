@@ -1,6 +1,4 @@
 package com.Ecom.model;
-import java.sql.Blob;
-
 public class User {
 
 	private String email;
@@ -10,7 +8,7 @@ public class User {
 	private String actual_name;
 	private String phone;
 	private int gender;
-	private Blob profile;
+	private byte[] profile;
 	private int pay_password;
 	private int status;
 
@@ -52,10 +50,10 @@ public class User {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Blob getProfile() {
+	public byte[] getProfile() {
 		return profile;
 	}
-	public void setProfile(Blob profile) {
+	public void setProfile(byte[] profile) {
 		this.profile = profile;
 	}
 	public int getPay_password() { return pay_password; }

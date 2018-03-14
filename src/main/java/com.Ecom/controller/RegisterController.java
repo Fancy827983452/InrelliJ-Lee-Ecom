@@ -1,7 +1,7 @@
 package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
-import com.Ecom.dao.UserMapper;
+import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
@@ -29,7 +29,6 @@ public class RegisterController {
             map.put("Message","Register Successfully!");
         else
             map.put("Message","Register Failed!");
-        ModelAndView mv = new ModelAndView();
         return new ModelAndView("redirect:/Home/home.jsp",map);
     }
 }

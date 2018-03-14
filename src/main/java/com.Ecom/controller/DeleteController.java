@@ -1,7 +1,7 @@
 package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
-import com.Ecom.dao.UserMapper;
+import com.Ecom.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,7 +19,7 @@ public class DeleteController {
     public ModelAndView update(@RequestParam("email") String email, HttpServletResponse response, ModelMap map) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
         UserMapper mapper = session.getMapper(UserMapper.class);
-        int i=mapper.delete(email);
+        int i=mapper.deleteUser(email);
         session.close();
 
         ModelAndView mv = new ModelAndView();

@@ -1,5 +1,6 @@
 package com.Ecom.mapper;
 
+import com.Ecom.model.Address;
 import com.Ecom.model.User;
 import org.apache.ibatis.annotations.*;
 
@@ -37,4 +38,11 @@ public interface UserMapper {
 
     @Select("select * from user where email=#{email}")
     public User getUserByEmail(String email);
+
+    @Insert("insert into address(email,receiver_name,phone,zip_code,address) " +
+            "values(#{email},#{receiver_name},#{phone},#{zip_code},#{address})")
+    public int insertAddress(Address address);
+
+    @Select("select * from address where email=#{email}")
+    public List<Address> showAllAddress(String email);
 }

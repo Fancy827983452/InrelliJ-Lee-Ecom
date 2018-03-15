@@ -13,7 +13,7 @@ public class Order {
     private int amount;
     private float shipping_fee;
     private float actual_pay;
-    private int adress_id;
+    private int address_id;
     private Date datetime;
     private int status;
 
@@ -89,12 +89,12 @@ public class Order {
         this.actual_pay = actual_pay;
     }
 
-    public int getAdress_id() {
-        return adress_id;
+    public int getAddress_id() {
+        return address_id;
     }
 
-    public void setAdress_id(int adress_id) {
-        this.adress_id = adress_id;
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
     }
 
     public Date getDatetime() {

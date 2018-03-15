@@ -5,6 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/mystyle.css" rel="stylesheet">
+	<link href="../css/cart.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="../Shared/_SellerManagement.jsp" />
@@ -18,7 +22,7 @@
 	</ul>
 	<br>
 	<center>
-		<form  method="post" action="/ModifySelfPwd" class="form-horizontal" style="width:450px" >
+		<form id="MSelfPwdform" name="MSelfPwdform"  method="post" action="/ModifySelfPwd" class="form-horizontal" style="width:450px" >
 			<div class="form-group">
 			    <label for="oldPwd" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Password</label>
 			    <div class="col-sm-9">
@@ -45,7 +49,47 @@
 		    </div> 
 	    </form>
    	</center>
-			    
+<script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $('#MSelfPwdform').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                oldPwd:{
+                    validators:{
+                        notEmpty:{
+                            message:'old Password cannot be empty.'
+                        }
+                    }
+                },
+                newPwd:{
+                    validators:{
+                        notEmpty:{
+                            message:'new password cannot be empty.'
+                        }
+                    }
+                },
+                cpassword:{
+                    validators:{
+                        notEmpty:{
+                            message:'You should repeat the password.'
+                        }
+                    }
+                },
+            }
+        }),
+            $("#submit").click(function(){
+                $("#MSelfPwdform").bootstrapValidator('validate');
+            });
+    });
+</script>
    	<script>
     function check()
     {   

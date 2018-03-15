@@ -53,38 +53,40 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>
-            1
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr>
+    <a href="SelfOrderDetails.jsp">
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                <img alt="no image" src="../images/pc.jpg">
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+            <td>
+                Default
+            </td>
+        </tr>
+    </a>
     <tr class="success">
         <td>
             2

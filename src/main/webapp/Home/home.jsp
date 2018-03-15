@@ -73,8 +73,8 @@
         <!-- /.col-lg-8 -->
         <div class="col-lg-4" style="padding-top:90px;">
             <ul class="nav nav-tabs nav-justified" style="width:20px;">
-                <li class="active"><a href="#" style="font-size:10px;">Commodity</a></li>
-                <li><a href="#" style="font-size:10px;">Store</a></li>
+                <li class="active"><a href="#" style="font-size:15px;">Commodity</a></li>
+                <li><a href="#" style="font-size:15px;">Store</a></li>
             </ul>
             <div class="input-group">
                 <input type="text" class="form-control">

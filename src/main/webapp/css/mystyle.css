@@ -56,3 +56,6 @@ body {
 	height:80px;
 	width:65px;
 }
+#CommentTable td{
+	width:50%;
+}

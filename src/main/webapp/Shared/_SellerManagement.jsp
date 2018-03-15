@@ -44,7 +44,7 @@
 					<a href="../User/ModifySelfPayPwd.jsp">Modify Pay Password</a>
 				</div>
 				<div class="panel-body">
-					<a href="../User/ModifySelfAddress.jsp">Modify Address</a>
+					<a href="../User/ManageSelfAddress.jsp">Modify Address</a>
 				</div>
 			</div>
 		</div>

@@ -8,10 +8,7 @@ import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -157,23 +154,121 @@ public class UserController {
         return new ModelAndView("redirect:/User/ModifySelfPayPwd.jsp",map);
     }
 
-    @RequestMapping(value = "ModifySelfAddress",method = RequestMethod.POST)
-    public ModelAndView ModifySelfAddress(@ModelAttribute Address address,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException
+    @RequestMapping(value = "AddSelfAddress",method = RequestMethod.POST)
+    public ModelAndView AddSelfAddress(@ModelAttribute Address address,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException
     {
         SqlSession session= MySqlSession.getMySession(response);
         UserMapper mapper = session.getMapper(UserMapper.class);
         User user =(User)request.getSession().getAttribute("user");
         address.setEmail(user.getEmail());
         int i=mapper.insertAddress(address);
+        session.commit();
+        List<Address> addressList=mapper.showAllAddress(user.getEmail());
         if(i>0) {
             map.put("Message", "Add Address Successfully!");
-            List<Address> addressList=mapper.showAllAddress(user.getEmail());
-            map.addAttribute("addressList",addressList);
-            session.commit();
-            session.close();
+            request.getSession().setAttribute("addressList",addressList);
         }
         else
             map.put("Message","Add Address Failed!");
+        session.close();
+        return new ModelAndView("redirect:/User/ManageSelfAddress.jsp",map);
+    }
+
+    @RequestMapping(value = "ModifySelfAddress",method = RequestMethod.POST)
+    public ModelAndView ModifySelfAddress(@RequestParam("receiver_name") String receiver_name,@RequestParam("address") String address,
+            @RequestParam("phone") String phone,@RequestParam("zip_code") int zip_code,@RequestParam("address_id") String address_id,
+            HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException{
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        System.out.println(address_id);
+
+        Address address1=new Address();
+        User user =(User)request.getSession().getAttribute("user");
+        address1.setEmail(user.getEmail());
+        address1.setReceiver_name(receiver_name);
+        address1.setAddress(address);
+        address1.setPhone(phone);
+        address1.setZip_code(zip_code);
+        address1.setAddress_id(Integer.parseInt(address_id));
+
+        int i=mapper.updateAddress(address1);
+        session.commit();
+        if(i>0) {
+            List<Address> addressList=mapper.showAllAddress(address1.getEmail());
+            map.put("Message", "Modify Address Successfully!");
+            request.getSession().setAttribute("addressList",addressList);
+        }
+        else
+        {
+            map.put("Message", "Modify Address Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ManageSelfAddress.jsp",map);
+    }
+
+    @RequestMapping(value = "getSelectedSelfAddress",method = { RequestMethod.POST, RequestMethod.GET })
+    public ModelAndView getSelectedSelfAddress(@RequestParam("check") String id,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException
+    {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        //根据ID获取数据表中这条ID的整条记录
+        Address address1=mapper.selectAddressByID(Integer.parseInt(id));
+        request.getSession().setAttribute("address1",address1);
+        session.close();
+
+        map.put("address_id",id);
         return new ModelAndView("redirect:/User/ModifySelfAddress.jsp",map);
+    }
+
+    @RequestMapping(value = "deleteSelectedSelfAddress",method = RequestMethod.POST)
+    public ModelAndView deleteSelectedSelfAddress(@RequestParam("address_id") String address_id,HttpServletResponse response,
+                                                  HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user =(User)request.getSession().getAttribute("user");
+        int i=mapper.deleteAddress(Integer.parseInt(address_id));
+        session.commit();
+        if(i>0) {
+            List<Address> addressList=mapper.showAllAddress(user.getEmail());
+            map.put("Message", "Delete Address Successfully!");
+            request.getSession().setAttribute("addressList",addressList);
+        }
+        else
+        {
+            map.put("Message", "Delete Address Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ManageSelfAddress.jsp",map);
+    }
+
+    @RequestMapping(value = "SetDefaultSelfAddress",method = RequestMethod.POST)
+    public ModelAndView SetDefaultSelfAddress(@RequestParam("address_id") String address_id,HttpServletResponse response,
+                                                  HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user =(User)request.getSession().getAttribute("user");
+
+        int exist=mapper.checkDefaultAddressExist(user.getEmail());
+        if(exist!=0)//数据库中有默认地址
+        {
+            int clearResult=mapper.clearDefaultAddress(user.getEmail());
+            session.commit();
+        }
+        int result=mapper.setDefaultAddress(Integer.parseInt(address_id),user.getEmail());
+        session.commit();
+
+        if(result>0) {
+            List<Address> addressList=mapper.showAllAddress(user.getEmail());
+            map.put("Message", "Set Default Address Successfully!");
+            request.getSession().setAttribute("addressList",addressList);
+        }
+        else
+        {
+            map.put("Message", "Set Default Address Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ManageSelfAddress.jsp",map);
     }
 }

@@ -45,4 +45,26 @@ public interface UserMapper {
 
     @Select("select * from address where email=#{email}")
     public List<Address> showAllAddress(String email);
+
+    @Select("select * from address where address_id=#{address_id}")
+    public Address selectAddressByID(int address_id);
+
+    @Update("update address set receiver_name=#{receiver_name},phone=#{phone},zip_code=#{zip_code},address=#{address} " +
+            "where address_id=#{address_id}")
+    public int updateAddress(Address address);
+
+    @Delete("delete from address where address_id=#{address_id}")
+    public int deleteAddress(int address_id);
+
+    //判断数据库中是否已有默认地址
+    @Select("select count(*) from address where default_address=1 and email=#{email}")
+    public int checkDefaultAddressExist(String email);
+
+    //将之前的默认取消
+    @Update("update address set default_address=0 where default_address=1 and email=#{email};")
+    public int clearDefaultAddress(String email);
+
+    //设置新的默认地址
+    @Update("update address set default_address=1 where address_id=#{0} and email=#{1};")
+    public int setDefaultAddress(int address_id,String email);
 }

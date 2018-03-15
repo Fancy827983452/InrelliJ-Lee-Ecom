@@ -114,7 +114,7 @@
     </div>
 
     <div class="form-group row">
-        <button type="submit" class="btn btn-primary" >Add</button>
+        <center><button type="submit" class="btn btn-primary" >Add</button></center>
     </div>
 
 

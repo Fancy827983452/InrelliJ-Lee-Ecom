@@ -41,7 +41,6 @@
         </li>
     </ul>
 
-
     <a role="button" data-toggle="modal" data-target="#addaddress">
         <span class="glyphicon glyphicon-plus" style="font-size: 18px;">Address</span>
     </a>
@@ -54,8 +53,7 @@
                     <h4 class="modal-title" id="myModalLabel">Add Address</h4>
                 </div>
                 <div class="modal-body">
-
-                    <form class="form-horizontal" method="post" action="/ModifySelfAddress">
+                    <form class="form-horizontal" method="post" action="/ModifySelfAddress" id="Addressform" name="Addressform">
                         <div class="form-group row">
                             <label for="receiver_name" class="col-md-offset-2 col-md-2 control-label" ><span style="color:red">*&nbsp;</span>Receiver Name:</label>
                             <div class="col-md-6"><input type="text" class="form-control" id="receiver_name" name="receiver_name" required></div>
@@ -149,8 +147,72 @@
 
         </tbody>
     </table>
+</div>
     <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-</div>
-<body>
+    <script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("#Addressform").bootstrapValidator({
+                message:'This value is not valid',
+                feedbackIcons:{
+                    valid:'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields:{
+                    receiver_name:{
+                        validators:{
+                            notEmpty:{
+                                message:'Receiver Name cannot be valid.'
+                            },
+                            stringLength:{
+                                min:1,
+                                max:20,
+                                message:'Receiver Name must be between 1 and 20 characters in length.'
+                            }
+                        }
+                    },
+                    address:{
+                        validators:{
+                            notEmpty:{
+                                message:'Address cannot be valid.'
+                            }
+                        }
+                    },
+                    phone:{
+                        validators:{
+                            notEmpty:{
+                                message:'Phone number cannot be valid.'
+                            },
+                            stringLength:{
+                                min:11,
+                                max:11,
+                                message:'The length of the phone number should be 11 digits.'
+                            },
+                            regexp: {
+                                regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                                message: '请输入正确的手机号码'
+                            }
+                        }
+
+                    },
+                    zip_code:{
+                        validators:{
+                            notEmpty:{
+                                message:'Zip Code cannot be valid.'
+                            }
+                        }
+                    }
+
+                }
+            }),
+                $("#submit").click(function(){
+                    $('#Addressform').bootstrapValidator('validate');
+                });
+
+        });
+    </script>
+
+</body>
 </html>

@@ -1,5 +1,6 @@
+<%@ page import="com.Ecom.model.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,19 +19,21 @@
 	</ul>
 	<br>
 	<center>
-		<form  method="post" action="/" class="form-horizontal" style="width:450px">
-			<div class="form-group">
-			    <label for="payPassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Pay Password</label>
-			    <div class="col-sm-9">
-			      <input type="password" class="form-control" id="payPassword" name="payPassword" placeholder="Pay Password">
-			    </div>
-		  	</div>
-			<div class="form-group">
-			    <label for="newpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>New Pay Password</label>
-			    <div class="col-sm-9">
-			      <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password">
-			    </div>
-		  	</div>
+		<form  method="post" action="/ModifySelfPayPwd" class="form-horizontal" style="width:450px">
+			<div id="oldpayPassword_div" name="oldpayPassword_div" class="form-group">
+				<label for="oldpayPassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Old Pay Password</label>
+				<div class="col-sm-9">
+					<input type="password" class="form-control" id="oldpayPassword" name="oldpayPassword" placeholder="Old Pay Password">
+				</div>
+			</div>
+
+            <div class="form-group">
+                <label for="newpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>New Pay Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password">
+                </div>
+            </div>
+
 		  `	<div class="form-group" style="margin-top:-20px;">
 			    <label for="cpassword" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Confirm Pay Password</label>
 			    <div class="col-sm-9">
@@ -72,6 +75,29 @@
              return false;
         }
     }
+
+    window.onload=function showmsg() {
+        var message="${param.ModifySelfPayPwdMessage}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+    };
+
+    $(document).ready(function(){
+        //相当于request.getSession().getAttribute("user");
+        var dbPayPwd="${sessionScope.user.pay_password}";
+        if(dbPayPwd==0 || dbPayPwd==null)
+        {
+            document.getElementById("oldpayPassword_div").style.display="none";
+        }
+        else
+            document.getElementById("oldpayPassword_div").style.display="";
+    });
 </script>
 </body>
 </html>

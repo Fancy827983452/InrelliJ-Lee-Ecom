@@ -30,6 +30,7 @@
   <!-- mappers告诉了MyBatis去哪里找持久化类的映射文件 -->
   <mappers>
   	<!--<mapper resource="mapper/UserMapper.xml"/>-->
-      <mapper class="com.Ecom.dao.UserMapper"/>
+      <mapper class="com.Ecom.mapper.UserMapper"/>
+      <mapper class="com.Ecom.mapper.ShopMapper"/>
   </mappers>
 </configuration>

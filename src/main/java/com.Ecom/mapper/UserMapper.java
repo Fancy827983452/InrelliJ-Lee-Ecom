@@ -1,5 +1,6 @@
-package com.Ecom.dao;
+package com.Ecom.mapper;
 
+import com.Ecom.model.Address;
 import com.Ecom.model.User;
 import org.apache.ibatis.annotations.*;
 
@@ -20,15 +21,28 @@ public interface UserMapper {
     @Update("update user set password=#{0} where email=#{1} and password=#{2}")
     public int updatePwd(String newPwd,String email,String oldPwd);
 
+    @Update("update user set pay_password=#{0} where email=#{1} and pay_password=#{2}")
+    public int updatePayPwd(int newPwd,String email,int oldPwd);
+
     @Update("update user set pay_password=#{0} where email=#{1}")
-    public int updatePayPwd(String pay_password,String email);
+    public int setPayPwd(int newPwd,String email);
 
     @Delete("delete from user where email=#{email}")
-    public int delete(String email);
+    public int deleteUser(String email);
 
     @Select("select * from user where email=#{email}")
-    public User showDetails(String email);
+    public User selectUser(String email);
 
     @Select("select * from user")
     public List<User> showAll();
+
+    @Select("select * from user where email=#{email}")
+    public User getUserByEmail(String email);
+
+    @Insert("insert into address(email,receiver_name,phone,zip_code,address) " +
+            "values(#{email},#{receiver_name},#{phone},#{zip_code},#{address})")
+    public int insertAddress(Address address);
+
+    @Select("select * from address where email=#{email}")
+    public List<Address> showAllAddress(String email);
 }

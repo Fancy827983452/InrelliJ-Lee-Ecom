@@ -20,6 +20,25 @@
 	<link href="../css/flexslider.css" rel="stylesheet">
 	<link href="../css/mystyle.css" rel="stylesheet">
 
+	  <script>
+          window.onload=function () {
+			  var message="${param.ShopRegisterMessage}";
+			  if(message.length == 0 || null == message)
+			  {
+				  message=null;
+			  }
+			  else
+			      alert(message);
+			  setTimeout(checkStatus(),1000);
+		  };
+          function checkStatus()
+          {
+          var status="${sessionScope.shopInfo.status}";
+          if(status==0)
+          	alert("Your shop application has not been approved by the administrator. Please wait patiently!");
+          };
+	  </script>
+
   </head>
 
   <body>

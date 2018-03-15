@@ -41,7 +41,6 @@
                     %>
                         <li><a onclick="confirmAct()"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>
                         <li><a href="<%=basePath%>/User/Cart.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-shopping-cart"></span>My Cart</a></li>
-                        <li><a href="<%=basePath%>/Shop/ShopIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-gift"></span>My Shop</a></li>
                     <%
                 }
                 else

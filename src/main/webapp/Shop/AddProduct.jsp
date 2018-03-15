@@ -21,7 +21,7 @@
 </head>
 <body>
 <jsp:include page="../Shared/_SellerManagement.jsp" />
-<form class="form-horizontal" id="registeForm" name="registeForm" action="" method="post" >
+<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="" method="post" >
     <div class="form-group row">
         <label for="ProName" class="col-md-offset-2 col-md-2 control-label" >Product Name:</label>
         <div class="col-md-8"><input type="text" class="form-control" id="ProName" name="ProName"></div>
@@ -70,35 +70,8 @@
 
         </div>
 
-        <!-- 模态框（Modal） -->
-        <div class="modal fade" id="addProperty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">Login</h4>
-                    </div>
-                    <div class="modal-body">
 
-                        <form class="form-horizontal" id="indexform" name="indexForm" action="" method="post" >
-                            <div class="form-group row">
-                                <label for="ProPro" class="col-md-offset-2 col-md-2 control-label" >Product Property:</label>
-                                <div class="col-md-6"><input type="text" class="form-control" id="ProPro" name="ProPro"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Detail" class="col-md-offset-2 col-md-2 control-label" >Detail:</label>
-                                <div class="col-md-6"><input type="text" class="form-control" name="Detail" id="Detail"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
-                                <center><button type="submit" class="btn btn-primary">Add</button></center>
-                            </div>
-                        </form>
-                    </div>
 
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
 
     </div>
 
@@ -114,12 +87,40 @@
     </div>
 
     <div class="form-group row">
-        <center><button type="submit" class="btn btn-primary" >Add</button></center>
+        <center><button type="submit" class="btn btn-primary" name="addProuctbtn">Add</button></center>
     </div>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="addProperty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Product Property</h4>
+                </div>
+                <div class="modal-body">
 
+                    <form id="AddProPropertyform" name="AddProPropertyform"  class="form-horizontal" action="" method="post" ><!--id="AddProPropertyform" name="AddProPropertyform" -->
+                        <div class="form-group row">
+                            <label for="ProPro" class="col-md-offset-2 col-md-2 control-label" >Product Property:</label>
+                            <div class="col-md-6"><input type="text" class="form-control" id="ProPro" name="ProPro"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Detail" class="col-md-offset-2 col-md-2 control-label" >Detail:</label>
+                            <div class="col-md-6"><input type="text" class="form-control" name="Detail" id="Detail"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
+                            <center><button class="btn btn-primary" name="ProProbtn">Add</button></center>
+                        </div>
+                    </form>
+                </div>
 
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 </form>
+
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
@@ -128,6 +129,7 @@
 <script src="../js/fileinput.min.js" type="text/javascript"></script>
 <script src="../js/multiple-select.js" type="text/javascript"></script>
 <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
+
 <script type="text/javascript">
     //.datetimepicker(options)初始化日期时间选择器;
     $('#AddDate').datetimepicker({
@@ -186,6 +188,7 @@
         a.checked = flag;
     });
 </script>
+
 
 
 </body>

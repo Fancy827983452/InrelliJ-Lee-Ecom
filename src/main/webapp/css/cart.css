@@ -18,6 +18,9 @@
 	border-radius: 5px;
 }
 
+.store{width: 100%;height: 200px; border:1px solid rgba(0,0,0,0.15);}
+.store1{height: 160px; width: 120px; margin-left: 40px;margin-top: 10px;float: left;}
+
 #addresstable tr:hover #add{background-color:orangered;}
 /*active 要在后面 否则会被hover覆盖*/
 

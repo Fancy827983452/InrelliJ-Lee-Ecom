@@ -7,24 +7,18 @@
 <title>Cart</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
-<link href="../css/style.css" rel="stylesheet">
-<link href="../css/style4.css" rel="stylesheet">
-<link href="../css/jstarbox.css" rel="stylesheet">
-<link href="../css/popuo-box.css" rel="stylesheet">
-<link href="../css/chocolat.css" rel="stylesheet">
-<link href="../css/form.css" rel="stylesheet">
-<link href="../css/flexslider.css" rel="stylesheet">
 <link href="../css/mystyle.css" rel="stylesheet">
 <link href="../css/cart.css" rel="stylesheet">
-
 </head>
+
 <body>
 	<div class="container">
 	
 	<jsp:include page="../Shared/_Layout.jsp" />
-	<table class="" cellspacing="0" style='width:100%;'>
+	<table cellspacing="0" style="width:100%;">
 		<thead>
-			<tr>				
+			<tr>
+				<th></th>
 				<th colspan=3 >Product</th>			
 				<th>Price</th>
 				<th>Number</th>

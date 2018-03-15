@@ -19,9 +19,6 @@
     <li class="active">
         View My Order
     </li>
-    <li>
-        <a href="SelfOrderWaitForReceive.jsp">Wait For Receiving</a>
-    </li>
     <li class="active">
         Order Details
     </li>
@@ -54,11 +51,33 @@
             Status
         </td>
         <td>
+            <button type="button"  class="btn btn-info">Refund</button>
             <button type="button"  class="btn btn-info">Confirm Received</button>
+            <button type="button"  class="btn btn-info" onclick="changestyle()">Comment</button>
         </td>
     </tr>
-
 </table>
 
+<form role="form" id="Commentdiv" style="display: none">
+    <div class="form-group col-md-7">
+        <label for="name">Comments</label>
+        <textarea class="form-control" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="inputfile">Add Images</label>
+        <input type="file" id="inputfile">
+    </div>
+    <div class="form-group" style="margin-top: 40px;">
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+
+</form>
 </body>
+
+<script type="text/javascript">
+    function changestyle(){
+        var mychar = document.getElementById("Commentdiv");
+        mychar.style.display="block";
+    }
+</script>
 </html>

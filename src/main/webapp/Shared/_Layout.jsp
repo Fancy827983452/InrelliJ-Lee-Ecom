@@ -1,7 +1,8 @@
 <%@ page import="com.Ecom.model.User" %>
 <% String path = request.getContextPath();
     String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; %>
-
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
 <div class="row">
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
@@ -43,19 +44,19 @@
         </ul>
 
         <!-- 模态框（Modal） -->
-                    <div class="modal fade" id="MyRegistration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="MyRegistration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									<h4 class="modal-title" id="myModalLabel">Registration</h4>
+									<h4 class="modal-title" id="myModalLabel1">Registration</h4>
                                 </div>
                                 <div class="modal-body">
                                   
                      <form class="form-horizontal" id="registeForm" name="registeForm" action="<%=basePath %>/register" method="post" >
                      <div class="form-group row">
                         <label for="email" class="col-md-offset-2 col-md-2 control-label" >E-mail:</label>
-                        <div class="col-md-6"><input type="email" class="form-control" id="email" name="email"></div>
+                        <div class="col-md-6"><input type="email" class="form-control"  name="email"></div>
                      </div>
                      <div class="form-group row">
                         <label for="name" class="col-md-offset-2 col-md-2 control-label" >Name:</label>
@@ -161,4 +162,117 @@
         else
             return false;
     }
+</script>
+
+<script>
+    $(function () {
+
+        $("#registeForm").bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons:{
+                valid:'glyphicon glyphicon-ok',
+                invalid:'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+
+            fields: {
+
+                email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Mail can not be empty.'
+                        },
+                        emailAddress: {
+                            message: 'Please enter the correct e-mail address:123@qq.com.'
+                        }
+                    }
+                },
+                name: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Username can not be empty.'
+                        },
+                        stringLength: {
+                            /*长度提示*/
+                            min: 1,
+                            max: 10,
+                            message: 'Username must be between 1 and 10 characters in length.'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Password can not be blank'
+                        },
+                        stringLength: {
+                            /*长度提示*/
+                            min: 3,
+                            max: 20,
+                            message: 'The password must be 3-20 in length'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'The password consists of alphanumeric characters,_and.'
+                        }
+                    }
+                },
+                repwd: {
+                    message: 'Invalid password.',
+                    validators: {
+                        notEmpty: {
+                            message: 'Password can not be blank'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 20,
+                            message: 'The password must be 3-20 in length.'
+                        },
+                        identical: {//相同
+                            field: 'password',
+                            message: 'The password is inconsistent twice'
+                        },
+                        regexp: {//匹配规则
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'The password consists of alphanumeric characters,_and.'
+                        }
+                    }
+                },
+                phone:{
+                    validators:{
+                        notEmpty:{
+                            message:'Phone number cannot be valid.'
+                        },
+                        stringLength:{
+                            min:11,
+                            max:11,
+                            message:'The length of the phone number should be 11 digits.'
+                        },
+                        regexp: {
+                            regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                            message: 'Please enter the right phone number.'
+                        }
+                    }
+
+                },
+
+
+
+                Gender:{
+                    validators:{
+                        notEmpty:{
+                            message:'Gender cannot be empty.'
+                        }
+                    }
+                },
+
+
+            }
+
+        }),
+            $("#submit").click(function(){
+                $("#registeForm").bootstrapValidator('validate');
+            });
+
+    });
 </script>

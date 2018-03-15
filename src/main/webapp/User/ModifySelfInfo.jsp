@@ -6,6 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../css/mystyle.css" rel="stylesheet">
+	<link href="../css/cart.css" rel="stylesheet">
 <%--<%--%>
 	<%--User user=(User)request.getSession().getAttribute("user");--%>
 <%--%>--%>
@@ -23,7 +27,7 @@
 			</ul>
 	<br>
 	<center>
-		<form class="form-horizontal" style="width:450px" method="post" onsubmit="return check()" action="/ModifySelfInfo">
+		<form class="form-horizontal" id="MSelfInfoform" name="MSelfInfoform" style="width:450px" method="post" onsubmit="return check()" action="/ModifySelfInfo">
 	  		<div class="form-group" >
 			    <label for="email" class="col-sm-2 control-label">EmailID</label>
 			    <div class="col-sm-9">
@@ -76,6 +80,64 @@
 	  	</form>
 	  	</center>
 	</div>
+<script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script>
+    $(function () {
+            $('#MSelfInfoform').bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Username can not be empty.'
+                            },
+                            stringLength: {
+                                /*长度提示*/
+                                min: 1,
+                                max: 10,
+                                message: 'Username must be between 1 and 10 characters in length.'
+                            }
+                        }
+                    },
+                    Gender:{
+                        validators:{
+                            notEmpty:{
+                                message:'Gender cannot be empty.'
+                            }
+                        }
+                    },
+                    phone:{
+                        validators:{
+                            notEmpty:{
+                                message:'Phone number cannot be valid.'
+                            },
+                            stringLength:{
+                                min:11,
+                                max:11,
+                                message:'The length of the phone number should be 11 digits.'
+                            },
+                            regexp: {
+                                regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                                message: 'Please enter the right phone number.'
+                            }
+                        }
+
+                    },
+
+				}
+            }),
+        $("#submit").click(function(){
+            $("#MSelfInfoform").bootstrapValidator('validate');
+        });
+        });
+</script>
 <script>
     // function check() {
     //     if($("#name").val()) {

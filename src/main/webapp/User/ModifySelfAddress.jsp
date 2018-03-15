@@ -35,23 +35,22 @@
                     <h4 class="modal-title" id="myModalLabel">Add Address</h4>
                 </div>
                 <div class="modal-body">
-
-                    <form class="form-horizontal">
+                    <form class="form-horizontal"  id="Addressform" name="Addressform" method="post">
                         <div class="form-group row">
                             <label for="name" class="col-md-offset-2 col-md-2 control-label" >Name:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="name" name="email"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" id="name" name="name"></div>
                         </div>
                         <div class="form-group row">
                             <label for="address" class="col-md-offset-2 col-md-2 control-label" >Address:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="address" name="email"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" id="address" name="address"></div>
                         </div>
                         <div class="form-group row">
                             <label for="phone" class="col-md-offset-2 col-md-2 control-label" >Phone:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="phone" name="email"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" id="phone" name="phone"></div>
                         </div>
                         <div class="form-group row">
                             <label for="postcode" class="col-md-offset-2 col-md-2 control-label" >Postcode:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="postcode" name="email"></div>
+                            <div class="col-md-6"><input type="text" class="form-control" id="postcode" name="postcode"></div>
                         </div>
                         <div class="modal-footer">
                             <!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
@@ -108,8 +107,72 @@
         </tr>
         </tbody>
     </table>
+</div>
     <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="../js/bootstrap.min.js" type="text/javascript"></script>
-</div>
-<body>
+    <script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $("#Addressform").bootstrapValidator({
+                message:'This value is not valid',
+                feedbackIcons:{
+                    valid:'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields:{
+                    name:{
+                        validators:{
+                            notEmpty:{
+                                message:'Name cannot be valid.'
+                            },
+                            stringLength:{
+                                min:1,
+                                max:10,
+                                message:'Name must be between 1 and 10 characters in length.'
+                            }
+                        }
+                    },
+                    address:{
+                        validators:{
+                            notEmpty:{
+                                message:'Address cannot be valid.'
+                            }
+                        }
+                    },
+                    phone:{
+                        validators:{
+                            notEmpty:{
+                                message:'Phone number cannot be valid.'
+                            },
+                            stringLength:{
+                                min:11,
+                                max:11,
+                                message:'The length of the phone number should be 11 digits.'
+                            },
+                            regexp: {
+                                regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                                message: '请输入正确的手机号码'
+                            }
+                        }
+
+                    },
+                    postcode:{
+                        validators:{
+                            notEmpty:{
+                                message:'Postcode cannot be valid.'
+                            }
+                        }
+                    }
+
+                }
+            }),
+                $("#submit").click(function(){
+                    $('#Addressform').bootstrapValidator('validate');
+                });
+            
+        });
+    </script>
+
+</body>
 </html>

@@ -1,8 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 2018/3/15
+  Time: 9:13
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Search</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/style.css" rel="stylesheet">
@@ -13,6 +20,10 @@
     <link href="../css/form.css" rel="stylesheet">
     <link href="../css/flexslider.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
+    <link href="../css/cart.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         var message="${param.Message}";
@@ -32,63 +43,42 @@
 
     <jsp:include page="../Shared/_Layout.jsp" />
 
-    <div class="row" style=" padding-top: 17px;">
-
-        <!-- /.col-lg-2 -->
-
-        <div class="col-lg-8">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- 轮播（Carousel）指标 -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                <!-- 轮播（Carousel）项目 -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="pic">
-                            <div class="col-md-offset-1 col-md-8"><img class="d-block img-fluid" src="../images/pi1.jpg" alt=""/></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pic">
-                            <div class="col-md-offset-1 col-md-8"><img class="d-block img-fluid" src="../images/pi2.jpg" alt=""/></div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pic">
-                            <div class="col-md-offset-1 col-md-8"><img class="d-block img-fluid" src="../images/pi3.jpg" alt=""/></div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#myCarousel" data-slide="prev" class="carousel-control left" >
-                    <span class="glyphicon glyphicon-chevron-left"> </span>
+    <div style="background-color: rgba(118, 53, 255, 0.12); height: 50px;margin:0 auto;margin-top: 20px;">
+        <div class="input-group" style="width:500px; height:30px;margin:0 auto;top:10px;">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Commodity
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Store</a></li>
+                </ul>
+            </div><!-- /btn-group -->
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    Search
+                </button>
+            </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 --><br>
+    <div>
+        <ul class="nav nav-tabs">
+            <li><a href="#">Sales</a></li>
+            <li><a href="#">Credibility</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Price
+                    <b class="caret"></b>
                 </a>
-                <a href="#myCarousel" data-slide="next" class="carousel-control right" >
-                    <span class="glyphicon glyphicon-chevron-right"> </span>
-                </a>
-            </div>
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4" style="padding-top:90px;">
-            <ul class="nav nav-tabs nav-justified" style="width:20px;">
-                <li class="active"><a href="#" style="font-size:10px;">Commodity</a></li>
-                <li><a href="#" style="font-size:10px;">Store</a></li>
-            </ul>
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-							Search
-						</button>
-					</span>
-            </div><!-- /input-group -->
-        </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">From low to high</a></li>
+                    <li><a href="#">From high to low</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
-
-    <!-- /.row -->
     <div class="content-mid">
         <h3>Trending Items</h3>
         <label class="line"></label>
@@ -357,162 +347,159 @@
     </div>
     <!--//products-->
     <!-- /.row -->
-</div>
 
+    <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="../js/jstarbox.js" type="text/javascript"></script>
+    <script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
+    <script src="../js/classie.js" type="text/javascript"></script>
+    <script src="../js/imagezoom.js" type="text/javascript"></script>
+    <script src="../js/jquery.chocolat.js" type="text/javascript"></script>
+    <script src="../js/jquery.flexslider.js" type="text/javascript"></script>
+    <script src="../js/simpleCart.min.js" type="text/javascript"></script>
+    <script src="../js/uisearch.js" type="text/javascript"></script>
+    <script src="../js/modernizr.custom.72111.js" type="text/javascript"></script>
 
-
-<script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.min.js" type="text/javascript"></script>
-<script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
-<script src="../js/jstarbox.js" type="text/javascript"></script>
-<script src="../js/jquery.magnific-popup.js" type="text/javascript"></script>
-<script src="../js/classie.js" type="text/javascript"></script>
-<script src="../js/imagezoom.js" type="text/javascript"></script>
-<script src="../js/jquery.chocolat.js" type="text/javascript"></script>
-<script src="../js/jquery.flexslider.js" type="text/javascript"></script>
-<script src="../js/simpleCart.min.js" type="text/javascript"></script>
-<script src="../js/uisearch.js" type="text/javascript"></script>
-<script src="../js/modernizr.custom.72111.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    jQuery(function() {
-        jQuery('.starbox').each(function() {
-            var starbox = jQuery(this);
-            starbox.starbox({
-                average: starbox.attr('data-start-value'),
-                changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
-                ghosting: starbox.hasClass('ghosting'),
-                autoUpdateAverage: starbox.hasClass('autoupdate'),
-                buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
-                stars: starbox.attr('data-star-count') || 5
-            }).bind('starbox-value-changed', function(event, value) {
-                if(starbox.hasClass('random')) {
-                    var val = Math.random();
-                    starbox.next().text(' '+val);
-                    return val;
-                }
-            })
-        });
-    });
-</script>
-
-<script type="text/javascript" charset="utf-8">
-    $(function() {
-        $('a.picture').Chocolat();
-    });
-</script>
-<script>
-    $(function () {
-
-        $("#registeForm").bootstrapValidator({
-            message: 'This value is not valid',
-            feedbackIcons:{
-                valid:'glyphicon glyphicon-ok',
-                invalid:'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-
-            fields: {
-
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Mail can not be empty.'
-                        },
-                        emailAddress: {
-                            message: 'Please enter the correct e-mail address:123@qq.com.'
-                        }
+    <script type="text/javascript">
+        jQuery(function() {
+            jQuery('.starbox').each(function() {
+                var starbox = jQuery(this);
+                starbox.starbox({
+                    average: starbox.attr('data-start-value'),
+                    changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+                    ghosting: starbox.hasClass('ghosting'),
+                    autoUpdateAverage: starbox.hasClass('autoupdate'),
+                    buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+                    stars: starbox.attr('data-star-count') || 5
+                }).bind('starbox-value-changed', function(event, value) {
+                    if(starbox.hasClass('random')) {
+                        var val = Math.random();
+                        starbox.next().text(' '+val);
+                        return val;
                     }
-                },
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Username can not be empty.'
-                        },
-                        stringLength: {
-                            /*长度提示*/
-                            min: 1,
-                            max: 10,
-                            message: 'Username must be between 1 and 10 characters in length.'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: 'Password can not be blank'
-                        },
-                        stringLength: {
-                            /*长度提示*/
-                            min: 3,
-                            max: 20,
-                            message: 'The password must be 3-20 in length'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: 'The password consists of alphanumeric characters,_and.'
-                        }
-                    }
-                },
-                repwd: {
-                    message: 'Invalid password.',
-                    validators: {
-                        notEmpty: {
-                            message: 'Password can not be blank'
-                        },
-                        stringLength: {
-                            min: 3,
-                            max: 20,
-                            message: 'The password must be 3-20 in length.'
-                        },
-                        identical: {//相同
-                            field: 'password',
-                            message: 'The password is inconsistent twice'
-                        },
-                        regexp: {//匹配规则
-                            regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: 'The password consists of alphanumeric characters,_and.'
-                        }
-                    }
-                },
-                Phone:{
-                    validators:{
-                        notEmpty:{
-                            message:'Phone number cannot be valid.'
-                        },
-                        stringLength:{
-                            min:11,
-                            max:11,
-                            message:'The length of the phone number should be 11 digits.'
-                        },
-                        regexp: {
-                            regexp: /^1[3|5|8]{1}[0-9]{9}$/,
-                            message: 'Please enter the right phone number.'
-                        }
-                    }
-
-                },
-
-
-
-                Gender:{
-                    validators:{
-                        notEmpty:{
-                            message:'Gender cannot be empty.'
-                        }
-                    }
-                },
-
-
-            }
-
-        }),
-            $("#submit").click(function(){
-                $("#registeForm").bootstrapValidator('validate');
+                })
             });
+        });
+    </script>
 
-    });
-</script>
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('a.picture').Chocolat();
+        });
+    </script>
+    <script>
+        $(function () {
 
+            $("#registeForm").bootstrapValidator({
+                message: 'This value is not valid',
+                feedbackIcons:{
+                    valid:'glyphicon glyphicon-ok',
+                    invalid:'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+
+                fields: {
+
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Mail can not be empty.'
+                            },
+                            emailAddress: {
+                                message: 'Please enter the correct e-mail address:123@qq.com.'
+                            }
+                        }
+                    },
+                    name: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Username can not be empty.'
+                            },
+                            stringLength: {
+                                /*长度提示*/
+                                min: 1,
+                                max: 10,
+                                message: 'Username must be between 1 and 10 characters in length.'
+                            }
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Password can not be blank'
+                            },
+                            stringLength: {
+                                /*长度提示*/
+                                min: 3,
+                                max: 20,
+                                message: 'The password must be 3-20 in length'
+                            },
+                            regexp: {
+                                regexp: /^[a-zA-Z0-9_\.]+$/,
+                                message: 'The password consists of alphanumeric characters,_and.'
+                            }
+                        }
+                    },
+                    repwd: {
+                        message: 'Invalid password.',
+                        validators: {
+                            notEmpty: {
+                                message: 'Password can not be blank'
+                            },
+                            stringLength: {
+                                min: 3,
+                                max: 20,
+                                message: 'The password must be 3-20 in length.'
+                            },
+                            identical: {//相同
+                                field: 'password',
+                                message: 'The password is inconsistent twice'
+                            },
+                            regexp: {//匹配规则
+                                regexp: /^[a-zA-Z0-9_\.]+$/,
+                                message: 'The password consists of alphanumeric characters,_and.'
+                            }
+                        }
+                    },
+                    Phone:{
+                        validators:{
+                            notEmpty:{
+                                message:'Phone number cannot be valid.'
+                            },
+                            stringLength:{
+                                min:11,
+                                max:11,
+                                message:'The length of the phone number should be 11 digits.'
+                            },
+                            regexp: {
+                                regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                                message: 'Please enter the right phone number.'
+                            }
+                        }
+
+                    },
+
+
+
+                    Gender:{
+                        validators:{
+                            notEmpty:{
+                                message:'Gender cannot be empty.'
+                            }
+                        }
+                    },
+
+
+                }
+
+            }),
+                $("#submit").click(function(){
+                    $("#registeForm").bootstrapValidator('validate');
+                });
+
+        });
+    </script>
+</div>
 </body>
 </html>

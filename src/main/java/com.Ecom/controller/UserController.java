@@ -3,6 +3,7 @@ package com.Ecom.controller;
 import com.Ecom.dao.MySqlSession;
 import com.Ecom.mapper.ShopMapper;
 import com.Ecom.mapper.UserMapper;
+import com.Ecom.model.Address;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -41,10 +43,12 @@ public class UserController {
             user=mapper.selectUser(email);
             ShopMapper shopMapper=session.getMapper(ShopMapper.class);
             int shops=shopMapper.checkShopExist(email);
+            List<Address> addressList=mapper.showAllAddress(email);
             session.close();
             map.put("Message",LoginMessage);
             request.getSession().setAttribute("user",user);
             request.getSession().setAttribute("shops",shops);
+            request.getSession().setAttribute("addressList",addressList);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
             return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }
@@ -151,5 +155,25 @@ public class UserController {
                 map.put("ModifySelfPayPwdMessage","Wrong old Pay password!");
         }
         return new ModelAndView("redirect:/User/ModifySelfPayPwd.jsp",map);
+    }
+
+    @RequestMapping(value = "ModifySelfAddress",method = RequestMethod.POST)
+    public ModelAndView ModifySelfAddress(@ModelAttribute Address address,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException
+    {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user =(User)request.getSession().getAttribute("user");
+        address.setEmail(user.getEmail());
+        int i=mapper.insertAddress(address);
+        if(i>0) {
+            map.put("Message", "Add Address Successfully!");
+            List<Address> addressList=mapper.showAllAddress(user.getEmail());
+            map.addAttribute("addressList",addressList);
+            session.commit();
+            session.close();
+        }
+        else
+            map.put("Message","Add Address Failed!");
+        return new ModelAndView("redirect:/User/ModifySelfAddress.jsp",map);
     }
 }

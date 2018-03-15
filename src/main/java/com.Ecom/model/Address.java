@@ -1,21 +1,21 @@
 package com.Ecom.model;
 
-public class Adress {
+public class Address {
 
-    private int adress_id;
+    private int address_id;
     private String email;
     private String receiver_name;
     private String phone;
     private int zip_code;
-    private String adress;
-    private int default_adress;
+    private String address;
+    private int default_address;
 
-    public int getAdress_id() {
-        return adress_id;
+    public int getAddress_id() {
+        return address_id;
     }
 
-    public void setAdress_id(int adress_id) {
-        this.adress_id = adress_id;
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
     }
 
     public String getEmail() {
@@ -50,19 +50,19 @@ public class Adress {
         this.zip_code = zip_code;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public int getDefault_adress() {
-        return default_adress;
+    public int getDefault_address() {
+        return default_address;
     }
 
-    public void setDefault_adress(int default_adress) {
-        this.default_adress = default_adress;
+    public void setDefault_address(int default_address) {
+        this.default_address = default_address;
     }
 }

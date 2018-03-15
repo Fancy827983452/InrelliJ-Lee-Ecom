@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/bootstrap-select.min.css" rel="stylesheet">

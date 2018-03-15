@@ -22,7 +22,7 @@
             </li>
         </ul>
         <center>
-            <form class="form-horizontal" style="width:550px" method="post" onsubmit="" action="">
+            <form method="post" action="/ShopRegister" class="form-horizontal" style="width:550px">
 
                 <div class="form-group" >
                     <label for="email" class="col-sm-2 control-label">EmailID</label>
@@ -32,32 +32,30 @@
                 </div>
 
                 <div class="form-group" >
-                    <label for="actual_name" class="col-sm-2 control-label" id="lb1"><span style="color:red">*&nbsp;</span>Actual Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" readonly="readonly" class="form-control" id="actual_name" name="actual_name" value="${user.actual_name}" placeholder="ActualName"></input>
-                    </div>
-                </div>
-
-                <div class="form-group" >
                     <label for="shop_name" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Shop Name</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="shopname" id="shop_name" placeholder="Shop Name"></input>
+                        <input type="text" class="form-control" name="shop_name" id="shop_name" placeholder="Shop Name" required></input>
                     </div>
                 </div>
 
-                <div class="form-group" >
-                    <label for="phone" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Phone</label>
+                <div class="form-group row">
+                    <label for="type" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Type:</label>
+                    <div class="col-md-9">
+                        <input  type="radio" name="type" id="rd1" value="0" onchange="setDiv()" checked>Personal
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input  type="radio" name="type" id="rd2" value="1" onchange="setDiv()">Company
+                    </div>
+                </div>
+
+                <div class="form-group row" id="business_license_div">
+                    <label for="business_license" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Business License</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="phone" name="phone" value="${user.phone}" placeholder="Phone" onchange="checkPhone()"/>
-                    </div>
-                    <div class="col-sm-1">
-                        <span id="pw" style="color:red;display: none;float:left;margin-left:-25px;margin-top:7px;"><span class='glyphicon glyphicon-remove'></span></span>
-                        <span id="pr" style="color:green;display: none;float:left;margin-left:-25px;margin-top:7px;"><span class='glyphicon glyphicon-ok'></span></span>
+                        <input type='file' class="form-control" id="business_license" name="business_license"/>
                     </div>
                 </div>
 
                 <div class="form-group" >
-                    <label for="description" class="col-sm-2 control-label"><span style="color:red">*&nbsp;</span>Description</label>
+                    <label for="description" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-9">
                         <textarea name="description" class="form-control" id="description" cols="30" rows="5" placeholder="Description"></textarea>
                     </div>
@@ -73,5 +71,24 @@
             </form>
         </center>
     </div>
+
+<SCRIPT>
+    $(document).ready(function () {
+        document.getElementById("business_license_div").style.display="none";//隐藏
+    });
+
+    function setDiv() {
+        var rd1 = document.getElementById("rd1");
+        var rd2 = document.getElementById("rd2");
+        if (rd1.checked == false)//如果选中的是Company
+        {
+            document.getElementById("business_license_div").style.display = "";//显示
+            document.getElementById("business_license_div").setAttribute("required",true);
+        }
+        else {
+            document.getElementById("business_license_div").style.display = "none";//隐藏
+        }
+    }
+</SCRIPT>
 </body>
 </html>

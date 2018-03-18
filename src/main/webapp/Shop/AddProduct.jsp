@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.ProductCategory" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2018/3/13
@@ -16,101 +17,116 @@
     <link href="../css/fileinput.min.css" rel="stylesheet">
     <link href="../css/multiple-select.css" rel="stylesheet">
     <link href="../css/multi-select.css" rel="stylesheet">
-    <title>Add</title>
+    <title>Add Product</title>
 
 </head>
 <body>
-<jsp:include page="../Shared/_SellerManagement.jsp" />
-<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="" method="post" >
+<jsp:include page="../Shared/_ShopManagement.jsp" />
+
+<ul class="breadcrumb">
+    <li class="active">
+        Product Management
+    </li>
+    <li class="active">
+        Product List
+    </li>
+    <li class="active">
+        Add Product
+    </li>
+</ul>
+
+<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="/AddProduct" method="post" enctype="multipart/form-data">
+    <center>
     <div class="form-group row">
-        <label for="ProName" class="col-md-offset-2 col-md-2 control-label" >Product Name:</label>
-        <div class="col-md-8"><input type="text" class="form-control" id="ProName" name="ProName"></div>
+        <label for="product_name" class="col-md-3 control-label" >Product Name:</label>
+        <div class="col-md-8"><input type="text" class="form-control" id="product_name" name="product_name"></div>
     </div>
 
     <div class="form-group row">
-        <label for="ProCate" class="col-md-offset-2 col-md-2 control-label" >Product Category:</label>
-        <div class="col-md-8">
-            <select class="form-control" id="ProCate">
-                <option>BOOK</option>
-                <option>CLOTHES</option>
-                <option>MECHINE</option>
-                <option>MEDICINE</option>
+        <label for="category_id" class="col-md-3 control-label" >Product Category:</label>
+        <div class="col-md-7">
+            <select class="form-control" id="category_id" name="category_id">
+                <%
+                    List<ProductCategory> categoryNames=(List<ProductCategory>)session.getAttribute("categoryNames");
+                    if(!categoryNames.isEmpty()) {
+                        for (int i = 0; i < categoryNames.size(); i++) {
+                %>
+                            <option value="<%=categoryNames.get(i).getCategory_id()%>"><%=categoryNames.get(i).getCategory_name()%></option>
+                <%
+                        }
+                    }
+                %>
             </select>
         </div>
-    </div>
-
-
-
-    <div class="form-group row">
-        <label for="ProPrice" class="col-md-offset-2 col-md-2 control-label" >Product Price:</label>
-        <div class="col-md-8"><input type="text" class="form-control" id="ProPrice" name="ProPrice"></div>
-    </div>
-    <div class="form-group row">
-        <label for="ProDetail" class="col-md-offset-2 col-md-2 control-label" >Product Details:</label>
-        <div class="col-md-8"><textarea class="form-control" row="3" id="ProDetail" name="ProDetail"></textarea></div>
-    </div>
-    <div class="form-group row">
-        <label for="AddDate" class="col-md-offset-2 col-md-2 control-label" >Add Date:</label>
-        <div class="col-md-8"><input type="text" class="form-control" id="AddDate" name="AddDate"></div>
-    </div>
-    <div class="form-group row">
-        <label for="Stock" class="col-md-offset-2 col-md-2 control-label" >Product Stock:</label>
-        <div class="col-md-8"><input type="text" class="form-control" id="Stock" name="Stock"></div>
-    </div>
-
-    <div class="form-group row">
-        <label for="ProProperty" class="col-md-offset-2 col-md-2 control-label" multiple >Product Property:</label>
-        <div class="col-md-8">
-            <div><button type="button" class="btn btn-default btn-lg" style="border:0;"  data-toggle="modal" data-target="#addProperty"><i class="glyphicon glyphicon-plus"></i></button></div>
-
-                <div class="input-group">
-                <span class="input-group-btn"><button class="btn btn-default" type="button" style="width:200px" >color</button></span>
-                <input type="text" class="form-control"style="width:350px">
-            </div>
-
+        <div class="col-md-1">
+            <button type="button" class="btn btn-default btn-lg" style="border:0;"  data-toggle="modal" data-target="#addCategory">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
         </div>
-
-
-
-
     </div>
 
     <div class="form-group row">
-        <label for="ProImage" class="col-md-offset-2 col-md-2 control-label">Product Image:</label>
-        <div class="col-sm-8 text-center">
-            <div class="container-fluid kv-main container-fluid">
-                <div class="form-group"  enctype="multipart/form-data" >
-                    <input id="ProImage" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+        <label for="addProperty" class="col-md-3 control-label" multiple >Product Property:</label>
+        <input name="propertyNum" id="propertyNum" type="hidden" value="">
+        <div class="col-md-7" id="addProperty_Space" name="addProperty_Space">
+            <div class="input-group" id="addProperty" name="addProperty">
+                <input id="property_name0" name="property_name0" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>
+                <input id="unit_price0" name="unit_price0" class="btn btn-default" style="width:115px" placeholder="Price" required></input>
+                <input id="stock0" name="stock0" class="btn btn-default" style="width:115px" placeholder="Stock" required></input>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-default btn-lg" style="border:0;" onclick="addProperty()">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-3 control-label">Product Image:</label>
+        <div class="col-sm-7">
+            <div class="container-fluid kv-main">
+                <input name="imageNum" id="imageNum" type="hidden" value="">
+                <div id="addProductImage" name="addProductImage" class="form-group"  enctype="multipart/form-data" >
+                    <input name="image" id="image" class="form-control" type="file" accept="image/*">
                 </div>
+                <div id="addProductImage_Space" name="addProductImage_Space" class="form-group"  enctype="multipart/form-data"></div>
             </div>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-default btn-lg" style="border:0;" onclick="addProductImage()">
+                <i class="glyphicon glyphicon-plus"></i>
+            </button>
         </div>
     </div>
 
     <div class="form-group row">
-        <center><button type="submit" class="btn btn-primary" name="addProuctbtn">Add</button></center>
+        <label for="details" class="col-md-3 control-label" >Product Details:</label>
+        <div class="col-md-8"><textarea class="form-control" row="3" id="details" name="details"></textarea></div>
     </div>
+
+    <div class="form-group row">
+        <center><button type="submit" class="btn btn-primary" onclick="count()">Add</button></center>
+    </div>
+    </center>
+</form>
+
+
     <!-- 模态框（Modal） -->
-    <div class="modal fade" id="addProperty" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Product Property</h4>
+                    <h4 class="modal-title" id="myModalLabel">Add Category</h4>
                 </div>
                 <div class="modal-body">
 
-                    <form id="AddProPropertyform" name="AddProPropertyform"  class="form-horizontal" action="" method="post" ><!--id="AddProPropertyform" name="AddProPropertyform" -->
+                    <form action="/AddProductCategory" method="post"  class="form-horizontal">
                         <div class="form-group row">
-                            <label for="ProPro" class="col-md-offset-2 col-md-2 control-label" >Product Property:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="ProPro" name="ProPro"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Detail" class="col-md-offset-2 col-md-2 control-label" >Detail:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" name="Detail" id="Detail"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
-                            <center><button class="btn btn-primary" name="ProProbtn">Add</button></center>
+                            <label for="category_name" class="col-md-4 control-label" >Category Name:</label>
+                            <div class="col-md-6"><input type="text" class="form-control" id="category_name" name="category_name"></div>
+                            <div class="col-md-2"><input type="submit" class="btn btn-primary" value="Add"></div>
                         </div>
                     </form>
                 </div>
@@ -119,7 +135,6 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-</form>
 
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
@@ -130,65 +145,44 @@
 <script src="../js/multiple-select.js" type="text/javascript"></script>
 <script src="../js/jquery.multi-select.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-    //.datetimepicker(options)初始化日期时间选择器;
-    $('#AddDate').datetimepicker({
-        minView: "month",
-        format : 'yyyy-mm-dd',
-        yearStart:2018,
-        yearEnd:2018,
-        todayBtn : true,
-        autoclose : true
-
-    });
-</script>
-
 <script>
+    function addProperty() {
+        var divNum=document.getElementById("addProperty_Space").children.length;
+        $("#addProperty_Space").append('<div class="input-group" id="addProperty'+divNum+'" name="addProperty'+divNum+'">' +
+            '<input id="property_name'+divNum+'" name="property_name'+divNum+'" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>\n' +
+            '<input id="unit_price'+divNum+'" name="unit_price'+divNum+'" class="btn btn-default" style="width:115px" placeholder="Price" required></input>\n' +
+            '<input id="stock'+divNum+'" name="stock'+divNum+'" class="btn btn-default" style="width:115px" placeholder="Stock" required></input></div>');
+    }
 
-    $("#ProImage").fileinput({
-        uploadUrl: '#', // you must set a valid URL here else you will get an error
-        allowedFileExtensions : ['jpg', 'png','gif'],
-        overwriteInitial: false,
-        maxFileSize: 1000,
-        maxFilesNum: 5,
-        //allowedFileTypes: ['image', 'video', 'flash'],
-        slugCallback: function(filename) {
-            return filename.replace('(', '_').replace(']', '_');
+    function addProductImage() {
+        var divNum=document.getElementById("addProductImage").children.length;
+        $("#addProductImage").append('<input name="image'+divNum+'" id="image'+divNum+'" class="form-control" type="file" accept="image/*">');
+    }
+
+    function count() {
+        var divNum=document.getElementById("addProperty_Space").children.length;
+        var propertyNum=document.getElementById("propertyNum");
+        propertyNum.value=divNum;
+
+        var divNum2=document.getElementById("addProductImage").children.length;
+        var imageNum=document.getElementById("imageNum");
+        imageNum.value=divNum2;
+        //alert("propertyNum= "+propertyNum.value+", imageNum= "+imageNum.value);
+    }
+
+    window.onload=function showmsg() {
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
         }
-    });
-
+        else
+        {
+            alert(message);
+            window.location.href="AddProduct.jsp";
+        }
+    };
 </script>
-
-
-<script>
-    $("#allCheck").click(function(){
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        if(a.checked){
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = true;
-            }
-        }else{
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = false;
-            }
-        }
-    })
-    //单选框
-    $("input[name='check']").click(function(){
-        var flag = true;
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        for(var i = 0; i < b.length; i++){
-            if(!b[i].checked){
-                flag = false;
-                break;
-            }
-        }
-        a.checked = flag;
-    });
-</script>
-
 
 
 </body>

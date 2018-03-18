@@ -1,7 +1,5 @@
 package com.Ecom.model;
 
-import java.util.Date;
-
 public class Product {
 
     private int product_id;
@@ -10,7 +8,7 @@ public class Product {
     private int category_id;
     private float unit_price;
     private String details;
-    private Date datetime;
+    private String add_date;
     private int stock;
     private int sales;
     private int status;
@@ -63,12 +61,12 @@ public class Product {
         this.details = details;
     }
 
-    public Date getDatetime() {
-        return datetime;
+    public String getAdd_date() {
+        return add_date;
     }
 
-    public void setDatetime(Date datetime) {
-        this.datetime = datetime;
+    public void setAdd_date(String add_date) {
+        this.add_date = add_date;
     }
 
     public int getStock() {

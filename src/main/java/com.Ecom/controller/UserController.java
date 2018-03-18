@@ -1,14 +1,20 @@
 package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
+import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
 import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.Address;
+import com.Ecom.model.ProductCategory;
+import com.Ecom.model.Shop;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,13 +45,16 @@ public class UserController {
             LoginMessage="Login Successfully!";
             user=mapper.selectUser(email);
             ShopMapper shopMapper=session.getMapper(ShopMapper.class);
-            int shops=shopMapper.checkShopExist(email);
+            Shop shopInfo=shopMapper.selectShop(email);
             List<Address> addressList=mapper.showAllAddress(email);
+            ProductMapper productMapper = session.getMapper(ProductMapper.class);
+            List<ProductCategory> categoryNames=productMapper.getCategory(shopMapper.selectShop(email).getShop_id());//获取所有的分类名
             session.close();
             map.put("Message",LoginMessage);
             request.getSession().setAttribute("user",user);
-            request.getSession().setAttribute("shops",shops);
+            request.getSession().setAttribute("shopInfo",shopInfo);
             request.getSession().setAttribute("addressList",addressList);
+            request.getSession().setAttribute("categoryNames",categoryNames);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
             return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }

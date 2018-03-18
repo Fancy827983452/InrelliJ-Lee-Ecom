@@ -13,7 +13,7 @@
 <title>Shop</title>
 </head>
 <body>
-<jsp:include page="../Shared/_SellerManagement.jsp" />
+<jsp:include page="../Shared/_ShopManagement.jsp" />
 			<ul class="breadcrumb">
 				<li class="active">
 					 Product Management

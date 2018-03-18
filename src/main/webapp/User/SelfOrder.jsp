@@ -7,7 +7,7 @@
     <title>Shop</title>
 </head>
 <body>
-<jsp:include page="../Shared/_SellerManagement.jsp" />
+<jsp:include page="../Shared/_PersonalCenter.jsp" />
 <ul class="breadcrumb">
     <li class="active">
         View My Order
@@ -53,7 +53,6 @@
     </tr>
     </thead>
     <tbody>
-    <a href="SelfOrderDetails.jsp">
         <tr>
             <td>
                 1
@@ -85,8 +84,8 @@
             <td>
                 Default
             </td>
+            </a>
         </tr>
-    </a>
     <tr class="success">
         <td>
             2

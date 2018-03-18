@@ -36,8 +36,6 @@ public class ShopController {
 
         if(i>0) {
             request.getSession().setAttribute("shopInfo",shopModel);
-            int shops=mapper.checkShopExist(shopModel.getEmail());
-            request.getSession().setAttribute("shops",shops);
             map.put("ShopRegisterMessage", "Shop Register Successfully!");
         }
         else

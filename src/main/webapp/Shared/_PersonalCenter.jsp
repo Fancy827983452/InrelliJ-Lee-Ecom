@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Management</title>
+    <title>Personal Center</title>
 	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	<link href="../css/mystyle.css" rel="stylesheet">
 
@@ -76,4 +76,3 @@
 		</div>
 	</div>
 	<div class="col-md-9 column">	
-

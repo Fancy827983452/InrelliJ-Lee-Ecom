@@ -12,7 +12,7 @@
 	<link href="../css/cart.css" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="../Shared/_SellerManagement.jsp" />
+<jsp:include page="../Shared/_PersonalCenter.jsp" />
 	<ul class="breadcrumb">
 		<li class="active">
 			 User Management

@@ -32,5 +32,6 @@
   	<!--<mapper resource="mapper/UserMapper.xml"/>-->
       <mapper class="com.Ecom.mapper.UserMapper"/>
       <mapper class="com.Ecom.mapper.ShopMapper"/>
+      <mapper class="com.Ecom.mapper.ProductMapper"/>
   </mappers>
 </configuration>

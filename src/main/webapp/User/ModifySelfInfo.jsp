@@ -15,7 +15,7 @@
 <%--%>--%>
 </head>
 <body>
-<jsp:include page="../Shared/_SellerManagement.jsp" />
+<jsp:include page="../Shared/_PersonalCenter.jsp" />
 	<div>
 	<ul class="breadcrumb">
 				<li class="active">

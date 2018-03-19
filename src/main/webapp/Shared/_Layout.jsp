@@ -25,7 +25,7 @@
                             <a href="<%=basePath%>/User/ManageIndex.jsp?id=<%=user.getEmail()%>"><span class="glyphicon glyphicon-user"></span> <%= user.getName()%></a>
                         </li>
                     <%
-                        Object shopInfo=session.getAttribute("shopInfo").toString();
+                        Object shopInfo=session.getAttribute("shopInfo");
                         if(shopInfo==null || shopInfo=="")
                         {
                             %>

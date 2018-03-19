@@ -17,7 +17,7 @@
     <link href="../css/fileinput.min.css" rel="stylesheet">
     <link href="../css/multiple-select.css" rel="stylesheet">
     <link href="../css/multi-select.css" rel="stylesheet">
-    <title>Add Product</title>
+    <title>Shop</title>
 
 </head>
 <body>

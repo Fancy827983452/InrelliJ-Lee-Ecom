@@ -2,6 +2,7 @@ package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
 import com.Ecom.dao.UploadImageHelper;
+import com.Ecom.dao.Utils;
 import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
 import com.Ecom.model.*;
@@ -106,21 +107,38 @@ public class ProductController {
         for(int i=0;i<productPictures.length;i++)
             addProductPictureResult[i] = productMapper.addProductPicture(productPictures[i]);
 
+        int length=productProperties.length>=productPictures.length?productProperties.length:productPictures.length;
+        Boolean check[]=new Boolean[length];
         for(int i=0;i<productProperties.length;i++) {
             if (addPropertyResult[i] > 0)
             {
-                for(int j=0;j<productPictures.length;j++)
-                    if(addProductPictureResult[i] >0)
-                    {
-                        session.commit();
-                        map.put("Message","Add Product Successfully!");
+                for(int j=0;j<productPictures.length;j++) {
+                    if (addProductPictureResult[j] > 0) {
+                        check[j] = true;
                     }
+                    else
+                        check[j] = false;
+                }
+                check[i]=true;
             }
             else
-                map.put("Message","Add Product Failed!");
+                check[i] = false;
         }
-        session.close();
 
+        //判断所有插入是否都成功
+        boolean bool=Utils.isAllTrue(check);
+
+        if(bool==true) {
+            session.commit();
+            map.put("Message", "Add Product Successfully!");
+        }
+        else
+            map.put("Message","Add Product Failed!");
+
+        session.close();
+        //清空两个list
+        UploadImageHelper.itemlist.clear();
+        UploadImageHelper.picturelist.clear();
         return new ModelAndView("redirect:/Shop/AddProduct.jsp",map);
     }
 

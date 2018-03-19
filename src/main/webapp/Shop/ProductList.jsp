@@ -28,7 +28,7 @@
             <span><img src="../images/t01.png" /></span> Add
             </button>
 
-			<button type="button" class="btn btn-info">
+			<button type="button" class="btn btn-info" onclick="javascrtpt:window.location.href='EditProduct.jsp'">
 			<span><img src="../images/t02.png" /></span> Edit
 			</button>
 			<button type="button"  class="btn btn-danger">

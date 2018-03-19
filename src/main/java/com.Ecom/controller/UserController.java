@@ -291,24 +291,32 @@ public class UserController {
     }
 
     //显示头像
-    @RequestMapping(value = "userimage/{email}",method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView image(@PathVariable String email,HttpServletResponse response) throws IOException{
-        SqlSession session= MySqlSession.getMySession(response);
-        UserMapper mapper = session.getMapper(UserMapper.class);
-
-        byte[] imgByte = mapper.getUserByEmail(email).getProfile();
-        if (imgByte.length!=0) {
+    @RequestMapping(value = "userimage/{email}/image",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView image(@PathVariable String email,HttpServletResponse response){
+        try{
+            SqlSession session= MySqlSession.getMySession(response);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            System.out.println(email);
+            User user = mapper.selectUser(email);
+            if (user.getProfile()==null) System.out.println("no");
+            System.out.println("yes");
+            byte[] imgByte = user.getProfile();
+            if (imgByte.length!=0) {
       /*  //字节数据转换成流
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imgByte);
         //字节数据暂存入缓存
         BufferedImage img = ImageIO.read(byteArrayInputStream);*/
-            response.setContentType("image/jpeg");
-            OutputStream outputStream = response.getOutputStream();
+                response.setContentType("image/jpeg");
+                OutputStream outputStream = response.getOutputStream();
 
-            outputStream.write(imgByte);
-            outputStream.flush();
-            outputStream.close();}
-        return new ModelAndView("redirect:/User/userimage.jsp");
+                outputStream.write(imgByte);
+                outputStream.flush();
+                outputStream.close();}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return new ModelAndView("redirect:userimage.jsp");
     }
 
     //添加头像

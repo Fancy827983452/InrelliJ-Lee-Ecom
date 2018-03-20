@@ -182,7 +182,6 @@
                             <div class="block">
                                 <div class="starbox small ghosting"> </div>
                             </div>
-
                             <div class="clearfix"></div>
                         </div>
 

@@ -28,6 +28,9 @@ public interface ProductMapper {
     @Insert("insert into product_picture(product_id,file,sequence) values(#{product_id},#{file},#{sequence})")
     public int addProductPicture(ProductPicture productPicture);
 
+    @Select("select * from product_picture where product_id = #{product_id} and sequence = #{sequence}")
+    ProductPicture getProductPicture(ProductPicture productPicture);
+
     @Select("select ifnull(max(product_id),0) from product where shop_id=#{shop_id}")
     public int getProduct_ID(int shop_id);
 

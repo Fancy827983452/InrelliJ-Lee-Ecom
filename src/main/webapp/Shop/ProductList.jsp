@@ -15,7 +15,7 @@
 	<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="../css/fileinput.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Shop</title>
+<title>Myshop - ProductList</title>
 </head>
 <%
 	List<Product> productList=(List<Product>)session.getAttribute("productList");
@@ -31,17 +31,18 @@
 					Product List
 				</li>
 			</ul>
-			
 
+<form name="form1" method="post" action="">
             <button type="button" class="btn btn-primary" onclick="javascrtpt:window.location.href='AddProduct.jsp'">
-            <span><img src="../images/t01.png" /></span> Add
+                <span><img src="../images/t01.png" /></span> Add
             </button>
 
-			<button type="button" class="btn btn-info" onclick="javascrtpt:window.location.href='EditProduct.jsp'">
-			<span><img src="../images/t02.png" /></span> Edit
+			<button type="button" class="btn btn-info" onclick="callModify()">
+			    <span><img src="../images/t02.png" /></span> Edit
 			</button>
-			<button type="button"  class="btn btn-danger">
-			<span><img src="../images/t03.png" /></span> Delete
+
+			<button type="button"  class="btn btn-danger" onclick="confirmDelete()">
+			    <span><img src="../images/t03.png" /></span> Delete
 			</button>
 
 			<table class="table table-striped table-hover">
@@ -112,6 +113,7 @@
 				%>
 				</tbody>
 			</table>
+</form>
 
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>
@@ -127,32 +129,61 @@
         $(this).find("td").find("input:radio").attr("checked",true);
     });
 
-    // $("#allCheck").click(function(){
-    //     var a = document.getElementById("allCheck");
-    //     var b = document.getElementsByName("check");
-    //     if(a.checked){
-    //         for(var i = 0; i < b.length; i++){
-    //             b[i].checked = true;
-    //         }
-    //     }else{
-    //         for(var i = 0; i < b.length; i++){
-    //             b[i].checked = false;
-    //         }
-    //     }
-    // })
-    // //单选框
-    // $("input[name='check']").click(function(){
-    //     var flag = true;
-    //     var a = document.getElementById("allCheck");
-    //     var b = document.getElementsByName("check");
-    //     for(var i = 0; i < b.length; i++){
-    //         if(!b[i].checked){
-    //             flag = false;
-    //             break;
-    //         }
-    //     }
-    //     a.checked = flag;
-    // });
+    function callDelete() {
+        var check=document.getElementsByName("check");
+        var flag=false;
+        for(var c=0;c<check.length;c++)
+        {
+            if(check[c].checked==true)
+            {
+                flag=true;
+                document.form1.action='/deleteProduct?product_id='+check[c].value;
+                document.form1.submit();
+            }
+        }
+        if(flag==false)
+            alert("Please select a product!");
+    }
+
+    function confirmDelete()
+    {
+        if(confirm('Are you sure to delete the seleted product?'))
+        {
+            callDelete();
+            return true;
+        }
+        else
+            return false;
+    }
+
+    function callModify() {
+        var check=document.getElementsByName("check");
+        var flag=false;
+        for(var c=0;c<check.length;c++)
+        {
+            if(check[c].checked==true)
+            {
+                flag=true;
+                document.form1.action='EditProduct.jsp?prodict_id='+check[c].value;
+                document.form1.submit();
+            }
+        }
+        if(flag==false)
+            alert("Please select an address!");
+    }
+
+    window.onload=function () {
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+            window.location.href="ProductList.jsp";
+        }
+    };
 </script>
 </body>
 

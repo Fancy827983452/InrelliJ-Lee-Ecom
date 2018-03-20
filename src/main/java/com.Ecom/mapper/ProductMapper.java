@@ -4,6 +4,7 @@ import com.Ecom.model.Product;
 import com.Ecom.model.ProductCategory;
 import com.Ecom.model.ProductPicture;
 import com.Ecom.model.ProductProperty;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -45,5 +46,17 @@ public interface ProductMapper {
 
     @Select("select * from product_picture where product_id = #{product_id} and sequence = #{sequence}")
     public ProductPicture getProductPictureBySequence(ProductPicture productPicutre);
+
+    //删除product表中数据
+    @Delete("delete from product where product_id=#{product_id}")
+    public int deleteFromProduct(int product_id);
+
+    //删除product_picture表中数据
+    @Delete("delete from product_picture where product_id=#{product_id}")
+    public int deleteFromProductPicture(int product_id);
+
+    //删除product_property表中数据
+    @Delete("delete from product_property where product_id=#{product_id}")
+    public int deleteFromProductProperty(int product_id);
 
 }

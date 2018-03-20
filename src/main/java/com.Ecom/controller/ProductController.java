@@ -5,6 +5,7 @@ import com.Ecom.dao.UploadImageHelper;
 import com.Ecom.dao.Utils;
 import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
+import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
@@ -46,8 +47,6 @@ public class ProductController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         String add_date = df.format(date).toString();
-
-        System.out.println(UploadImageHelper.itemlist);
 
         //获取product_name
         String product_name = UploadImageHelper.itemlist.get(0).get("product_name").toString();
@@ -151,8 +150,6 @@ public class ProductController {
     @RequestMapping(value = "AddProductCategory", method = RequestMethod.POST)
     public ModelAndView AddProductCategory(@RequestParam("category_name") String category_name, HttpServletResponse response,
                                            HttpServletRequest request, ModelMap map) throws IOException {
-
-        System.out.println("Jump to the controller");
         SqlSession session = MySqlSession.getMySession(response);
         ShopMapper shopMapper = session.getMapper(ShopMapper.class);
         ProductMapper productMapper = session.getMapper(ProductMapper.class);
@@ -160,7 +157,6 @@ public class ProductController {
         Shop myShop = shopMapper.selectShop(user.getEmail());
         int i = productMapper.addProductCategory(myShop.getShop_id(), category_name);
         session.commit();
-        System.out.println("i=" + i);
         if (i > 0) {
             List <ProductCategory> categoryNames = productMapper.getCategory(myShop.getShop_id());//获取所有的分类名
             request.getSession().setAttribute("categoryNames", categoryNames);
@@ -177,21 +173,45 @@ public class ProductController {
         try {
             SqlSession session = MySqlSession.getMySession(response);
             ProductMapper mapper = session.getMapper(ProductMapper.class);
-            System.out.println(product_id);
             List <ProductPicture> productPictureList = mapper.getProductPictureList(product_id);
-            if (productPictureList == null)
-                System.out.println("no");
-            System.out.println("yes");
-
-            for (int i = 0; i < productPictureList.size(); i++) {
-                byte[] imgByte = productPictureList.get(i).getFile();
-                UploadImageHelper.showImg(imgByte, response, request);
+            if (productPictureList != null) {
+                for (int i = 0; i < productPictureList.size(); i++) {
+                    byte[] imgByte = productPictureList.get(i).getFile();
+                    UploadImageHelper.showImg(imgByte, response, request);
+                }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return new ModelAndView("redirect:productimage.jsp");
+    }
+
+    @RequestMapping(value = "deleteProduct",method = RequestMethod.POST)
+    public ModelAndView deleteProduct(@RequestParam("product_id") String product_id,HttpServletResponse response,
+                                                  HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        //需要删除三个表中的数据：product表、product_picture表、product_property表
+        ProductMapper productMapper=session.getMapper(ProductMapper.class);
+
+        int deleteFromProductPictureResult=productMapper.deleteFromProductPicture(Integer.parseInt(product_id));
+        int deleteFromProductPropertyResult=productMapper.deleteFromProductProperty(Integer.parseInt(product_id));
+        int deleteFromProductResult=productMapper.deleteFromProduct(Integer.parseInt(product_id));
+        if(deleteFromProductPictureResult>0 && deleteFromProductPropertyResult>0 && deleteFromProductResult>0)
+        {
+            session.commit();
+            map.put("Message", "Delete Product Successfully!");
+            ShopMapper shopMapper = session.getMapper(ShopMapper.class);
+            User user = (User) request.getSession().getAttribute("user");
+            int shop_id = shopMapper.selectShop(user.getEmail()).getShop_id();
+            List <Product> productList = productMapper.getProductList(shop_id);
+            request.getSession().setAttribute("productList", productList);
+        }
+        else
+        {
+            map.put("Message", "Delete Product Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/Shop/ProductList.jsp",map);
     }
 }

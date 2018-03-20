@@ -122,8 +122,6 @@ public class UserController {
         UserMapper mapper = session.getMapper(UserMapper.class);
         User user =(User)request.getSession().getAttribute("user");
 
-        System.out.println(user.getPassword());
-
         if(oldPwd.equals(user.getPassword())) {
             int i=mapper.updatePwd(newPwd,user.getEmail(),oldPwd);
             session.commit();
@@ -203,8 +201,6 @@ public class UserController {
             HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException{
         SqlSession session= MySqlSession.getMySession(response);
         UserMapper mapper = session.getMapper(UserMapper.class);
-
-        System.out.println(address_id);
 
         Address address1=new Address();
         User user =(User)request.getSession().getAttribute("user");
@@ -301,17 +297,16 @@ public class UserController {
         try{
             SqlSession session= MySqlSession.getMySession(response);
             UserMapper mapper = session.getMapper(UserMapper.class);
-            System.out.println(email);
             User user = mapper.selectUser(email);
-            if (user.getProfile()==null) System.out.println("no");
-            System.out.println("yes");
-            byte[] imgByte = user.getProfile();
-            UploadImageHelper.showImg(imgByte,response,request);
-
+            if (user.getProfile()!=null) {
+                byte[] imgByte = user.getProfile();
+                UploadImageHelper.showImg(imgByte, response, request);
+            }
+            else
+                System.out.println("No user profile!");
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return new ModelAndView("redirect:userimage.jsp");
     }
 

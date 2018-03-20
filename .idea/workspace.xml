@@ -9,14 +9,16 @@
     <list default="true" id="e0b76ec5-93db-446b-a4f4-12e5810c0b10" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/Shared/_PersonalCenter.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Shared/_PersonalCenter.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/User/ModifySelfPic.jsp" afterPath="$PROJECT_DIR$/target/Ecom/User/ModifySelfPic.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/Shop/ProductList.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Shop/ProductList.jsp" />
       <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/dao/UploadImageHelper.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/dao/UploadImageHelper.class" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/css/mystyle.css" afterPath="$PROJECT_DIR$/target/Ecom/css/mystyle.css" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/UserController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/UserController.class" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/ProductMapper.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/ProductMapper.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/dao/UploadImageHelper.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/dao/UploadImageHelper.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/controller/UserController.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/ProductMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/ProductMapper.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,13 +30,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ProductList.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProductList.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="71" column="80" lean-forward="false" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
+            <state relative-caret-position="288">
+              <caret line="185" column="6" lean-forward="false" selection-start-line="185" selection-start-column="6" selection-end-line="185" selection-end-column="6" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -43,33 +45,23 @@
       <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2573">
-              <caret line="49" column="55" lean-forward="false" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UploadImageHelper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddProduct.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/AddProduct.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2622">
-              <caret line="138" column="42" lean-forward="true" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
+            <state relative-caret-position="133">
+              <caret line="190" column="63" lean-forward="false" selection-start-line="190" selection-start-column="53" selection-end-line="190" selection-end-column="63" />
               <folding>
-                <marker date="1521520482858" expanded="true" signature="7058:7069" ph="..." />
-                <marker date="1521520482858" expanded="true" signature="7227:7238" ph="..." />
-                <marker date="1521520482858" expanded="true" signature="7378:7389" ph="..." />
+                <element signature="method#AddProduct#0;class#ProductController#0" expanded="false" />
+                <element signature="method#AddProductCategory#0;class#ProductController#0" expanded="false" />
+                <element signature="method#image#0;class#ProductController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,6 +78,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>currentUrl</find>
+      <find>System.out.println</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -105,18 +98,18 @@
         <option value="$PROJECT_DIR$/src/main/java/com.Ecom/dao/MySqlSession.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/Shared/userimage.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/productimage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/Shop/ProductInfo.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/Home/home.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
-        <option value="$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/mystyle.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/Shared/_PersonalCenter.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/User/ModifySelfPic.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp" />
       </list>
     </option>
   </component>
@@ -496,7 +489,7 @@
       <workItem from="1521506833321" duration="1650000" />
       <workItem from="1521512801821" duration="36000" />
       <workItem from="1521513030760" duration="202000" />
-      <workItem from="1521520830128" duration="4072000" />
+      <workItem from="1521520830128" duration="6264000" />
     </task>
     <task id="LOCAL-00001" summary="完成productList图片显示，修改用户头像UI">
       <created>1521523904415</created>
@@ -505,11 +498,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521523904415</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改上传商品时的bug">
+      <created>1521524952061</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1521524952061</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25292000" />
+    <option name="totallyTimeSpent" value="27484000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -555,30 +555,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成productList图片显示，修改用户头像UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成productList图片显示，修改用户头像UI" />
+    <MESSAGE value="修改上传商品时的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改上传商品时的bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1656">
-          <caret line="318" column="56" lean-forward="false" selection-start-line="318" selection-start-column="32" selection-end-line="318" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/productimage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
@@ -757,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -858,14 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/css/mystyle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -890,14 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="335" column="45" lean-forward="false" selection-start-line="335" selection-start-column="45" selection-end-line="335" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ModifySelfInfo.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
@@ -906,21 +869,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2573">
-          <caret line="49" column="55" lean-forward="false" selection-start-line="49" selection-start-column="55" selection-end-line="49" selection-end-column="55" />
+        <state relative-caret-position="60">
+          <caret line="30" column="32" lean-forward="true" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="71" column="80" lean-forward="false" selection-start-line="71" selection-start-column="80" selection-end-line="71" selection-end-column="80" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -936,11 +889,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ModifySelfAddress.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        <state relative-caret-position="-908">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#2703#4786#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="243" column="44" lean-forward="true" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+          <folding>
+            <element signature="method#login#0;class#UserController#0" expanded="false" />
+            <element signature="method#register#0;class#UserController#0" expanded="false" />
+            <element signature="method#ModifySelfInfo#0;class#UserController#0" expanded="false" />
+            <element signature="method#ModifySelfPwd#0;class#UserController#0" expanded="false" />
+            <element signature="method#ModifySelfPayPwd#0;class#UserController#0" expanded="false" />
+            <element signature="method#AddSelfAddress#0;class#UserController#0" expanded="false" />
+            <element signature="method#ModifySelfAddress#0;class#UserController#0" expanded="false" />
+            <element signature="method#getSelectedSelfAddress#0;class#UserController#0" expanded="false" />
+            <element signature="method#deleteSelectedSelfAddress#0;class#UserController#0" expanded="false" />
+            <element signature="method#SetDefaultSelfAddress#0;class#UserController#0" expanded="false" />
+            <element signature="method#image#0;class#UserController#0" expanded="false" />
+            <element signature="method#addUserProfile#0;class#UserController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ManageSelfAddress.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="190" column="63" lean-forward="false" selection-start-line="190" selection-start-column="53" selection-end-line="190" selection-end-column="63" />
+          <folding>
+            <element signature="method#AddProduct#0;class#ProductController#0" expanded="false" />
+            <element signature="method#AddProductCategory#0;class#ProductController#0" expanded="false" />
+            <element signature="method#image#0;class#ProductController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="54" column="40" lean-forward="true" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductList.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="185" column="6" lean-forward="false" selection-start-line="185" selection-start-column="6" selection-end-line="185" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

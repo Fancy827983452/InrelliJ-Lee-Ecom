@@ -1,5 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ProductCategory" %>
+<%@ page import="com.Ecom.model.Product" %>
+<%@ page import="com.Ecom.model.ProductPicture" %>
+<%@ page import="com.Ecom.model.ProductProperty" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,12 +31,21 @@
         Edit Product
     </li>
 </ul>
-
-<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="/EditProduct" method="post" enctype="multipart/form-data">
+<%
+    List <Product> productList=(List <Product>)session.getAttribute("productList");
+    int product_id=Integer.parseInt(request.getParameter("product_id"));
+    if(productList != null && !"".equals(productList))
+    {
+        for(int i=0;i<productList.size();i++)
+        {
+            if(productList.get(i).getProduct_id()==product_id)
+            {
+%>
+<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="/EditProduct?product_id=<%=product_id%>" method="post" enctype="multipart/form-data">
     <center>
         <div class="form-group row">
             <label for="product_name" class="col-md-3 control-label" >Product Name:</label>
-            <div class="col-md-8"><input type="text" class="form-control" id="product_name" name="product_name"></div>
+            <div class="col-md-8"><input type="text" class="form-control" id="product_name" name="product_name" value="<%=productList.get(i).getProduct_name()%>"></div>
         </div>
 
         <div class="form-group row">
@@ -43,9 +55,9 @@
                     <%
                         List<ProductCategory> categoryNames=(List<ProductCategory>)session.getAttribute("categoryNames");
                         if(!categoryNames.isEmpty()) {
-                            for (int i = 0; i < categoryNames.size(); i++) {
+                            for (int j = 0; j < categoryNames.size(); j++) {
                     %>
-                    <option value="<%=categoryNames.get(i).getCategory_id()%>"><%=categoryNames.get(i).getCategory_name()%></option>
+                    <option value="<%=categoryNames.get(j).getCategory_id()%>"><%=categoryNames.get(j).getCategory_name()%></option>
                     <%
                             }
                         }
@@ -59,14 +71,31 @@
             </div>
         </div>
 
+        <%
+            List<ProductPicture> productPictureList=(List<ProductPicture>)session.getAttribute("productPictureList");
+            List<ProductProperty> productPropertyList=(List<ProductProperty>)session.getAttribute("productPropertyList");
+            int pictureCount=Integer.parseInt(request.getParameter("pictureCount"));
+            int propertyCount=Integer.parseInt(request.getParameter("propertyCount"));
+//            System.out.println("pictureCount="+pictureCount);
+//            System.out.println("propertyCount="+propertyCount);
+        %>
+
         <div class="form-group row">
             <label for="addProperty" class="col-md-3 control-label" multiple >Product Property:</label>
             <input name="propertyNum" id="propertyNum" type="hidden" value="">
             <div class="col-md-7" id="addProperty_Space" name="addProperty_Space">
                 <div class="input-group" id="addProperty" name="addProperty">
-                    <input id="property_name0" name="property_name0" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>
-                    <input id="unit_price0" name="unit_price0" class="btn btn-default" style="width:115px" placeholder="Price" required></input>
-                    <input id="stock0" name="stock0" class="btn btn-default" style="width:115px" placeholder="Stock" required></input>
+                    <%
+                        for(int a=0;a<propertyCount;a++)
+                        {
+                    %>
+                        <input id="property_name<%=a%>" name="property_name<%=a%>" value="<%=productPropertyList.get(a).getProperty_name()%>" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>
+                        <input id="unit_price<%=a%>" name="unit_price<%=a%>" value="<%=productPropertyList.get(a).getUnit_price()%>" class="btn btn-default" style="width:115px" placeholder="Price" required></input>
+                        <input id="stock<%=a%>" name="stock<%=a%>" value="<%=productPropertyList.get(a).getStock()%>" class="btn btn-default" style="width:115px" placeholder="Stock" required></input>
+                    <%
+                        }
+                    %>
+
                 </div>
             </div>
             <div class="col-md-1">
@@ -96,7 +125,7 @@
 
         <div class="form-group row">
             <label for="details" class="col-md-3 control-label" >Product Details:</label>
-            <div class="col-md-8"><textarea class="form-control" row="3" id="details" name="details"></textarea></div>
+            <div class="col-md-8"><textarea class="form-control" row="3" id="details" name="details"><%=productList.get(i).getDetails()%></textarea></div>
         </div>
 
         <div class="form-group row">
@@ -104,7 +133,11 @@
         </div>
     </center>
 </form>
-
+<%
+            }
+        }
+    }
+%>
 
 <!-- 模态框（Modal） -->
 <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -29,11 +29,27 @@ public interface ProductMapper {
             "values(#{product_id},#{property_name},#{stock},#{unit_price})")
     public int addProperty(ProductProperty productProperty);
 
+    //获取属性个数
+    @Select("select count(*) from product_property where product_id=#{product_id}")
+    public int getPropertyCount(int product_id);
+
+    //获取属性
+    @Select("select * from product_property where product_id=#{product_id}")
+    public List<ProductProperty> getProperty(int product_id);
+
     @Insert("insert into product_picture(product_id,file,sequence) values(#{product_id},#{file},#{sequence})")
     public int addProductPicture(ProductPicture productPicture);
 
     @Select("select * from product_picture where product_id = #{product_id} and sequence = #{sequence}")
     ProductPicture getProductPicture(ProductPicture productPicture);
+
+    //获取图片个数
+    @Select("select count(*) from product_picture where product_id=#{product_id}")
+    public int getPictureCount(int product_id);
+
+    //获取图片
+    @Select("select * from product_picture where product_id=#{product_id}")
+    public List<ProductPicture> getPicture(int product_id);
 
     @Select("select ifnull(max(product_id),0) from product where shop_id=#{shop_id}")
     public int getProduct_ID(int shop_id);

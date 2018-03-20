@@ -135,7 +135,6 @@ public class ProductController {
             List <ProductPicture> productPictureList = productMapper.getProductPictureList(product_id);
             //存取商品
             List <Product> productList = productMapper.getProductList(shop_id);
-            request.getSession().setAttribute("productPictureList" + product_id, productPictureList);
             request.getSession().setAttribute("productList", productList);
         } else
             map.put("Message", "Add Product Failed!");
@@ -148,8 +147,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "AddProductCategory", method = RequestMethod.POST)
-    public ModelAndView AddProductCategory(@RequestParam("category_name") String category_name, HttpServletResponse response,
-                                           HttpServletRequest request, ModelMap map) throws IOException {
+    public ModelAndView AddProductCategory(@RequestParam("category_name") String category_name, HttpServletResponse response,HttpServletRequest request, ModelMap map) throws IOException {
         SqlSession session = MySqlSession.getMySession(response);
         ShopMapper shopMapper = session.getMapper(ShopMapper.class);
         ProductMapper productMapper = session.getMapper(ProductMapper.class);
@@ -188,8 +186,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "deleteProduct",method = RequestMethod.POST)
-    public ModelAndView deleteProduct(@RequestParam("product_id") String product_id,HttpServletResponse response,
-                                                  HttpServletRequest request,ModelMap map) throws IOException {
+    public ModelAndView deleteProduct(@RequestParam("product_id") String product_id,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException {
         SqlSession session= MySqlSession.getMySession(response);
         //需要删除三个表中的数据：product表、product_picture表、product_property表
         ProductMapper productMapper=session.getMapper(ProductMapper.class);
@@ -212,6 +209,28 @@ public class ProductController {
             map.put("Message", "Delete Product Failed!");
         }
         session.close();
-        return new ModelAndView("redirect:/Shop/ProductList.jsp",map);
+        return new ModelAndView("redirect:/Shop/ProductManagement.jsp",map);
     }
+
+    @RequestMapping(value = "getParameters",method = RequestMethod.POST)
+    public ModelAndView getParameters(@RequestParam("product_id") String product_id,HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+
+        ProductMapper productMapper=session.getMapper(ProductMapper.class);
+        List<ProductPicture> productPictureList=productMapper.getProductPictureList(Integer.parseInt(product_id));
+        List<ProductProperty> productPropertyList=productMapper.getProperty(Integer.parseInt(product_id));
+
+        int pictureCount=productMapper.getPictureCount(Integer.parseInt(product_id));
+        int propertyCount=productMapper.getPropertyCount(Integer.parseInt(product_id));
+
+        request.getSession().setAttribute("productPictureList", productPictureList);
+        request.getSession().setAttribute("productPropertyList", productPropertyList);
+        map.addAttribute("product_id",product_id);
+        map.addAttribute("pictureCount",pictureCount);
+        map.addAttribute("propertyCount",propertyCount);
+
+        return new ModelAndView("redirect:/Shop/EditProduct.jsp",map);
+    }
+
+
 }

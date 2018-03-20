@@ -42,7 +42,7 @@
                             <a href="../Shop/ModifyShopInfo.jsp">Modify Shop Information</a>
                         </div>
                         <div class="panel-body">
-                            <a href="../Shop/ProductList.jsp">Product Management</a>
+                            <a href="../Shop/ProductManagement.jsp">Product Management</a>
                         </div>
                         <div class="panel-body">
                             <a href="../Shop/ProductCategoryManagement.jsp">Product Category Management</a>

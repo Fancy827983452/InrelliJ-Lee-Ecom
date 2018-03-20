@@ -15,7 +15,7 @@
 	<link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 	<link href="../css/fileinput.min.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Myshop - ProductList</title>
+<title>Myshop - Product Management</title>
 </head>
 <%
 	List<Product> productList=(List<Product>)session.getAttribute("productList");
@@ -41,7 +41,7 @@
 			    <span><img src="../images/t02.png" /></span> Edit
 			</button>
 
-			<button type="button"  class="btn btn-danger" onclick="confirmDelete()">
+			<button type="button"  class="btn btn-danger" onclick="callDelete()">
 			    <span><img src="../images/t03.png" /></span> Delete
 			</button>
 
@@ -129,47 +129,50 @@
         $(this).find("td").find("input:radio").attr("checked",true);
     });
 
-    function callDelete() {
+    function confirmChecked() {
         var check=document.getElementsByName("check");
-        var flag=false;
+        var productId=0;
         for(var c=0;c<check.length;c++)
         {
             if(check[c].checked==true)
             {
-                flag=true;
-                document.form1.action='/deleteProduct?product_id='+check[c].value;
-                document.form1.submit();
+                productId = check[c].value;
             }
         }
-        if(flag==false)
-            alert("Please select a product!");
+        return productId;
+    }
+
+    function callDelete() {
+        var productId=confirmChecked();
+        if(productId!=0)
+		{
+            var action=confirmDelete();
+		    if(action==true)
+			{
+                document.form1.action='/deleteProduct?product_id='+productId;
+                document.form1.submit();
+			}
+		}
+		else
+		    alert("Please select a product!");
     }
 
     function confirmDelete()
     {
         if(confirm('Are you sure to delete the seleted product?'))
-        {
-            callDelete();
             return true;
-        }
         else
             return false;
     }
 
     function callModify() {
-        var check=document.getElementsByName("check");
-        var flag=false;
-        for(var c=0;c<check.length;c++)
-        {
-            if(check[c].checked==true)
-            {
-                flag=true;
-                document.form1.action='EditProduct.jsp?prodict_id='+check[c].value;
-                document.form1.submit();
-            }
+        var productId=confirmChecked();
+        if(productId!=0) {
+            document.form1.action = '/getParameters?product_id=' + productId;
+            document.form1.submit();
         }
-        if(flag==false)
-            alert("Please select an address!");
+        else
+            alert("Please select a product!");
     }
 
     window.onload=function () {
@@ -181,7 +184,7 @@
         else
         {
             alert(message);
-            window.location.href="ProductList.jsp";
+            window.location.href="ProductManagement.jsp";
         }
     };
 </script>

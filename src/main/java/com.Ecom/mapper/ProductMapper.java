@@ -7,6 +7,7 @@ import com.Ecom.model.ProductProperty;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -29,6 +30,22 @@ public interface ProductMapper {
             "values(#{product_id},#{property_name},#{stock},#{unit_price})")
     public int addProperty(ProductProperty productProperty);
 
+    @Insert("insert into product_picture(product_id,file,sequence) values(#{product_id},#{file},#{sequence})")
+    public int addProductPicture(ProductPicture productPicture);
+
+    //修改product信息
+    @Update("update product set product_name=#{product_name},category_id=#{category_id},unit_price=#{unit_price},details=#{details}," +
+            "stock=#{stock} where product_id=#{product_id}")
+    public int updateProduct(Product product);
+
+    //修改property信息
+    @Update("update product_property set property_name=#{property_name},stock=#{stock},unit_price=#{unit_price} where product_id=#{product_id} and property_id=#{property_id}")
+    public int updateProperty(ProductProperty productProperty);
+
+    //修改productPicture信息
+    @Update("update product_picture set file=#{file},sequence=#{sequence} where product_id=#{product_id} and picture_id=#{picture_id}")
+    public int updateProductPicture(ProductPicture productPicture);
+
     //获取属性个数
     @Select("select count(*) from product_property where product_id=#{product_id}")
     public int getPropertyCount(int product_id);
@@ -37,19 +54,16 @@ public interface ProductMapper {
     @Select("select * from product_property where product_id=#{product_id}")
     public List<ProductProperty> getProperty(int product_id);
 
-    @Insert("insert into product_picture(product_id,file,sequence) values(#{product_id},#{file},#{sequence})")
-    public int addProductPicture(ProductPicture productPicture);
-
-    @Select("select * from product_picture where product_id = #{product_id} and sequence = #{sequence}")
-    ProductPicture getProductPicture(ProductPicture productPicture);
-
     //获取图片个数
     @Select("select count(*) from product_picture where product_id=#{product_id}")
     public int getPictureCount(int product_id);
 
     //获取图片
-    @Select("select * from product_picture where product_id=#{product_id}")
-    public List<ProductPicture> getPicture(int product_id);
+    @Select("select * from product_picture where product_id=#{0} and sequence=#{1}")
+    public ProductPicture getOnePicture(int product_id,int sequence);
+
+    @Select("select ifnull(max(sequence),0) from product_picture where product_id=#{product_id}")
+    public int getMaxSequence(int product_id);
 
     @Select("select ifnull(max(product_id),0) from product where shop_id=#{shop_id}")
     public int getProduct_ID(int shop_id);

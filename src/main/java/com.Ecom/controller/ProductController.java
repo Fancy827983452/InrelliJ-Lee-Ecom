@@ -38,7 +38,7 @@ public class ProductController {
         UploadImageHelper.addProductPicture(request);
 
         //获取shop_id
-        int shop_id = shopMapper.selectShop(user.getEmail()).getShop_id();
+        int shop_id = myShop.getShop_id();
 
         //获取product_id
         int product_id = productMapper.getProduct_ID(shop_id) + 1;
@@ -140,9 +140,6 @@ public class ProductController {
             map.put("Message", "Add Product Failed!");
 
         session.close();
-        //清空两个list
-        UploadImageHelper.itemlist.clear();
-        UploadImageHelper.picturelist.clear();
         return new ModelAndView("redirect:/Shop/AddProduct.jsp", map);
     }
 
@@ -165,23 +162,18 @@ public class ProductController {
         return new ModelAndView("redirect:/Shop/AddProduct.jsp", map);
     }
 
-    //显示头像
-    @RequestMapping(value = "productimage/{product_id}/image", method = {RequestMethod.POST, RequestMethod.GET})
-    public ModelAndView image(@PathVariable int product_id, HttpServletResponse response, HttpServletRequest request) {
+    //显示指定位置的图片
+    @RequestMapping(value = "productimage/{product_id}/{sequence}", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView image(@PathVariable int product_id, @PathVariable int sequence,HttpServletResponse response, HttpServletRequest request) {
         try {
             SqlSession session = MySqlSession.getMySession(response);
             ProductMapper mapper = session.getMapper(ProductMapper.class);
-            List <ProductPicture> productPictureList = mapper.getProductPictureList(product_id);
-            if (productPictureList != null) {
-                for (int i = 0; i < productPictureList.size(); i++) {
-                    byte[] imgByte = productPictureList.get(i).getFile();
-                    UploadImageHelper.showImg(imgByte, response, request);
-                }
-            }
+            ProductPicture productPicture = mapper.getOnePicture(product_id,sequence);
+            byte[] imgByte = productPicture.getFile();
+            UploadImageHelper.showImg(imgByte, response, request);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return new ModelAndView("redirect:productimage.jsp");
     }
 
@@ -223,8 +215,9 @@ public class ProductController {
         int pictureCount=productMapper.getPictureCount(Integer.parseInt(product_id));
         int propertyCount=productMapper.getPropertyCount(Integer.parseInt(product_id));
 
-        request.getSession().setAttribute("productPictureList", productPictureList);
+        //指定商品的属性和图片
         request.getSession().setAttribute("productPropertyList", productPropertyList);
+        request.getSession().setAttribute("productPictureList", productPictureList);
         map.addAttribute("product_id",product_id);
         map.addAttribute("pictureCount",pictureCount);
         map.addAttribute("propertyCount",propertyCount);
@@ -232,5 +225,152 @@ public class ProductController {
         return new ModelAndView("redirect:/Shop/EditProduct.jsp",map);
     }
 
+    @RequestMapping(value = "EditProduct/{product_id}", method = RequestMethod.POST)
+    public ModelAndView AddProduct(@PathVariable int product_id,HttpServletResponse response, HttpServletRequest request, ModelMap map) throws Exception {
 
+        SqlSession session = MySqlSession.getMySession(response);
+        ShopMapper shopMapper = session.getMapper(ShopMapper.class);
+        ProductMapper productMapper = session.getMapper(ProductMapper.class);
+        User user = (User) request.getSession().getAttribute("user");
+        Shop myShop = shopMapper.selectShop(user.getEmail());
+        UploadImageHelper.addProductPicture(request);
+
+        System.out.println(UploadImageHelper.itemlist);
+
+        //获取shop_id
+        int shop_id = myShop.getShop_id();
+
+        //获取product_name
+        String product_name = UploadImageHelper.itemlist.get(0).get("product_name").toString();
+
+        //获取category_id
+        int category_id = Integer.parseInt(UploadImageHelper.itemlist.get(1).get("category_id").toString());
+
+        List<ProductProperty> productPropertyList=productMapper.getProperty(product_id);
+        List<ProductPicture> productPictureList=productMapper.getProductPictureList(product_id);
+
+        //获取propertyNum
+       int propertyNum1 = Integer.parseInt(UploadImageHelper.itemlist.get(2).get("propertyNum").toString());
+        int propertyNum = productPropertyList.size();
+
+        //获取imageNum
+        int imageNum=productPictureList.size();
+       int imageNum1 = Integer.parseInt(UploadImageHelper.itemlist.get(2 + propertyNum * 4 + 1).get("imageNum").toString());
+
+        System.out.println("propertyNum= "+propertyNum);
+        System.out.println("imageNum= "+imageNum);
+
+        int stock = 0;
+        //读取property内容
+        ProductProperty[] productProperties = new ProductProperty[propertyNum];
+        int[] updatePropertyResult = new int[propertyNum];
+        int property_id[]=new int[propertyNum];
+        for (int i = 0; i < productProperties.length; i++) {
+            productProperties[i] = new ProductProperty();
+            productProperties[i].setProduct_id(product_id);
+            //获取property_id
+            property_id[i]= Integer.parseInt(UploadImageHelper.itemlist.get(4 * i + 3).get("property_id"+i).toString());
+            productProperties[i].setProperty_id(property_id[i]);
+            productProperties[i].setProperty_name(UploadImageHelper.itemlist.get(4 * i + 4).get("property_name" + i).toString());
+            productProperties[i].setUnit_price(Float.parseFloat(UploadImageHelper.itemlist.get(4 * i + 5).get("unit_price" + i).toString()));
+            productProperties[i].setStock(Integer.parseInt(UploadImageHelper.itemlist.get(4 * i + 6).get("stock" + i).toString()));
+            //计算库存
+            stock += productProperties[i].getStock();
+        }
+
+        //读取image
+        ProductPicture[] productPictures = new ProductPicture[imageNum];
+        int[] updateProductPictureResult = new int[imageNum];
+        int sequence[]=new int[imageNum];
+        int picture_id[]=new int[imageNum];
+        for (int i = 0; i < imageNum; i++) {
+            if(i>=UploadImageHelper.picturelist.size())//如果i>=图片的数量（说明之前已经完成图片的修改了），就跳出循环
+                break;
+            productPictures[i] = new ProductPicture();
+            productPictures[i].setProduct_id(product_id);
+            productPictures[i].setFile(UploadImageHelper.picturelist.get(i).get("picture"));
+
+            //获取最大sequence
+            int maxSequence=productMapper.getMaxSequence(product_id);
+
+            //获取sequence
+            String seq=UploadImageHelper.itemlist.get(2 + propertyNum * 4 + 1 + i+1).get("sequence"+i).toString();
+            sequence[i]= Integer.parseInt(seq);
+            if(sequence[i]>maxSequence)//如果比目前最大的sequence还要大，就弹窗提示
+            {
+                map.put("Message","You cannot edit the sequence of the product picture which is not existed!");
+                return new ModelAndView("redirect:/Shop/ProductManagement.jsp", map);
+            }
+            else
+                productPictures[i].setSequence(sequence[i]);
+            //获取picture_id
+            for(int j=0;j<imageNum;j++)
+            {
+                if(productPictureList.get(j).getSequence()==sequence[i])
+                    picture_id[i]=productPictureList.get(j).getPicture_id();
+            }
+//            picture_id[i]= Integer.parseInt(UploadImageHelper.itemlist.get(2 + propertyNum * 4 + 3).get("picture_id"+i).toString());
+            productPictures[i].setPicture_id(picture_id[i]);
+        }
+
+        //获取details
+        String details = UploadImageHelper.itemlist.get(2 + propertyNum * 4 +1 + UploadImageHelper.picturelist.size() +1 ).get("details").toString();
+
+        Product product = new Product();
+        product.setProduct_id(product_id);
+        product.setProduct_name(product_name);
+        product.setCategory_id(category_id);
+        product.setUnit_price(productProperties[0].getUnit_price());
+        product.setDetails(details);
+        product.setStock(stock);
+
+        int updateProductResult = productMapper.updateProduct(product);
+        if (updateProductResult > 0) {
+            session.commit();
+        }
+
+        //更新property表
+        for (int i = 0; i < productProperties.length; i++)
+            updatePropertyResult[i] = productMapper.updateProperty(productProperties[i]);
+
+        //当进行图片修改时
+        if(UploadImageHelper.picturelist.size()>0) {
+            //更新product_picture表
+            for (int i = 0; i < UploadImageHelper.picturelist.size(); i++)
+                updateProductPictureResult[i] = productMapper.updateProductPicture(productPictures[i]);
+        }
+
+        int length = productProperties.length >= productPictures.length ? productProperties.length : productPictures.length;
+        Boolean check[] = new Boolean[length];
+        for (int i = 0; i < productProperties.length; i++) {
+                if (updatePropertyResult[i] > 0) {
+                    if(UploadImageHelper.picturelist.size()>0) {//当有图片需要修改时
+                        for (int j = 0; j < UploadImageHelper.picturelist.size(); j++) {
+                            if (updateProductPictureResult[j] == 0) {
+                                check[j] = false;
+                            } else
+                                check[j] = true;
+                        }
+                    }
+                    check[i] = true;
+                }
+                else
+                    check[i] = false;
+        }
+
+        //判断所有插入是否都成功
+        boolean bool = Utils.isAllTrue(check);
+
+        if (bool == true) {
+            session.commit();
+            map.put("Message", "Edit Product Successfully!");
+            //存取商品
+            List <Product> productList = productMapper.getProductList(shop_id);
+            request.getSession().setAttribute("productList", productList);
+        } else
+            map.put("Message", "Edit Product Failed!");
+
+        session.close();
+        return new ModelAndView("redirect:/Shop/ProductManagement.jsp", map);
+    }
 }

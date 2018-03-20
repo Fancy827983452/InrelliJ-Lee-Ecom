@@ -70,7 +70,7 @@
 						</td>
 						<td><%=productList.get(i).getProduct_id()%></td>
 						<td>
-							<img  alt="no image" style="height: 50px;width: 40px" src="http://localhost:8080/productimage/<%=productList.get(i).getProduct_id()%>/image">
+							<img  alt="no image" style="height: 50px;width: 40px" src="http://localhost:8080/productimage/<%=productList.get(i).getProduct_id()%>/1">
 						</td>
 						<td><%=productList.get(i).getProduct_name()%></td>
 						<td>

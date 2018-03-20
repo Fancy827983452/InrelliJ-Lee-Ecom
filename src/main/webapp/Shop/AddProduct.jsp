@@ -62,6 +62,11 @@
     <div class="form-group row">
         <label for="addProperty" class="col-md-3 control-label" multiple >Product Property:</label>
         <input name="propertyNum" id="propertyNum" type="hidden" value="">
+        <div class="col-md-7">
+            <label style="float: left;margin-left: 78px;">Property Name</label>
+            <label style="float: left;margin-left: 114px;">Price</label>
+            <label style="float: right;margin-right: 40px">Stock</label>
+        </div>
         <div class="col-md-7" id="addProperty_Space" name="addProperty_Space">
             <div class="input-group" id="addProperty" name="addProperty">
                 <input id="property_name0" name="property_name0" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>

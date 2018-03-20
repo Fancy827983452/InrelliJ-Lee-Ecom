@@ -41,7 +41,7 @@
             if(productList.get(i).getProduct_id()==product_id)
             {
 %>
-<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="/EditProduct?product_id=<%=product_id%>" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" id="ProregisteForm" name="ProregisteForm" action="/EditProduct/<%=product_id%>" method="post" enctype="multipart/form-data">
     <center>
         <div class="form-group row">
             <label for="product_name" class="col-md-3 control-label" >Product Name:</label>
@@ -56,9 +56,19 @@
                         List<ProductCategory> categoryNames=(List<ProductCategory>)session.getAttribute("categoryNames");
                         if(!categoryNames.isEmpty()) {
                             for (int j = 0; j < categoryNames.size(); j++) {
-                    %>
-                    <option value="<%=categoryNames.get(j).getCategory_id()%>"><%=categoryNames.get(j).getCategory_name()%></option>
-                    <%
+                                //找到数据库中存储的category_id
+                                if(productList.get(i).getCategory_id()==categoryNames.get(j).getCategory_id())
+                                {
+                                    %>
+                                    <option value="<%=categoryNames.get(j).getCategory_id()%>" selected><%=categoryNames.get(j).getCategory_name()%></option>
+                                    <%
+                                 }
+                                else
+                                 {
+                                    %>
+                                    <option value="<%=categoryNames.get(j).getCategory_id()%>"><%=categoryNames.get(j).getCategory_name()%></option>
+                                    <%
+                                 }
                             }
                         }
                     %>
@@ -72,37 +82,44 @@
         </div>
 
         <%
+            //指定商品的属性和图片
             List<ProductPicture> productPictureList=(List<ProductPicture>)session.getAttribute("productPictureList");
             List<ProductProperty> productPropertyList=(List<ProductProperty>)session.getAttribute("productPropertyList");
             int pictureCount=Integer.parseInt(request.getParameter("pictureCount"));
             int propertyCount=Integer.parseInt(request.getParameter("propertyCount"));
-//            System.out.println("pictureCount="+pictureCount);
-//            System.out.println("propertyCount="+propertyCount);
         %>
 
         <div class="form-group row">
             <label for="addProperty" class="col-md-3 control-label" multiple >Product Property:</label>
             <input name="propertyNum" id="propertyNum" type="hidden" value="">
-            <div class="col-md-7" id="addProperty_Space" name="addProperty_Space">
+            <div class="col-md-7">
+                <label style="float: left;margin-left: 78px;">Property Name</label>
+                <label style="float: left;margin-left: 114px;">Price</label>
+                <label style="float: right;margin-right: 40px">Stock</label>
+            </div>
+            <div class="col-md-7" id="addProperty_Space">
                 <div class="input-group" id="addProperty" name="addProperty">
                     <%
                         for(int a=0;a<propertyCount;a++)
                         {
                     %>
+                        <input id="property_id<%=a%>" name="property_id<%=a%>" value="<%=productPropertyList.get(a).getProperty_id()%>" type="hidden">
                         <input id="property_name<%=a%>" name="property_name<%=a%>" value="<%=productPropertyList.get(a).getProperty_name()%>" class="btn btn-default" style="width:250px" placeholder="Property Name" required></input>
                         <input id="unit_price<%=a%>" name="unit_price<%=a%>" value="<%=productPropertyList.get(a).getUnit_price()%>" class="btn btn-default" style="width:115px" placeholder="Price" required></input>
                         <input id="stock<%=a%>" name="stock<%=a%>" value="<%=productPropertyList.get(a).getStock()%>" class="btn btn-default" style="width:115px" placeholder="Stock" required></input>
                     <%
                         }
                     %>
+                </div>
+                <div name="addProperty_Space">
 
                 </div>
             </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-default btn-lg" style="border:0;" onclick="addProperty()">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </button>
-            </div>
+            <%--<div class="col-md-1">--%>
+                <%--<button type="button" class="btn btn-default btn-lg" style="border:0;" onclick="addProperty()">--%>
+                    <%--<i class="glyphicon glyphicon-plus"></i>--%>
+                <%--</button>--%>
+            <%--</div>--%>
         </div>
 
         <div class="form-group row">
@@ -111,9 +128,34 @@
                 <div class="container-fluid kv-main">
                     <input name="imageNum" id="imageNum" type="hidden" value="">
                     <div id="addProductImage" name="addProductImage" class="form-group"  enctype="multipart/form-data" >
-                        <input name="image" id="image" class="form-control" type="file" accept="image/*">
+                        <%--<div class="form-inline">--%>
+                            <%--<span style="float: left;font-weight: bold" class="control-label">Input the sequence of Image you want to change:</span>--%>
+                            <%--<input style="width: 150px" name="sequence0" id="sequence0" class="form-control" PLACEHOLDER="Sequence"/>--%>
+                        <%--</div>--%>
+                        <%--<input name="image" id="image" class="form-control" type="file" accept="image/*">--%>
+                        <%--<br/>--%>
                     </div>
-                    <div id="addProductImage_Space" name="addProductImage_Space" class="form-group"  enctype="multipart/form-data"></div>
+                    <div>
+                        <table class="table-responsive table">
+                            <tr>
+                                <td>Sequence</td>
+                                <td>Image</td>
+                            </tr>
+                        <%
+                            for(int b=0;b<pictureCount;b++)
+                            {
+                        %>
+                                <tr>
+                                    <td><%=b+1%></td>
+                                    <td>
+                                        <img  alt="no image" style="height: 80px;width: 80px" src="http://localhost:8080/productimage/<%=productList.get(i).getProduct_id()%>/<%=b+1%>">
+                                    </td>
+                                </tr>
+                        <%
+                            }
+                        %>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-md-1">
@@ -129,7 +171,7 @@
         </div>
 
         <div class="form-group row">
-            <center><button type="submit" class="btn btn-primary" onclick="count()">Add</button></center>
+            <center><button type="submit" class="btn btn-primary" onclick="count()">Edit</button></center>
         </div>
     </center>
 </form>
@@ -182,8 +224,12 @@
     }
 
     function addProductImage() {
-        var divNum=document.getElementById("addProductImage").children.length;
-        $("#addProductImage").append('<input name="image'+divNum+'" id="image'+divNum+'" class="form-control" type="file" accept="image/*">');
+        var divNum=document.getElementById("addProductImage").children.length/3;
+        $("#addProductImage").append('<div class="form-inline">' +
+            '<span style="float: left;font-weight: bold" class="control-label">Input the sequence of Image you want to change:</span> ' +
+            '<input style="width: 150px" name="sequence'+divNum+'" id="sequence'+divNum+'" class="form-control" PLACEHOLDER="Sequence"/></div>'+
+            '<input name="image'+divNum+'" id="image'+divNum+'" class="form-control" type="file" accept="image/*"><br/>');
+        // alert(divNum);
     }
 
     function count() {
@@ -191,7 +237,7 @@
         var propertyNum=document.getElementById("propertyNum");
         propertyNum.value=divNum;
 
-        var divNum2=document.getElementById("addProductImage").children.length;
+        var divNum2=document.getElementById("addProductImage").children.length/3;
         var imageNum=document.getElementById("imageNum");
         imageNum.value=divNum2;
         //alert("propertyNum= "+propertyNum.value+", imageNum= "+imageNum.value);

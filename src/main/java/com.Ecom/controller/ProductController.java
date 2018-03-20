@@ -47,6 +47,8 @@ public class ProductController {
         Date date = new Date();
         String add_date = df.format(date).toString();
 
+        System.out.println(UploadImageHelper.itemlist);
+
         //获取product_name
         String product_name = UploadImageHelper.itemlist.get(0).get("product_name").toString();
 

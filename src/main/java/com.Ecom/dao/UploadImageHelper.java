@@ -3,7 +3,6 @@ package com.Ecom.dao;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
@@ -28,7 +27,8 @@ public class UploadImageHelper {
             FileInputStream fis = null;
             //字节数组用于存储输入流
             byte[] imgByte = null;
-
+            itemlist.clear();
+            picturelist.clear();
             //apache common file upload 库的方法，获取相应的图片数据,需要在dependency中添加org.apache.commons.fileupload
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);

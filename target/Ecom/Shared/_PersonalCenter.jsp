@@ -24,7 +24,10 @@
 			User user = (User)session.getAttribute("user");
 			String email = user.getEmail();
 		%>
-		<img src="http://localhost:8080/userimage/<%=email%>/image">
+		<div class="auto-fix-img">
+			<img height="100px" width="100px" src="http://localhost:8080/userimage/<%=email%>/image">
+		</div>
+		<br/>
 		<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			<div class="panel-heading">

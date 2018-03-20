@@ -67,4 +67,8 @@ public interface UserMapper {
     //设置新的默认地址
     @Update("update address set default_address=1 where address_id=#{0} and email=#{1};")
     public int setDefaultAddress(int address_id,String email);
+
+    //插入头像
+    @Update("update user set profile=#{profile} where email=#{email}")
+    public int addUserProfile(User user);
 }

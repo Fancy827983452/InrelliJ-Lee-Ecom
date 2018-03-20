@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!--  XML 配置文件包含对 MyBatis 系统的核心设置 -->
+<configuration>
+	<properties resource="db.properties"/>
+	<!-- 指定 MyBatis 所用日志的具体实现 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	<!-- 设置类型别名，在* mapper.xml中不必写全包名 -->
+	<typeAliases>
+		<typeAlias  alias="user" type="com.Ecom.model.User"/>
+	</typeAliases>
+	<environments default="mysql">
+	<!-- 环境配置，即连接的数据库。 -->
+    <environment id="mysql">
+    <!--  指定事务管理类型，type="JDBC"指直接简单使用了JDBC的提交和回滚设置 -->
+      <transactionManager type="JDBC"/>
+      <!--  dataSource指数据源配置，POOLED是JDBC连接对象的数据源连接池的实现。 -->
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!-- mappers告诉了MyBatis去哪里找持久化类的映射文件 -->
+  <mappers>
+  	<!--<mapper resource="mapper/UserMapper.xml"/>-->
+      <mapper class="com.Ecom.mapper.UserMapper"/>
+      <mapper class="com.Ecom.mapper.ShopMapper"/>
+      <mapper class="com.Ecom.mapper.ProductMapper"/>
+  </mappers>
+</configuration>

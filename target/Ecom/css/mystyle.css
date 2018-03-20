@@ -1,0 +1,61 @@
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+#HName{
+	font-size:45px;
+	font-family:MV Boli;
+	color:#ff60af;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#HName:hover{color:pink;}
+.nav-item{
+	float:right;
+}
+.row{
+	margin-left:-50px;
+	margin-right:-50px
+}
+.navbar
+{
+	margin-top:-50px;
+}
+#NavigationBar{
+	margin-left:270px;
+	margin-top:-70px;
+}
+.right1{
+	margin-left:250px;
+}
+.shoptop{
+	height:100px;
+	background-color:#b6c9c0;
+	padding-top:30px;
+}
+.shopname{
+	font-family:MV Boli;
+	font-size:32px;
+	
+}
+.table img{
+	height:60px;
+	width:50px;
+}
+.table th, .table td {
+	text-align: center;
+	vertical-align: middle!important;
+}
+#detailtable img{
+	height:80px;
+	width:65px;
+}
+#CommentTable td{
+	width:50%;
+}

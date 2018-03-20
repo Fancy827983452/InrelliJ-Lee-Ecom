@@ -8,19 +8,24 @@ import com.Ecom.model.Address;
 import com.Ecom.model.ProductCategory;
 import com.Ecom.model.Shop;
 import com.Ecom.model.User;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -282,5 +287,94 @@ public class UserController {
         }
         session.close();
         return new ModelAndView("redirect:/User/ManageSelfAddress.jsp",map);
+    }
+
+    //显示头像
+    @RequestMapping(value = "userimage/{email}/image",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView image(@PathVariable String email,HttpServletResponse response){
+        try{
+            SqlSession session= MySqlSession.getMySession(response);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            System.out.println(email);
+            User user = mapper.selectUser(email);
+            if (user.getProfile()==null) System.out.println("no");
+            System.out.println("yes");
+            byte[] imgByte = user.getProfile();
+            if (imgByte.length!=0) {
+      /*  //字节数据转换成流
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imgByte);
+        //字节数据暂存入缓存
+        BufferedImage img = ImageIO.read(byteArrayInputStream);*/
+                response.setContentType("image/jpeg");
+                OutputStream outputStream = response.getOutputStream();
+
+                outputStream.write(imgByte);
+                outputStream.flush();
+                outputStream.close();}
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return new ModelAndView("redirect:userimage.jsp");
+    }
+
+    //添加头像
+    @RequestMapping(value = "addUserProfile",method = RequestMethod.POST)
+    public ModelAndView addUserProfile(HttpServletRequest request,HttpServletResponse response,ModelMap map){
+        try{
+            SqlSession session= MySqlSession.getMySession(response);
+            UserMapper mapper = session.getMapper(UserMapper.class);
+            User user =(User)request.getSession().getAttribute("user");
+
+            //ArrayList用于存储非文件类型的其他数据，使用Map类，String用作key，object当value方便进行转换
+            ArrayList<Map<String ,Object>> itemlist = new ArrayList<Map<String, Object>>();
+            //FileInputStream获取传来文件的输入流
+            FileInputStream fis = null;
+            //字节数组用于存储输入流
+            byte[] imgByte = null;
+
+            //apache common file upload 库的方法，获取相应的图片数据,需要在dependency中添加org.apache.commons.fileupload
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            List<FileItem> parseRequest = upload.parseRequest(request);
+
+            if (parseRequest!= null){
+                for (FileItem item : parseRequest){
+                    //判断是否为普通字段数据
+                    if (item.isFormField()){
+                        Map<String, Object> rowData = new HashMap<String, Object>();
+                        rowData.put(item.getFieldName(), new String(item.get(),"UTF-8"));
+                        itemlist.add(rowData);
+                    }else {
+                        //是文件上传，获取文件的名字
+                        // fNameString = item.getFieldName();
+                        fis = (FileInputStream) item.getInputStream();
+                        //获取流大小，确定byte数组大小
+                        imgByte = new byte[fis.available()];
+                        //输入流
+                        fis.read(imgByte);
+                    }
+                }
+            }
+
+            user.setProfile(imgByte);
+
+
+            //通过SQL语句的返回值，判断是否插入成功
+            int result = mapper.addUserProfile(user);
+            if(result>0) {
+                map.put("Message", "Set Default Address Successfully!");
+            }
+            else
+            {
+                map.put("Message", "Set Default Address Failed!");
+            }
+            //确认执行，没有commit这一句，数据库不会更新
+            session.commit();
+            session.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+         return new ModelAndView("redirect:/User/ModifySelfPic.jsp",map);
     }
 }

@@ -9,6 +9,7 @@ import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -165,5 +167,34 @@ public class ProductController {
             map.put("Message","Add Category Failed!");
         session.close();
         return new ModelAndView("redirect:/Shop/AddProduct.jsp",map);
+    }
+
+    @RequestMapping(value="/productimage/{product_id}/{sequence}",method = {RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView productImage(@PathVariable int product_id,@PathVariable int sequence,HttpServletResponse response){
+        try{
+            SqlSession session= MySqlSession.getMySession(response);
+            ProductMapper productMapper = session.getMapper(ProductMapper.class);
+
+            ProductPicture productPicture = new ProductPicture();
+            productPicture.setProduct_id(product_id);
+            productPicture.setSequence(sequence);
+
+            productPicture = productMapper.getProductPicture(productPicture);
+
+            byte[] imgByte = productPicture.getFile();
+
+            if (imgByte.length>0){
+                response.setContentType("image/jpeg");
+                OutputStream outputStream = response.getOutputStream();
+
+                outputStream.write(imgByte);
+                outputStream.flush();
+                outputStream.close();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+       return new ModelAndView("redirect:userimage.jsp");
     }
 }

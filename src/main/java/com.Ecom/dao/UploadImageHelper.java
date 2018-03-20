@@ -23,7 +23,7 @@ public class UploadImageHelper {
     public static ArrayList <Map <String, byte[]>> picturelist = new ArrayList <Map <String, byte[]>>();
 
     //插入商品的图片
-    public static void addProductPicture(HttpServletRequest request) throws Exception {
+    public static byte[] addProductPicture(HttpServletRequest request) throws Exception {
             //FileInputStream获取传来文件的输入流
             FileInputStream fis = null;
             //字节数组用于存储输入流
@@ -58,6 +58,7 @@ public class UploadImageHelper {
                     }
                 }
             }
+            return imgByte;
         }
 
     public static void showImg(byte[] imgByte, HttpServletResponse response,HttpServletRequest request) throws IOException {

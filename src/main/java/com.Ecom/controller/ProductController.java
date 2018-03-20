@@ -26,7 +26,7 @@ import java.util.List;
 @Controller
 public class ProductController {
 
-    @RequestMapping(value="AddProduct",method= RequestMethod.POST)
+    @RequestMapping(value = "AddProduct", method = RequestMethod.POST)
     public ModelAndView AddProduct(HttpServletResponse response, HttpServletRequest request, ModelMap map) throws Exception {
 
         SqlSession session = MySqlSession.getMySession(response);
@@ -83,7 +83,7 @@ public class ProductController {
             productPictures[i] = new ProductPicture();
             productPictures[i].setProduct_id(product_id);
             productPictures[i].setFile(UploadImageHelper.picturelist.get(i).get("picture"));
-            productPictures[i].setSequence(i+1);
+            productPictures[i].setSequence(i + 1);
         }
 
         Product product = new Product();
@@ -97,7 +97,7 @@ public class ProductController {
         product.setStock(stock);
         //由于product_id是FK，所以要先插入商品表
         int addProductResult = productMapper.addProduct(product);
-        if(addProductResult>0) {
+        if (addProductResult > 0) {
             session.commit();
         }
 
@@ -106,101 +106,90 @@ public class ProductController {
             addPropertyResult[i] = productMapper.addProperty(productProperties[i]);
 
         //插入product_picture表
-        for(int i=0;i<productPictures.length;i++)
+        for (int i = 0; i < productPictures.length; i++)
             addProductPictureResult[i] = productMapper.addProductPicture(productPictures[i]);
 
-        int length=productProperties.length>=productPictures.length?productProperties.length:productPictures.length;
-        Boolean check[]=new Boolean[length];
-        for(int i=0;i<productProperties.length;i++) {
-            if (addPropertyResult[i] > 0)
-            {
-                for(int j=0;j<productPictures.length;j++) {
+        int length = productProperties.length >= productPictures.length ? productProperties.length : productPictures.length;
+        Boolean check[] = new Boolean[length];
+        for (int i = 0; i < productProperties.length; i++) {
+            if (addPropertyResult[i] > 0) {
+                for (int j = 0; j < productPictures.length; j++) {
                     if (addProductPictureResult[j] > 0) {
                         check[j] = true;
-                    }
-                    else
+                    } else
                         check[j] = false;
                 }
-                check[i]=true;
-            }
-            else
+                check[i] = true;
+            } else
                 check[i] = false;
         }
 
         //判断所有插入是否都成功
-        boolean bool=Utils.isAllTrue(check);
+        boolean bool = Utils.isAllTrue(check);
 
-        if(bool==true) {
+        if (bool == true) {
             session.commit();
             map.put("Message", "Add Product Successfully!");
             //存取图片
-            List<ProductPicture> productPictureList=productMapper.getProductPictureList(product_id);
+            List <ProductPicture> productPictureList = productMapper.getProductPictureList(product_id);
             //存取商品
-            List<Product> productList=productMapper.getProductList(shop_id);
-            request.getSession().setAttribute("productPictureList"+product_id,productPictureList);
-            request.getSession().setAttribute("productList",productList);
-        }
-        else
-            map.put("Message","Add Product Failed!");
+            List <Product> productList = productMapper.getProductList(shop_id);
+            request.getSession().setAttribute("productPictureList" + product_id, productPictureList);
+            request.getSession().setAttribute("productList", productList);
+        } else
+            map.put("Message", "Add Product Failed!");
 
         session.close();
         //清空两个list
         UploadImageHelper.itemlist.clear();
         UploadImageHelper.picturelist.clear();
-        return new ModelAndView("redirect:/Shop/AddProduct.jsp",map);
+        return new ModelAndView("redirect:/Shop/AddProduct.jsp", map);
     }
 
-    @RequestMapping(value="AddProductCategory",method= RequestMethod.POST)
+    @RequestMapping(value = "AddProductCategory", method = RequestMethod.POST)
     public ModelAndView AddProductCategory(@RequestParam("category_name") String category_name, HttpServletResponse response,
                                            HttpServletRequest request, ModelMap map) throws IOException {
 
         System.out.println("Jump to the controller");
-        SqlSession session= MySqlSession.getMySession(response);
+        SqlSession session = MySqlSession.getMySession(response);
         ShopMapper shopMapper = session.getMapper(ShopMapper.class);
         ProductMapper productMapper = session.getMapper(ProductMapper.class);
-        User user=(User)request.getSession().getAttribute("user");
-        Shop myShop=shopMapper.selectShop(user.getEmail());
-        int i=productMapper.addProductCategory(myShop.getShop_id(),category_name);
+        User user = (User) request.getSession().getAttribute("user");
+        Shop myShop = shopMapper.selectShop(user.getEmail());
+        int i = productMapper.addProductCategory(myShop.getShop_id(), category_name);
         session.commit();
-        System.out.println("i="+i);
-        if(i>0)
-        {
-            List<ProductCategory> categoryNames=productMapper.getCategory(myShop.getShop_id());//获取所有的分类名
-            request.getSession().setAttribute("categoryNames",categoryNames);
-            map.put("Message","Add Category Successfully!");
-        }
-        else
-            map.put("Message","Add Category Failed!");
+        System.out.println("i=" + i);
+        if (i > 0) {
+            List <ProductCategory> categoryNames = productMapper.getCategory(myShop.getShop_id());//获取所有的分类名
+            request.getSession().setAttribute("categoryNames", categoryNames);
+            map.put("Message", "Add Category Successfully!");
+        } else
+            map.put("Message", "Add Category Failed!");
         session.close();
-        return new ModelAndView("redirect:/Shop/AddProduct.jsp",map);
+        return new ModelAndView("redirect:/Shop/AddProduct.jsp", map);
     }
 
-    @RequestMapping(value="/productimage/{product_id}/{sequence}",method = {RequestMethod.GET,RequestMethod.POST})
-    public ModelAndView productImage(@PathVariable int product_id,@PathVariable int sequence,HttpServletResponse response){
-        try{
-            SqlSession session= MySqlSession.getMySession(response);
-            ProductMapper productMapper = session.getMapper(ProductMapper.class);
+    //显示头像
+    @RequestMapping(value = "productimage/{product_id}/image", method = {RequestMethod.POST, RequestMethod.GET})
+    public ModelAndView image(@PathVariable int product_id, HttpServletResponse response, HttpServletRequest request) {
+        try {
+            SqlSession session = MySqlSession.getMySession(response);
+            ProductMapper mapper = session.getMapper(ProductMapper.class);
+            System.out.println(product_id);
+            List <ProductPicture> productPictureList = mapper.getProductPictureList(product_id);
+            if (productPictureList == null)
+                System.out.println("no");
+            System.out.println("yes");
 
-            ProductPicture productPicture = new ProductPicture();
-            productPicture.setProduct_id(product_id);
-            productPicture.setSequence(sequence);
-
-            productPicture = productMapper.getProductPicture(productPicture);
-
-            byte[] imgByte = productPicture.getFile();
-
-            if (imgByte.length>0){
-                response.setContentType("image/jpeg");
-                OutputStream outputStream = response.getOutputStream();
-
-                outputStream.write(imgByte);
-                outputStream.flush();
-                outputStream.close();
+            for (int i = 0; i < productPictureList.size(); i++) {
+                byte[] imgByte = productPictureList.get(i).getFile();
+                UploadImageHelper.showImg(imgByte, response, request);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-       return new ModelAndView("redirect:userimage.jsp");
+
+        return new ModelAndView("redirect:productimage.jsp");
     }
 }

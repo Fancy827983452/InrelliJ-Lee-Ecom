@@ -69,10 +69,7 @@
 						</td>
 						<td><%=productList.get(i).getProduct_id()%></td>
 						<td>
-							<%
-								String imgUrl = "productimage/"+productList.get(i).getProduct_id()+"/"+1;
-							%>
-							<img alt="no image" <%=imgUrl%>>
+							<img  alt="no image" style="height: 50px;width: 40px" src="http://localhost:8080/productimage/<%=productList.get(i).getProduct_id()%>/image">
 						</td>
 						<td><%=productList.get(i).getProduct_name()%></td>
 						<td>

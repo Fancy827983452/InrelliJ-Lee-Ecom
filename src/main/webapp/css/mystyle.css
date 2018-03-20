@@ -59,3 +59,15 @@ body {
 #CommentTable td{
 	width:50%;
 }
+
+.auto-fix-img{
+	width:200px;
+	height:200px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.auto-fix-img img{
+	width:100%;
+	height:100%;
+}

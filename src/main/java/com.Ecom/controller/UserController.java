@@ -4,10 +4,7 @@ import com.Ecom.dao.MySqlSession;
 import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
 import com.Ecom.mapper.UserMapper;
-import com.Ecom.model.Address;
-import com.Ecom.model.ProductCategory;
-import com.Ecom.model.Shop;
-import com.Ecom.model.User;
+import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -49,8 +46,11 @@ public class UserController {
             List<Address> addressList=mapper.showAllAddress(email);
             ProductMapper productMapper = session.getMapper(ProductMapper.class);
             List<ProductCategory> categoryNames=null;
+            List<Product> productList=null;
             if(shopInfo!=null) {
-            categoryNames = productMapper.getCategory(shopMapper.selectShop(email).getShop_id());//获取所有的分类名
+                int shop_id=shopMapper.selectShop(email).getShop_id();
+                categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
+                productList=productMapper.getProductList(shop_id);//获取所有商品
             }
             session.close();
             map.put("Message",LoginMessage);
@@ -58,6 +58,7 @@ public class UserController {
             request.getSession().setAttribute("shopInfo",shopInfo);
             request.getSession().setAttribute("addressList",addressList);
             request.getSession().setAttribute("categoryNames",categoryNames);
+            request.getSession().setAttribute("productList",productList);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
             return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }

@@ -1,5 +1,10 @@
+<%@ page import="com.Ecom.model.Product" %>
+<%@ page import="com.Ecom.model.ProductCategory" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.ProductPicture" %>
+<%@ page import="com.Ecom.dao.UploadImageHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +17,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Shop</title>
 </head>
+<%
+	List<Product> productList=(List<Product>)session.getAttribute("productList");
+	List<ProductCategory> categoryNames=(List<ProductCategory>)session.getAttribute("categoryNames");
+%>
 <body>
 <jsp:include page="../Shared/_ShopManagement.jsp" />
 			<ul class="breadcrumb">
@@ -38,199 +47,72 @@
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
-						<input type = "checkbox" id = "allCheck"/>
-						</th>
-						<th>
-							ProductID
-						</th>
-						<th>
-							Picture
-						</th>
-						<th>
-							Name
-						</th>
-						<th>
-							property
-						</th>
-						<th>
-							Category
-						</th>
-						<th>
-							Price
-						</th>
-						<th>
-							Amount
-						</th>
-						<th>
-							Add Time
-						</th>
-						<th>
-							Status
-						</th>
+						<th></th>
+						<th>ProductID</th>
+						<th>Picture</th>
+						<th>Product Name</th>
+						<th>Category</th>
+						<th>Price</th>
+						<th>Stock</th>
+						<th>Add Time</th>
+						<th>Status</th>
 					</tr>
 				</thead>
 				<tbody>
+				<%
+					if(!productList.isEmpty()){
+						for(int i=0;i<productList.size();i++){//行数
+				%>
 					<tr>
 						<td class="tb2_td1">
-							<input type = "checkbox" name = "check"/>
+							<input type = "radio" name = "check" id = "check" value="<%=productList.get(i).getProduct_id()%>"/>
 						</td>
+						<td><%=productList.get(i).getProduct_id()%></td>
 						<td>
-							1
+							<%
+								String imgUrl = "productimage/"+productList.get(i).getProduct_id()+"/"+1;
+							%>
+							<img alt="no image" <%=imgUrl%>>
 						</td>
+						<td><%=productList.get(i).getProduct_name()%></td>
 						<td>
-							<img alt="no image" src="../images/pc.jpg">
-						</td>
+							<%
+								String category_name=null;
+								if(!categoryNames.isEmpty()){
+									for(int j=0;j<categoryNames.size();j++)
+									{
+									    if(categoryNames.get(j).getCategory_id()==productList.get(i).getCategory_id())
+									        category_name=categoryNames.get(j).getCategory_name();
+									}
+								}
+							%>
+						<%=category_name%></td>
+						<td><%=productList.get(i).getUnit_price()%></td>
+						<td><%=productList.get(i).getStock()%></td>
 						<td>
-							01/04/2012
-						</td>
+							<%
+								String addDateTime=productList.get(i).getAdd_date();
+								String[] sArray=addDateTime.split(" ") ;
+								String addDate=null;
+								for(int a=0;a<sArray.length;a++)
+									addDate=sArray[0];
+							%>
+						<%=addDate%></td>
 						<td>
-							Default
-						</td>
-						<td>
-							Default
-						</td>
-						<td>
-							Default
-						</td>
-						<td>
-							Default
-						</td>
-						<td>
-							Default
-						</td>
-						<td>
-							Default
-						</td>
+							<%
+								String product_status=null;
+								int status=productList.get(i).getStatus();
+								if(status==0)
+									product_status="On Sale";
+								else if(status==1)
+									product_status="Sold Out";
+							%>
+						<%=product_status%></td>
 					</tr>
-					<tr class="success">
-						<td class="tb2_td1">
-							<input type = "checkbox" name = "check"/>
-						</td>
-						<td>
-							2
-						</td>
-						<td>
-							<img alt="no image" src="../images/pc4.jpg">
-						</td>
-						<td>
-							01/04/2012
-						</td>
-						<td>
-							Approved
-						</td>
-						<td>
-							Approved
-						</td>
-						<td>
-							Approved
-						</td>
-						<td>
-							Approved
-						</td>
-						<td>
-							Approved
-						</td>
-						<td>
-							Approved
-						</td>
-					</tr>
-					<tr class="error">
-						<td class="tb2_td1">
-							<input type = "checkbox" name = "check"/>
-						</td>
-						<td>
-							3
-						</td>
-						<td>
-							<img alt="no image" src="../images/pc3.jpg">
-						</td>
-						<td>
-							02/04/2012
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="warning">
-						<td class="tb2_td1">
-							<input type = "checkbox" name = "check"/>
-						</td>
-						<td>
-							4
-						</td>
-						<td>
-							<img alt="no image" src="../images/pc2.jpg">
-						</td>
-						<td>
-							03/04/2012
-						</td>
-						<td>
-							Pending
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
-					<tr class="info">
-						<td class="tb2_td1">
-							<input type = "checkbox" name = "check"/>
-						</td>
-						<td>
-							5
-						</td>
-						<td>
-							<img alt="no image" src="../images/pc1.jpg">
-						</td>
-						<td>
-							04/04/2012
-						</td>
-						<td>
-							Call in to confirm
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-						<td>
-							Declined
-						</td>
-					</tr>
+				<%
+						}
+					}
+				%>
 				</tbody>
 			</table>
 
@@ -241,65 +123,39 @@
 <script src="../js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
 <script src="../js/fileinput.min.js" type="text/javascript"></script>
 
-
-
-<script type="text/javascript">
-    //.datetimepicker(options)初始化日期时间选择器;
-    $('#AddDate').datetimepicker({
-        minView: "month",
-        format : 'yyyy-mm-dd',
-        yearStart:2018,
-        yearEnd:2018,
-        todayBtn : true,
-        autoclose : true
-
-    });
-</script>
-
 <script>
-
-    $("#ProImage").fileinput({
-        uploadUrl: '#', // you must set a valid URL here else you will get an error
-        allowedFileExtensions : ['jpg', 'png','gif'],
-        overwriteInitial: false,
-        maxFileSize: 1000,
-        maxFilesNum: 10,
-        //allowedFileTypes: ['image', 'video', 'flash'],
-        slugCallback: function(filename) {
-            return filename.replace('(', '_').replace(']', '_');
-        }
+    //点击行时选中单选框
+    $("tr").bind("click",function(){
+        $("input:radio").attr("checked",false);
+        $(this).find("td").find("input:radio").attr("checked",true);
     });
 
-</script>
-
-
-<script>
-    $("#allCheck").click(function(){
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        if(a.checked){
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = true;
-            }
-        }else{
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = false;
-            }
-        }
-    })
-    //单选框
-    $("input[name='check']").click(function(){
-        var flag = true;
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        for(var i = 0; i < b.length; i++){
-            if(!b[i].checked){
-                flag = false;
-                break;
-            }
-        }
-        a.checked = flag;
-    });
+    // $("#allCheck").click(function(){
+    //     var a = document.getElementById("allCheck");
+    //     var b = document.getElementsByName("check");
+    //     if(a.checked){
+    //         for(var i = 0; i < b.length; i++){
+    //             b[i].checked = true;
+    //         }
+    //     }else{
+    //         for(var i = 0; i < b.length; i++){
+    //             b[i].checked = false;
+    //         }
+    //     }
+    // })
+    // //单选框
+    // $("input[name='check']").click(function(){
+    //     var flag = true;
+    //     var a = document.getElementById("allCheck");
+    //     var b = document.getElementsByName("check");
+    //     for(var i = 0; i < b.length; i++){
+    //         if(!b[i].checked){
+    //             flag = false;
+    //             break;
+    //         }
+    //     }
+    //     a.checked = flag;
+    // });
 </script>
 </body>
 

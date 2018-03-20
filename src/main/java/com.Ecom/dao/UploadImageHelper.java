@@ -5,7 +5,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,4 +59,15 @@ public class UploadImageHelper {
                 }
             }
         }
+
+    public static void showImg(byte[] imgByte, HttpServletResponse response,HttpServletRequest request) throws IOException {
+        if (imgByte.length!=0) {
+            response.setContentType("image/jpeg");
+            OutputStream outputStream = response.getOutputStream();
+
+            outputStream.write(imgByte);
+            outputStream.flush();
+            outputStream.close();
+        }
     }
+}

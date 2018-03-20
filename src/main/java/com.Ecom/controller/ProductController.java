@@ -9,6 +9,7 @@ import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -131,6 +132,12 @@ public class ProductController {
         if(bool==true) {
             session.commit();
             map.put("Message", "Add Product Successfully!");
+            //存取图片
+            List<ProductPicture> productPictureList=productMapper.getProductPictureList(product_id);
+            //存取商品
+            List<Product> productList=productMapper.getProductList(shop_id);
+            request.getSession().setAttribute("productPictureList"+product_id,productPictureList);
+            request.getSession().setAttribute("productList",productList);
         }
         else
             map.put("Message","Add Product Failed!");
@@ -165,5 +172,34 @@ public class ProductController {
             map.put("Message","Add Category Failed!");
         session.close();
         return new ModelAndView("redirect:/Shop/AddProduct.jsp",map);
+    }
+
+    @RequestMapping(value = "/productimage/{product_id}/{sequence}",method = {RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView image(@PathVariable int product_id, @PathVariable int sequence, HttpServletResponse response,HttpServletRequest request) {
+        try {
+            SqlSession session = MySqlSession.getMySession(response);
+            ProductMapper productMapper = session.getMapper(ProductMapper.class);
+            ProductPicture productPicture =Utils.selectProductPicture(product_id,1,response);
+            //获取图片字节数据
+            byte[] imgByte=productPicture.getFile();
+
+            UploadImageHelper.showImg(imgByte,response,request);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return new ModelAndView("productimage");
+    }
+
+        //返回ModelAndView进行基础页面输出
+    @RequestMapping(value="/showproductprofile",method={RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView showprofile(@RequestParam String product_id, HttpServletRequest request,HttpServletResponse response) throws IOException {
+        SqlSession session = MySqlSession.getMySession(response);
+        Product product = new Product();
+        product.setProduct_id(Integer.parseInt(product_id));
+        ProductMapper productMapper = session.getMapper(ProductMapper.class);
+        int size = productMapper.getProductPictureList(Integer.parseInt(product_id)).size();
+        request.setAttribute("product_id",product.getProduct_id());
+        request.setAttribute("size",size);
+        return new ModelAndView("showProductProfile");
     }
 }

@@ -23,41 +23,52 @@
         Order Details
     </li>
 </ul>
-<table class="table table-bordered table-hover" id="detailtable">
+
+<table class="table table-bordered" id="detailtable" style="height: 150px;">
     <tr>
-       <td>2018-3-13 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderID:12456789</td>
-        <td><a href="../Shop/ShopIndex.jsp">ShopName</a></td>
-        <td>
-            Contact Seller
+        <td style="width: 40%;background-color:#f5f5f5;">
+            Order Details
         </td>
-    </tr>
-    <tr>
-        <td>
-            <div style="float:left;width:50%; text-align:center;"><img alt="no image" src="../images/pc.jpg"></div>
-            <div style="float:left;width:50%; text-align:left;"><a href="#">ProductName</a><br> property</div>
-        </td>
-        <td>
-            price
-        </td>
-        <td >
-            Amount
-        </td>
-    </tr>
-    <tr>
-        <td >
-            Total Price&shipping fee
-        </td>
-        <td>
-            Status
-        </td>
-        <td>
-            <button type="button"  class="btn btn-info">Refund</button>
+        <td rowspan="2" style="width: 60%;">
+            Commodity Total :<br>
+            Freight Charge :<br>
+            Order Price :<br>
+            <button type="button"  class="btn btn-info">Confirm Received</button>
             <button type="button"  class="btn btn-info">Confirm Received</button>
             <button type="button"  class="btn btn-info" onclick="changestyle()">Comment</button>
         </td>
     </tr>
+    <tr>
+        <td>
+            Address :<br>
+            Order ID :<br>
+            Shop Name :<br>
+        </td>
+    </tr>
 </table>
 
+<table class="table table-bordered" id="detailtable">
+    <tr style="background-color:#f5f5f5;">
+        <td>2018-3-13 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderID:12456789</td>
+        <td>price</td>
+        <td>
+            Amount
+        </td>
+        <td>Status</td>
+    </tr>
+    <tr>
+        <td>
+            <div style="float:left;width:50%; text-align:center;"><img alt="no image" src="../images/pc.jpg"></div>
+            <div style="float:left;width:50%; text-align:left;"><a href="#">ProductName</a><br> <a href="../Shop/ShopIndex.jsp">ShopName</a><br>property</div>
+        </td>
+        <td>
+        </td>
+        <td >
+        </td>
+        <td >
+        </td>
+    </tr>
+</table>
 <form role="form" id="Commentdiv" style="display: none">
     <div class="form-group col-md-7">
         <label for="name">Comments</label>

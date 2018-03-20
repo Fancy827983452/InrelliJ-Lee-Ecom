@@ -133,6 +133,12 @@ public class ProductController {
         if(bool==true) {
             session.commit();
             map.put("Message", "Add Product Successfully!");
+            //存取图片
+            List<ProductPicture> productPictureList=productMapper.getProductPictureList(product_id);
+            //存取商品
+            List<Product> productList=productMapper.getProductList(shop_id);
+            request.getSession().setAttribute("productPictureList"+product_id,productPictureList);
+            request.getSession().setAttribute("productList",productList);
         }
         else
             map.put("Message","Add Product Failed!");

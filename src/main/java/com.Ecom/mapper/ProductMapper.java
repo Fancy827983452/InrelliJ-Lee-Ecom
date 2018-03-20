@@ -14,6 +14,9 @@ public interface ProductMapper {
     @Select("select * from product_category where shop_id=#{shop_id}")
     public List<ProductCategory> getCategory(int shop_id);
 
+    @Select("select category_name from product_category where category_id=#{category_id}")
+    public String getCategoryName(int category_id);
+
     @Insert("insert into product_category(shop_id,category_name) values(#{0},#{1})")
     public int addProductCategory(int shop_id,String category_name);
 
@@ -33,5 +36,14 @@ public interface ProductMapper {
 
     @Select("select ifnull(max(product_id),0) from product where shop_id=#{shop_id}")
     public int getProduct_ID(int shop_id);
+
+    @Select("select * from product where shop_id=#{shop_id}")
+    public List<Product> getProductList(int shop_id);
+
+    @Select("select * from product_picture where product_id=#{product_id}")
+    public List<ProductPicture> getProductPictureList(int product_id);
+
+    @Select("select * from product_picture where product_id = #{product_id} and sequence = #{sequence}")
+    public ProductPicture getProductPictureBySequence(ProductPicture productPicutre);
 
 }

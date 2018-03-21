@@ -80,6 +80,9 @@ public interface ProductMapper {
     @Select("select * from product where product_id=#{product_id}")
     Product getProductById(int product_id);
 
+    @Select("select * from product where product_name like #{keyword}")
+    List<Product> getProductsByKeyword(String keyword);
+
     //删除product表中数据
     @Delete("delete from product where product_id=#{product_id}")
     public int deleteFromProduct(int product_id);

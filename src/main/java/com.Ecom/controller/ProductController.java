@@ -390,5 +390,19 @@ public class ProductController {
 
         return new ModelAndView("redirect:/Shop/ProductInfo.jsp",map);
     }
+
+    @RequestMapping(value = "searchProduct",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView searchProduct(HttpServletRequest request,HttpServletResponse response,ModelMap map){
+        try{
+            String keyword = request.getParameter("keyword");
+            keyword = "%"+keyword+"%";
+
+            map.addAttribute("keyword",keyword);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return new ModelAndView("redirect:/Home/SearchCommodity.jsp",map);
+    }
 }
 

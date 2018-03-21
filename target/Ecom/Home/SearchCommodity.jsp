@@ -1,3 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.Product" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.Ecom.dao.MySqlSession" %>
+<%@ page import="com.Ecom.mapper.ProductMapper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,12 +52,12 @@
                     <li><a href="#">Store</a></li>
                 </ul>
             </div><!-- /btn-group -->
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                    Search
-                </button>
-            </span>
+            <form action="/searchProduct" method="post">
+                <input type="text" class="form-control" name="keyword" required>
+                <span class="input-group-btn">
+						<input type="submit" class="btn btn-default" value="Search"/>
+					</span>
+            </form>
         </div><!-- /input-group -->
     </div><!-- /.col-lg-6 --><br>
     <div>
@@ -73,21 +78,47 @@
     </div>
 
     <div class="content-mid">
+        <%
+
+           String keyword = request.getParameter("keyword");
+
+            SqlSession sqlSessions= MySqlSession.getMySession(response);
+            ProductMapper productMapper = sqlSessions.getMapper(ProductMapper.class);
+
+            List<Product> productList = productMapper.getProductsByKeyword(keyword);
+
+            int outerRow = productList.size()/4;            //每行展示4个商品
+            int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行
+            if (outerRowLeft>0) outerRow = outerRow+1;
+
+            int count = 0;            //用于标记商品的计数器
+
+            for (int i = 0;i<outerRow;i++)
+            {
+        %>
         <div class="mid-popular">
+            <%
+                for (int j=0;j<4;j++){
+
+                    //统一获取指定的值，方便html的调用
+                    int product_id = productList.get(count).getProduct_id();
+                    String product_name = productList.get(count).getProduct_name();
+                    float product_price = productList.get(count).getUnit_price();
+            %>
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
                     <div class="pro-img">
-                        <img src="../images/pc.jpg" class="img-responsive" alt="">
+                        <img src="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                         </div>
                     </div>
                     <div class="mid-1">
                         <div class="women">
                             <div class="women-top">
                                 <span>Women</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">Sed ut perspiciati</a></h6>
+                                <h6><a href="http://localhost:8080/productinfo/<%=product_id%>"><%=product_name%></a></h6>
                             </div>
                             <div class="img item_add">
                                 <a href="#"><img src="../images/ca.png" alt=""></a>
@@ -95,7 +126,7 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
+                            <p ><label>$100.00</label><em class="item_price">$<%=product_price%></em></p>
                             <div class="block">
                                 <div class="starbox small ghosting"> </div>
                             </div>
@@ -106,235 +137,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc1.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc1.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">At vero eos</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc2.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc2.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc3.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc3.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">On the other</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <%
+                    count++;
+                }
+            %>
             <div class="clearfix"></div>
         </div>
-        <div class="mid-popular">
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc4.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc4.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">On the other</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc5.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc5.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc6.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc6.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Women</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">At vero eos</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 item-grid simpleCart_shelfItem">
-                <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="../images/pc7.jpg" class="img-responsive" alt="">
-                        <div class="zoom-icon ">
-                            <a class="picture" href="../images/pc7.jpg" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
-                            <a href="../Shop/ProductInfo.jsp"><i class="glyphicon glyphicon-menu-right icon"></i></a>
-                        </div>
-                    </div>
-                    <div class="mid-1">
-                        <div class="women">
-                            <div class="women-top">
-                                <span>Men</span>
-                                <h6><a href="../Shop/ProductInfo.jsp">Sed ut perspiciati</a></h6>
-                            </div>
-                            <div class="img item_add">
-                                <a href="#"><img src="../images/ca.png" alt=""></a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="mid-2">
-                            <p ><label>$100.00</label><em class="item_price">$70.00</em></p>
-                            <div class="block">
-                                <div class="starbox small ghosting"> </div>
-                            </div>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
+        <%
+            }
+        %>
     </div>
     <!--//products-->
     <!-- /.row -->

@@ -1,286 +1,305 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Home</title>
-	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
-	<link href="../css/style.css" rel="stylesheet">
-	<link href="../css/style1.css" rel="stylesheet">
-	<link href="../css/style4.css" rel="stylesheet">
-	<link href="../css/jstarbox.css" rel="stylesheet">
-	<link href="../css/popuo-box.css" rel="stylesheet">
-	<link href="../css/chocolat.css" rel="stylesheet">
-	<link href="../css/form.css" rel="stylesheet">
-	<link href="../css/swiper.css" rel="stylesheet">
-	<link href="../css/mystyle.css" rel="stylesheet">
-	<link href="../css/memenu.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Home</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style1.css" rel="stylesheet">
+    <link href="../css/style4.css" rel="stylesheet">
+    <link href="../css/jstarbox.css" rel="stylesheet">
+    <link href="../css/popuo-box.css" rel="stylesheet">
+    <link href="../css/chocolat.css" rel="stylesheet">
+    <link href="../css/form.css" rel="stylesheet">
+    <link href="../css/swiper.css" rel="stylesheet">
+    <link href="../css/mystyle.css" rel="stylesheet">
+    <link href="../css/memenu.css" rel="stylesheet">
 </head>
 <body>
 
 <style>
 
-	.pc-slide {
-		width: 300px;
-		margin: 0 auto;
-	}
+    .pc-slide {
+        width: 300px;
+        margin: 0 auto;
+    }
 
-	.view .swiper-container {
-		width: 300px;
-		height: 500px;
-	}
+    .view .swiper-container {
+        width: 300px;
+        height: 500px;
+    }
 
 
-	.preview {
-		width: 100%;
-		margin-top: 10px;
-		position: relative;
-	}
+    .preview {
+        width: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
 
-	.preview .swiper-container {
-		width: 300px;
-		height: 82px;
+    .preview .swiper-container {
+        width: 300px;
+        height: 82px;
 
-	}
+    }
 
-	.preview .swiper-slide {
-		width: 87px;
-		height: 82px;
-	}
+    .preview .swiper-slide {
+        width: 87px;
+        height: 82px;
+    }
 
-	.preview .slide6 {
-		width: 82px;
-	}
+    .preview .slide6 {
+        width: 82px;
+    }
 
-	.preview .arrow-left {
-		background: url(../images/feel3.png) no-repeat left top;
-		position: absolute;
-		left: 10px;
-		top: 50%;
-		margin-top: -9px;
-		width: 9px;
-		height: 18px;
-		z-index: 10;
-	}
+    .preview .arrow-left {
+        background: url(../images/feel3.png) no-repeat left top;
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -9px;
+        width: 9px;
+        height: 18px;
+        z-index: 10;
+    }
 
-	.preview .arrow-right {
-		background: url(../images/feel4.png) no-repeat left bottom;
-		position: absolute;
-		right: 10px;
-		top: 50%;
-		margin-top: -9px;
-		width: 9px;
-		height: 18px;
-		z-index: 10;
-	}
+    .preview .arrow-right {
+        background: url(../images/feel4.png) no-repeat left bottom;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -9px;
+        width: 9px;
+        height: 18px;
+        z-index: 10;
+    }
 
-	.preview img {
-		padding: 1px;
-	}
+    .preview img {
+        padding: 1px;
+    }
 
-	.preview .active-nav img {
-		padding: 0;
-		border: 1px solid #F00;
-	}
+    .preview .active-nav img {
+        padding: 0;
+        border: 1px solid #F00;
+    }
 </style>
 
 <div class="container">
 
-	<jsp:include page="../Shared/_Layout.jsp" />
+    <jsp:include page="../Shared/_Layout.jsp" />
 
-	<div class="col-md-9">
-		<div class="col-md-5 grid">
-			<div class="pc-slide">
-				<div class="view">
-					<div class="swiper-container">
-						<!--  <a class="arrow-left" href="#"></a>-->
-						<!--  <a class="arrow-right" href="#"></a>-->
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b1.jpg" alt=""></a>
-							</div>
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b2.jpg" alt=""></a>
-							</div>
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b3.jpg" alt=""></a>
-							</div>
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b4.jpg" alt=""></a>
-							</div>
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b5.jpg" alt=""></a>
-							</div>
-							<div class="swiper-slide">
-								<a target="_blank"><img src="../images/b6.jpg" alt=""></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="preview">
-					<!--  <a class="arrow-left" href="#"></a>-->
-					<!--  <a class="arrow-right" href="#"></a>-->
-					<div class="swiper-container">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide active-nav">
-								<img src="../images/s1.jpg" height="60%" width="60%" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src="../images/s2.jpg" height="60%" width="60%" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src="../images/s3.jpg" height="60%" width="60%" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src="../images/s4.jpg" height="60%" width="60%" alt="">
-							</div>
-							<div class="swiper-slide">
-								<img src="../images/s5.jpg" height="60%" width="60%" alt="">
-							</div>
-							<div class="swiper-slide slide6">
-								<img src="../images/s6.jpg" height="60%" width="60%" alt="">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-7 single-top-in">
-			<div class="single-para simpleCart_shelfItem">
-				<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
-				<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-				<div class="star-on">
-					<ul>
-						<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-						<li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
-					</ul>
-					<div class="review">
-						<a href="#"> 3 reviews </a>/
-						<a href="#">  Write a review</a>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+    <div class="col-md-9">
+        <div class="col-md-5 grid">
+            <div class="pc-slide">
+                <div class="view">
+                    <div class="swiper-container">
+                        <!--  <a class="arrow-left" href="#"></a>-->
+                        <!--  <a class="arrow-right" href="#"></a>-->
+                        <div class="swiper-wrapper">
+                            <%
+                                int product_id = Integer.parseInt(request.getParameter("product_id"));
+                                int size = Integer.parseInt(request.getParameter("size"));
+                            %>
+                            <%
+                                for (int i = 0;i<size;i++){
+                            %>
+                            <div class="swiper-slide">
+                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" alt=""></a>
+                            </div>
+                            <%
+                                }
+                            %>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<a target="_blank"><img src="../images/b2.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<a target="_blank"><img src="../images/b3.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<a target="_blank"><img src="../images/b4.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<a target="_blank"><img src="../images/b5.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<a target="_blank"><img src="../images/b6.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview">
+                    <!--  <a class="arrow-left" href="#"></a>-->
+                    <!--  <a class="arrow-right" href="#"></a>-->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <%
+                                for (int i=0;i<size;i++){
+                            %>
+                            <div class="swiper-slide">
+                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="60%" width="60%" alt=""></a>
+                            </div>
+                            <%
+                                }
+                            %>
+                            <%--<div class="swiper-slide active-nav">--%>
+                            <%--<img src="../images/s1.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<img src="../images/s2.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<img src="../images/s3.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<img src="../images/s4.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                            <%--<img src="../images/s5.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide slide6">--%>
+                            <%--<img src="../images/s6.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7 single-top-in">
+            <div class="single-para simpleCart_shelfItem">
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                <div class="star-on">
+                    <ul>
+                        <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
+                    </ul>
+                    <div class="review">
+                        <a href="#"> 3 reviews </a>/
+                        <a href="#">  Write a review</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
 
-				<label  class="add-to item_price">$32.8</label>
+                <label  class="add-to item_price">$32.8</label>
 
-				<div class="available">
-					<h6>Available Options :</h6>
-					<ul>
+                <div class="available">
+                    <h6>Available Options :</h6>
+                    <ul>
 
-						<li>Size:<select>
-							<option>Large</option>
-							<option>Medium</option>
-							<option>small</option>
-							<option>Large</option>
-							<option>small</option>
-						</select></li>
-						<li>Cost:
-							<select>
-								<option>U.S.Dollar</option>
-								<option>Euro</option>
-							</select></li>
-					</ul>
-				</div>
-				<a href="#" class="cart item_add">More details</a>
-			</div>
-		</div>
-		<div class="clearfix"> </div>
-		<div class="content-top1">
-			<div class="col-md-4 col-md3">
-				<div class="col-md1 simpleCart_shelfItem">
-					<a href="../Shop/ProductInfo.jsp">
-						<img class="img-responsive" src="../images/pi6.png" alt="" />
-					</a>
-					<h3><a href="../Shop/ProductInfo.jsp">Jeans</a></h3>
-					<div class="price">
-						<h5 class="item_price">$300</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-md3">
-				<div class="col-md1 simpleCart_shelfItem">
-					<a href="../Shop/ProductInfo.jsp">
-						<img class="img-responsive" src="../images/pi7.png" alt="" />
-					</a>
-					<h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
-					<div class="price">
-						<h5 class="item_price">$300</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-					</div>
+                        <li>Size:<select>
+                            <option>Large</option>
+                            <option>Medium</option>
+                            <option>small</option>
+                            <option>Large</option>
+                            <option>small</option>
+                        </select></li>
+                        <li>Cost:
+                            <select>
+                                <option>U.S.Dollar</option>
+                                <option>Euro</option>
+                            </select></li>
+                    </ul>
+                </div>
+                <a href="#" class="cart item_add">More details</a>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+        <div class="content-top1">
+            <div class="col-md-4 col-md3">
+                <div class="col-md1 simpleCart_shelfItem">
+                    <a href="../Shop/ProductInfo.jsp">
+                        <img class="img-responsive" src="../images/pi6.png" alt="" />
+                    </a>
+                    <h3><a href="../Shop/ProductInfo.jsp">Jeans</a></h3>
+                    <div class="price">
+                        <h5 class="item_price">$300</h5>
+                        <a href="#" class="item_add">Add To Cart</a>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-md3">
+                <div class="col-md1 simpleCart_shelfItem">
+                    <a href="../Shop/ProductInfo.jsp">
+                        <img class="img-responsive" src="../images/pi7.png" alt="" />
+                    </a>
+                    <h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
+                    <div class="price">
+                        <h5 class="item_price">$300</h5>
+                        <a href="#" class="item_add">Add To Cart</a>
+                        <div class="clearfix"> </div>
+                    </div>
 
-				</div>
-			</div>
-			<div class="col-md-4 col-md3">
-				<div class="col-md1 simpleCart_shelfItem">
-					<a href="../Shop/ProductInfo.jsp">
-						<img class="img-responsive" src="../images/pi.png" alt="" />
-					</a>
-					<h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
-					<div class="price">
-						<h5 class="item_price">$300</h5>
-						<a href="#" class="item_add">Add To Cart</a>
-						<div class="clearfix"> </div>
-					</div>
+                </div>
+            </div>
+            <div class="col-md-4 col-md3">
+                <div class="col-md1 simpleCart_shelfItem">
+                    <a href="../Shop/ProductInfo.jsp">
+                        <img class="img-responsive" src="../images/pi.png" alt="" />
+                    </a>
+                    <h3><a href="../Shop/ProductInfo.jsp">Tops</a></h3>
+                    <div class="price">
+                        <h5 class="item_price">$300</h5>
+                        <a href="#" class="item_add">Add To Cart</a>
+                        <div class="clearfix"> </div>
+                    </div>
 
-				</div>
-			</div>
+                </div>
+            </div>
 
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<div class="col-md-3 product-bottom">
-		<!--categories-->
-		<div class=" rsidebar span_1_of_left">
-			<h3 class="cate">Categories</h3>
-			<ul class="menu-drop">
-				<li class="item1"><a href="#">Men </a>
-					<ul class="cute">
-						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
-						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
-						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
-					</ul>
-				</li>
-				<li class="item2"><a href="#">Women </a>
-					<ul class="cute">
-						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
-						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
-						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
-					</ul>
-				</li>
-				<li class="item3"><a href="#">Kids</a>
-					<ul class="cute">
-						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
-						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
-						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
-					</ul>
-				</li>
-				<li class="item4"><a href="#">Accesories</a>
-					<ul class="cute">
-						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
-						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
-						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
-					</ul>
-				</li>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 product-bottom">
+        <!--categories-->
+        <div class=" rsidebar span_1_of_left">
+            <h3 class="cate">Categories</h3>
+            <ul class="menu-drop">
+                <li class="item1"><a href="#">Men </a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+                        <li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+                        <li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
+                    </ul>
+                </li>
+                <li class="item2"><a href="#">Women </a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+                        <li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+                        <li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
+                    </ul>
+                </li>
+                <li class="item3"><a href="#">Kids</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+                        <li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+                        <li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
+                    </ul>
+                </li>
+                <li class="item4"><a href="#">Accesories</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+                        <li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+                        <li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails</a></li>
+                    </ul>
+                </li>
 
-				<li class="item4"><a href="#">Shoes</a>
-					<ul class="cute">
-						<li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
-						<li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
-						<li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<!--initiate accordion-->
-		<script type="text/javascript">
+                <li class="item4"><a href="#">Shoes</a>
+                    <ul class="cute">
+                        <li class="subitem1"><a href="../Shop/ProductInfo.jsp">Cute Kittens </a></li>
+                        <li class="subitem2"><a href="../Shop/ProductInfo.jsp">Strange Stuff </a></li>
+                        <li class="subitem3"><a href="../Shop/ProductInfo.jsp">Automatic Fails </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!--initiate accordion-->
+        <script type="text/javascript">
             $(function() {
                 var menu_ul = $('.menu-drop > li > ul'),
                     menu_a  = $('.menu-drop > li > a');
@@ -298,95 +317,95 @@
                 });
 
             });
-		</script>
-		<!--//menu-->
-		<!--seller-->
-		<div class="product-bottom">
-			<h3 class="cate">Best Sellers</h3>
-			<div class="product-go">
-				<div class=" fashion-grid">
-					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr.jpg" alt=""></a>
-				</div>
-				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-					<span class=" price-in1"> $40.00</span>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="product-go">
-				<div class=" fashion-grid">
-					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr1.jpg" alt=""></a>
-				</div>
-				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-					<span class=" price-in1"> $40.00</span>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="product-go">
-				<div class=" fashion-grid">
-					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr2.jpg" alt=""></a>
-				</div>
-				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-					<span class=" price-in1"> $40.00</span>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="product-go">
-				<div class=" fashion-grid">
-					<a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr3.jpg" alt=""></a>
-				</div>
-				<div class=" fashion-grid1">
-					<h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
-					<span class=" price-in1"> $40.00</span>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
+        </script>
+        <!--//menu-->
+        <!--seller-->
+        <div class="product-bottom">
+            <h3 class="cate">Best Sellers</h3>
+            <div class="product-go">
+                <div class=" fashion-grid">
+                    <a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr.jpg" alt=""></a>
+                </div>
+                <div class=" fashion-grid1">
+                    <h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+                    <span class=" price-in1"> $40.00</span>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="product-go">
+                <div class=" fashion-grid">
+                    <a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr1.jpg" alt=""></a>
+                </div>
+                <div class=" fashion-grid1">
+                    <h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+                    <span class=" price-in1"> $40.00</span>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="product-go">
+                <div class=" fashion-grid">
+                    <a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr2.jpg" alt=""></a>
+                </div>
+                <div class=" fashion-grid1">
+                    <h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+                    <span class=" price-in1"> $40.00</span>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="product-go">
+                <div class=" fashion-grid">
+                    <a href="../Shop/ProductInfo.jsp"><img class="img-responsive " src="../images/pr3.jpg" alt=""></a>
+                </div>
+                <div class=" fashion-grid1">
+                    <h6 class="best2"><a href="../Shop/ProductInfo.jsp" >Lorem ipsum dolor sitamet consectetuer  </a></h6>
+                    <span class=" price-in1"> $40.00</span>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
 
-		<!--//seller-->
-		<!--tag-->
-		<div class="tag">
-			<h3 class="cate">Tags</h3>
-			<div class="tags">
-				<ul>
-					<li><a href="#">design</a></li>
-					<li><a href="#">fashion</a></li>
-					<li><a href="#">lorem</a></li>
-					<li><a href="#">dress</a></li>
-					<li><a href="#">fashion</a></li>
-					<li><a href="#">dress</a></li>
-					<li><a href="#">design</a></li>
-					<li><a href="#">dress</a></li>
-					<li><a href="#">design</a></li>
-					<li><a href="#">fashion</a></li>
-					<li><a href="#">lorem</a></li>
-					<li><a href="#">dress</a></li>
-					<div class="clearfix"> </div>
-				</ul>
-			</div>
-		</div>
-	</div>
+        <!--//seller-->
+        <!--tag-->
+        <div class="tag">
+            <h3 class="cate">Tags</h3>
+            <div class="tags">
+                <ul>
+                    <li><a href="#">design</a></li>
+                    <li><a href="#">fashion</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">dress</a></li>
+                    <li><a href="#">fashion</a></li>
+                    <li><a href="#">dress</a></li>
+                    <li><a href="#">design</a></li>
+                    <li><a href="#">dress</a></li>
+                    <li><a href="#">design</a></li>
+                    <li><a href="#">fashion</a></li>
+                    <li><a href="#">lorem</a></li>
+                    <li><a href="#">dress</a></li>
+                    <div class="clearfix"> </div>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-	<div class="clearfix"> </div>
+    <div class="clearfix"> </div>
 
-	<!--footer-->
-	<div class="footer">
-		<div class="container">
-			<div class="footer-top">
-				<div class="col-md-4 top-footer1">
-					<h2>Newsletter</h2>
-					<form>
-						<input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
-						<input type="submit" value="SUBSCRIBE">
-					</form>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-4 top-footer1">
+                    <h2>Newsletter</h2>
+                    <form>
+                        <input type="text" value="" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='';}">
+                        <input type="submit" value="SUBSCRIBE">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 
 </div>
 

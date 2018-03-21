@@ -5,7 +5,6 @@ import com.Ecom.dao.UploadImageHelper;
 import com.Ecom.dao.Utils;
 import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
-import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -373,4 +371,24 @@ public class ProductController {
         session.close();
         return new ModelAndView("redirect:/Shop/ProductManagement.jsp", map);
     }
+
+    @RequestMapping(value="/productinfo/{product_id}",method = {RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView productinfo(@PathVariable int product_id,HttpServletRequest request,HttpServletResponse response,ModelMap map){
+        int size = 0;
+        try {
+            SqlSession sqlSessions= MySqlSession.getMySession(response);
+            ProductMapper productMapper = sqlSessions.getMapper(ProductMapper.class);
+            List<ProductPicture> productPictures = productMapper.getProductPictureList(product_id);
+            size = productPictures.size();
+            System.out.println(productPictures.size());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        map.addAttribute("product_id",product_id);
+        map.addAttribute("size",size);
+
+        return new ModelAndView("redirect:/Shop/ProductInfo.jsp",map);
+    }
 }
+

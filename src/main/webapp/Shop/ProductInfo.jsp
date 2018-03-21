@@ -98,30 +98,24 @@
 						<!--  <a class="arrow-left" href="#"></a>-->
 						<!--  <a class="arrow-right" href="#"></a>-->
 						<div class="swiper-wrapper">
-							<%
-								for (int i=0;i<3;i++){
-							%>
 							<div class="swiper-slide">
-								<a target="_blank"><img src="http://localhost:8080/productimage/<%=21%>/<%=i%>" alt=""></a>
+								<a target="_blank"><img src="../images/b1.jpg" alt=""></a>
 							</div>
-							<%
-								}
-							%>
-							<%--<div class="swiper-slide">--%>
-								<%--<a target="_blank"><img src="../images/b2.jpg" alt=""></a>--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<a target="_blank"><img src="../images/b3.jpg" alt=""></a>--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<a target="_blank"><img src="../images/b4.jpg" alt=""></a>--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<a target="_blank"><img src="../images/b5.jpg" alt=""></a>--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<a target="_blank"><img src="../images/b6.jpg" alt=""></a>--%>
-							<%--</div>--%>
+							<div class="swiper-slide">
+								<a target="_blank"><img src="../images/b2.jpg" alt=""></a>
+							</div>
+							<div class="swiper-slide">
+								<a target="_blank"><img src="../images/b3.jpg" alt=""></a>
+							</div>
+							<div class="swiper-slide">
+								<a target="_blank"><img src="../images/b4.jpg" alt=""></a>
+							</div>
+							<div class="swiper-slide">
+								<a target="_blank"><img src="../images/b5.jpg" alt=""></a>
+							</div>
+							<div class="swiper-slide">
+								<a target="_blank"><img src="../images/b6.jpg" alt=""></a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -130,33 +124,24 @@
 					<!--  <a class="arrow-right" href="#"></a>-->
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-                            <%
-                                for (int i=0;i<3;i++){
-                            %>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=21%>/<%=i%>" alt=""></a>
-                            </div>
-                            <%
-                                }
-                            %>
-							<%--<div class="swiper-slide active-nav">--%>
-								<%--<img src="../images/s1.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<img src="../images/s2.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<img src="../images/s3.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<img src="../images/s4.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide">--%>
-								<%--<img src="../images/s5.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
-							<%--<div class="swiper-slide slide6">--%>
-								<%--<img src="../images/s6.jpg" height="60%" width="60%" alt="">--%>
-							<%--</div>--%>
+							<div class="swiper-slide active-nav">
+								<img src="../images/s1.jpg" height="60%" width="60%" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="../images/s2.jpg" height="60%" width="60%" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="../images/s3.jpg" height="60%" width="60%" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="../images/s4.jpg" height="60%" width="60%" alt="">
+							</div>
+							<div class="swiper-slide">
+								<img src="../images/s5.jpg" height="60%" width="60%" alt="">
+							</div>
+							<div class="swiper-slide slide6">
+								<img src="../images/s6.jpg" height="60%" width="60%" alt="">
+							</div>
 						</div>
 					</div>
 				</div>

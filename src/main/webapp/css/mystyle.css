@@ -69,16 +69,23 @@ body {
 	width:50%;
 }
 
-.auto-fix-img{
+.auto-fix-img-div{
 	width:200px;
 	height:200px;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-.auto-fix-img img{
+.auto-fix-img{
 	width:100%;
 	height:100%;
+}
+
+.product-img-index-div{
+	width:150px;
+	height: 200px;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 /*****购物车*********/

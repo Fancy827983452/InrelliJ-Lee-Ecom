@@ -31,7 +31,7 @@
         else
         {
             alert(message);
-            //window.location.href="home.jsp";
+            window.location.href="home.jsp";
         }
     </script>
 </head>
@@ -130,8 +130,8 @@
             %>
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" class="img-responsive" alt="">
+                    <div class="pro-img product-img-index-div">
+                        <img class="auto-fix-img" src="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
                             <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
                             <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>

@@ -199,6 +199,8 @@ public class UserController {
     public ModelAndView ModifySelfAddress(@RequestParam("receiver_name") String receiver_name,@RequestParam("address") String address,
             @RequestParam("phone") String phone,@RequestParam("zip_code") int zip_code,@RequestParam("address_id") String address_id,
             HttpServletResponse response,HttpServletRequest request,ModelMap map) throws IOException{
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         SqlSession session= MySqlSession.getMySession(response);
         UserMapper mapper = session.getMapper(UserMapper.class);
 

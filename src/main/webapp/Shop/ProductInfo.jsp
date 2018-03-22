@@ -99,8 +99,6 @@
             <div class="pc-slide">
                 <div class="view">
                     <div class="swiper-container">
-                        <a class="arrow-left" href="#"></a>
-                        <a class="arrow-right" href="#"></a>
                         <div class="swiper-wrapper">
                             <%
                                 int product_id = Integer.parseInt(request.getParameter("product_id"));
@@ -109,60 +107,32 @@
                                 for (int i = 0;i<size;i++){
                             %>
                             <div class="swiper-slide">
-                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" alt=""></a>
+                                <a target="_blank"><img style="width: 100%;height: 100%" src="http://localhost:8080/productimage/<%=product_id%>/<%=i+1%>" alt=""></a>
                             </div>
                             <%
                                 }
                             %>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b2.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b3.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b4.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b5.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b6.jpg" alt=""></a>--%>
-                            <%--</div>--%>
                         </div>
                     </div>
                 </div>
                 <div class="preview">
                     <a class="arrow-left" href="#"></a>
                     <a class="arrow-right" href="#"></a>
+                    <center>
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <%
                                 for (int i=0;i<size;i++){
                             %>
                             <div class="swiper-slide active-nav">
-                                <img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="60%" width="60%" alt="">
+                                <img src="http://localhost:8080/productimage/<%=product_id%>/<%=i+1%>" height="60%" width="60%" alt="">
                             </div>
                             <%
                                 }
                             %>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s2.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s3.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s4.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s5.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide slide6">--%>
-                                <%--<img src="../images/s6.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
                         </div>
                     </div>
+                    </center>
                 </div>
             </div>
         </div>

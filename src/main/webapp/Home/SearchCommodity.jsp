@@ -42,23 +42,24 @@
     <jsp:include page="../Shared/_Layout.jsp" />
 
     <div style="background-color: rgba(118, 53, 255, 0.12); height: 50px;margin:0 auto;margin-top: 20px;">
-        <div class="input-group" style="width:500px; height:30px;margin:0 auto;top:10px;">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Commodity
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Store</a></li>
-                </ul>
-            </div><!-- /btn-group -->
-            <form action="/searchProduct" method="post">
-                <input type="text" class="form-control" name="keyword" required>
-                <span class="input-group-btn">
-						<input type="submit" class="btn btn-default" value="Search"/>
-					</span>
-            </form>
-        </div><!-- /input-group -->
+        <form action="/searchProduct" method="post">
+            <div class="input-group" style="width:500px; height:30px;margin:0 auto;top:10px;">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Commodity
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Store</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+
+                    <input type="text" class="form-control" name="keyword" required>
+                    <span class="input-group-btn">
+						    <input type="submit" class="btn btn-default" value="Search"/>
+					    </span>
+            </div>
+        </form><!-- /input-group -->
     </div><!-- /.col-lg-6 --><br>
     <div>
         <ul class="nav nav-tabs">

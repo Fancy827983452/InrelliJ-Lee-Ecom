@@ -79,20 +79,22 @@
             </div>
         </div>
         <!-- /.col-lg-8 -->
+        <form action="/searchProduct" method="post">
         <div class="col-lg-4" style="padding-top:90px;">
             <ul class="nav nav-tabs nav-justified" style="width:20px;">
-                <li class="active"><a href="#" style="font-size:15px;">Commodity</a></li>
+                <li><a href="#" style="font-size:15px;">Commodity</a></li>
                 <li><a href="#" style="font-size:15px;">Store</a></li>
             </ul>
             <div class="input-group">
-                <form action="/searchProduct" method="post">
+
                 <input type="text" class="form-control" name="keyword" required>
                 <span class="input-group-btn">
 						<input type="submit" class="btn btn-default" value="Search"/>
 					</span>
-                </form>
+
             </div><!-- /input-group -->
         </div>
+        </form>
     </div>
 
 

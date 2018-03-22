@@ -1,3 +1,7 @@
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="com.Ecom.dao.MySqlSession" %>
+<%@ page import="com.Ecom.mapper.ProductMapper" %>
+<%@ page import="com.Ecom.model.Product" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -98,24 +102,33 @@
                         <a class="arrow-left" href="#"></a>
                         <a class="arrow-right" href="#"></a>
                         <div class="swiper-wrapper">
+                            <%
+                                int product_id = Integer.parseInt(request.getParameter("product_id"));
+                                int size = Integer.parseInt(request.getParameter("size"));
+
+                                for (int i = 0;i<size;i++){
+                            %>
                             <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b1.jpg" alt=""></a>
+                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" alt=""></a>
                             </div>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b2.jpg" alt=""></a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b3.jpg" alt=""></a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b4.jpg" alt=""></a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b5.jpg" alt=""></a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a target="_blank"><img src="../images/b6.jpg" alt=""></a>
-                            </div>
+                            <%
+                                }
+                            %>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<a target="_blank"><img src="../images/b2.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<a target="_blank"><img src="../images/b3.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<a target="_blank"><img src="../images/b4.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<a target="_blank"><img src="../images/b5.jpg" alt=""></a>--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<a target="_blank"><img src="../images/b6.jpg" alt=""></a>--%>
+                            <%--</div>--%>
                         </div>
                     </div>
                 </div>
@@ -124,24 +137,30 @@
                     <a class="arrow-right" href="#"></a>
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
+                            <%
+                                for (int i=0;i<size;i++){
+                            %>
                             <div class="swiper-slide active-nav">
-                                <img src="../images/s1.jpg" height="60%" width="60%" alt="">
+                                <img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="60%" width="60%" alt="">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="../images/s2.jpg" height="60%" width="60%" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="../images/s3.jpg" height="60%" width="60%" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="../images/s4.jpg" height="60%" width="60%" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="../images/s5.jpg" height="60%" width="60%" alt="">
-                            </div>
-                            <div class="swiper-slide slide6">
-                                <img src="../images/s6.jpg" height="60%" width="60%" alt="">
-                            </div>
+                            <%
+                                }
+                            %>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<img src="../images/s2.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<img src="../images/s3.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<img src="../images/s4.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide">--%>
+                                <%--<img src="../images/s5.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
+                            <%--<div class="swiper-slide slide6">--%>
+                                <%--<img src="../images/s6.jpg" height="60%" width="60%" alt="">--%>
+                            <%--</div>--%>
                         </div>
                     </div>
                 </div>
@@ -149,8 +168,17 @@
         </div>
         <div class="col-md-7 single-top-in">
             <div class="single-para simpleCart_shelfItem">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
-                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                <%
+                    SqlSession sqlSessions= MySqlSession.getMySession(response);
+                    ProductMapper productMapper = sqlSessions.getMapper(ProductMapper.class);
+
+                    Product product = productMapper.getProductById(product_id);
+                    String name = product.getProduct_name();
+                    float price = product.getUnit_price();
+                    String details = product.getDetails();
+                %>
+                <h1><%=name%></h1>
+                <p><%=details%></p>
                 <div class="star-on">
                     <ul>
                         <li><a href="#"><i class="glyphicon glyphicon-star"> </i></a></li>
@@ -173,7 +201,7 @@
                     <div class="clearfix"> </div>
                 </div>
 
-                <label  class="add-to item_price">$32.8</label>
+                <label  class="add-to item_price">$<%=price%></label>
 
                 <div class="available">
                     <h6>Available Options :</h6>

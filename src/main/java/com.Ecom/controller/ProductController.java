@@ -373,7 +373,7 @@ public class ProductController {
     }
 
     @RequestMapping(value="/productinfo/{product_id}",method = {RequestMethod.GET,RequestMethod.POST})
-    public ModelAndView productinfo(@PathVariable int product_id,HttpServletRequest request,HttpServletResponse response,ModelMap map){
+    public ModelAndView productinfo(@PathVariable int product_id,HttpServletResponse response,ModelMap map){
         int size = 0;
         try {
             SqlSession sqlSessions= MySqlSession.getMySession(response);
@@ -392,7 +392,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "searchProduct",method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView searchProduct(HttpServletRequest request,HttpServletResponse response,ModelMap map){
+    public ModelAndView searchProduct(HttpServletRequest request,ModelMap map){
         try{
             String keyword = request.getParameter("keyword");
             keyword = "%"+keyword+"%";

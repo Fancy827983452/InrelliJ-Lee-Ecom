@@ -95,4 +95,8 @@ public interface ProductMapper {
     @Delete("delete from product_property where product_id=#{product_id}")
     public int deleteFromProductProperty(int product_id);
 
+    //获取商品属性
+    @Select("select * from product_property where product_id=#{product_id}")
+    List<ProductProperty> getPropertiesById(int product_id);
+
 }

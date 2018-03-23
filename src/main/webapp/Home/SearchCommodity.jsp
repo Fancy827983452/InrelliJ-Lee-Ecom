@@ -20,8 +20,7 @@
     <link href="../css/mystyle.css" rel="stylesheet">
     <link href="../css/cart.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
     <script type="text/javascript">
         var message="${param.Message}";
@@ -50,6 +49,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
+                        <li><a href="#">Commodity</a></li>
                         <li><a href="#">Store</a></li>
                     </ul>
                 </div><!-- /btn-group -->
@@ -163,6 +163,9 @@
     <script src="../js/simpleCart.min.js" type="text/javascript"></script>
     <script src="../js/uisearch.js" type="text/javascript"></script>
     <script src="../js/modernizr.custom.72111.js" type="text/javascript"></script>
+
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
         jQuery(function() {

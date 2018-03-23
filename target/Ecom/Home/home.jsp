@@ -31,7 +31,7 @@
         else
         {
             alert(message);
-            //window.location.href="home.jsp";
+            window.location.href="home.jsp";
         }
     </script>
 </head>
@@ -82,7 +82,7 @@
         <form action="/searchProduct" method="post">
         <div class="col-lg-4" style="padding-top:90px;">
             <ul class="nav nav-tabs nav-justified" style="width:20px;">
-                <li ><a href="#" style="font-size:15px;">Commodity</a></li>
+                <li><a href="#" style="font-size:15px;">Commodity</a></li>
                 <li><a href="#" style="font-size:15px;">Store</a></li>
             </ul>
             <div class="input-group">
@@ -130,10 +130,10 @@
             %>
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
-                    <div class="pro-img">
-                        <img src="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" class="img-responsive" alt="">
+                    <div class="pro-img product-img-index-div">
+                        <img class="auto-fix-img" src="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
-                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%> " height="100%" width="100%" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
                             <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                         </div>
                     </div>

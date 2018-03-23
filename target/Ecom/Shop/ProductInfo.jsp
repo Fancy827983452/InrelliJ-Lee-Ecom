@@ -2,8 +2,12 @@
 <%@ page import="com.Ecom.dao.MySqlSession" %>
 <%@ page import="com.Ecom.mapper.ProductMapper" %>
 <%@ page import="com.Ecom.model.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.ProductProperty" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<% String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path; %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,8 +103,6 @@
             <div class="pc-slide">
                 <div class="view">
                     <div class="swiper-container">
-                        <a class="arrow-left" href="#"></a>
-                        <a class="arrow-right" href="#"></a>
                         <div class="swiper-wrapper">
                             <%
                                 int product_id = Integer.parseInt(request.getParameter("product_id"));
@@ -114,27 +116,13 @@
                             <%
                                 }
                             %>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b2.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b3.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b4.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b5.jpg" alt=""></a>--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<a target="_blank"><img src="../images/b6.jpg" alt=""></a>--%>
-                            <%--</div>--%>
                         </div>
                     </div>
                 </div>
                 <div class="preview">
                     <a class="arrow-left" href="#"></a>
                     <a class="arrow-right" href="#"></a>
+                    <center>
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <%
@@ -146,23 +134,9 @@
                             <%
                                 }
                             %>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s2.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s3.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s4.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide">--%>
-                                <%--<img src="../images/s5.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
-                            <%--<div class="swiper-slide slide6">--%>
-                                <%--<img src="../images/s6.jpg" height="60%" width="60%" alt="">--%>
-                            <%--</div>--%>
                         </div>
                     </div>
+                    </center>
                 </div>
             </div>
         </div>
@@ -176,6 +150,8 @@
                     String name = product.getProduct_name();
                     float price = product.getUnit_price();
                     String details = product.getDetails();
+
+                    List<ProductProperty> propertyList = productMapper.getPropertiesById(product_id);
                 %>
                 <h1><%=name%></h1>
                 <p><%=details%></p>
@@ -201,28 +177,46 @@
                     <div class="clearfix"> </div>
                 </div>
 
-                <label  class="add-to item_price">$<%=price%></label>
+                <label  class="add-to item_price" id="unit_price">$<%=price%></label>
+                <input type="text" id="hiddenprice"/>
+
+                <script type="text/javascript">
+                    function changePrice(price) {
+                        document.getElementById("unit_price").innerHTML = "$"+price;
+                        document.getElementById("hiddenprice").value = "$"+price;
+                    }
+
+                </script>
 
                 <div class="available">
                     <h6>Available Options :</h6>
                     <ul>
-
-                        <li>Size:<select>
-                            <option>Large</option>
-                            <option>Medium</option>
-                            <option>small</option>
-                            <option>Large</option>
-                            <option>small</option>
-                        </select></li>
-                        <li>Cost:
-                            <select>
-                                <option>U.S.Dollar</option>
-                                <option>Euro</option>
-                            </select></li>
+                        <%
+                            String propertyName = propertyList.get(0).getProperty_name();
+                        %>
+                        <li>
+                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(0).getUnit_price()%>)" checked/><%=propertyName%>
+                        </li>
+                        <%
+                            for (int i = 1;i<propertyList.size();i++){
+                                propertyName = propertyList.get(i).getProperty_name();
+                        %>
+                        <li>
+                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(i).getUnit_price()%>)"/><%=propertyName%>
+                        </li>
+                        <%
+                            }
+                        %>
                     </ul>
                 </div>
-                <a href="#" class="cart item_add">Add To Cart</a>
-                <a href="#" class="cart item_add">Buy Now</a>
+                <div>
+                    <ul>
+                        <li><a class="cart item_add" role="button" data-toggle="modal" data-target="#add2cart">
+                            <span class="glyphicon"></span> Add To Cart</a>
+                        </li>
+                        <a href="#" class="cart item_add">Buy Now</a>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="clearfix"> </div>
@@ -433,7 +427,36 @@
 
 </div>
 
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="add2cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <%
+                    if (session.getAttribute("user")==null||session.getAttribute("user").toString().equals("")){
+                        %>
+                    <div>
+                        <p>Please login</p>
+                    </div>
+                <%
+                    }else {
 
+                        %>
+                <div>
+                    <p>Product is added to cart</p>
+                </div>
+                <%
+                    }
+                %>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>

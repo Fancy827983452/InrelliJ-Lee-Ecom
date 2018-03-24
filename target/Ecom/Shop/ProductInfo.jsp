@@ -108,10 +108,10 @@
                                 int product_id = Integer.parseInt(request.getParameter("product_id"));
                                 int size = Integer.parseInt(request.getParameter("size"));
 
-                                for (int i = 0;i<size;i++){
+                                for (int i = 1;i<size+1;i++){
                             %>
                             <div class="swiper-slide">
-                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" alt=""></a>
+                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="100%" width="100%" alt=""></a>
                             </div>
                             <%
                                 }
@@ -126,7 +126,7 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <%
-                                for (int i=0;i<size;i++){
+                                for (int i=1;i<size+1;i++){
                             %>
                             <div class="swiper-slide active-nav">
                                 <img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="60%" width="60%" alt="">
@@ -178,7 +178,7 @@
                 </div>
 
                 <label  class="add-to item_price" id="unit_price">$<%=price%></label>
-                <input type="text" id="hiddenprice"/>
+                <input type="hidden" id="hiddenprice" value="<%=propertyList.get(0).getUnit_price()%>"/>
 
                 <script type="text/javascript">
                     function changePrice(price) {

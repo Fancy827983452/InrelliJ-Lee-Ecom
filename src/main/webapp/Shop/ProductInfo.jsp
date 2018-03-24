@@ -108,10 +108,10 @@
                                 int product_id = Integer.parseInt(request.getParameter("product_id"));
                                 int size = Integer.parseInt(request.getParameter("size"));
 
-                                for (int i = 0;i<size;i++){
+                                for (int i = 1;i<size+1;i++){
                             %>
                             <div class="swiper-slide">
-                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" alt=""></a>
+                                <a target="_blank"><img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="100%" width="100%" alt=""></a>
                             </div>
                             <%
                                 }
@@ -126,7 +126,7 @@
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
                             <%
-                                for (int i=0;i<size;i++){
+                                for (int i=1;i<size+1;i++){
                             %>
                             <div class="swiper-slide active-nav">
                                 <img src="http://localhost:8080/productimage/<%=product_id%>/<%=i%>" height="60%" width="60%" alt="">
@@ -211,7 +211,7 @@
                 </div>
                 <div>
                     <ul>
-                        <li><a class="cart item_add" role="button" data-toggle="modal" data-target="#add2cart">
+                        <li>
                             <span class="glyphicon"></span> Add To Cart</a>
                         </li>
                         <a href="#" class="cart item_add">Buy Now</a>
@@ -426,37 +426,6 @@
     </div>
 
 </div>
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="add2cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                <%
-                    if (session.getAttribute("user")==null||session.getAttribute("user").toString().equals("")){
-                        %>
-                    <div>
-                        <p>Please login</p>
-                    </div>
-                <%
-                    }else {
-
-                        %>
-                <div>
-                    <p>Product is added to cart</p>
-                </div>
-                <%
-                    }
-                %>
-            </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>

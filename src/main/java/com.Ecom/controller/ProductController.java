@@ -405,38 +405,5 @@ public class ProductController {
         return new ModelAndView("redirect:/Home/SearchCommodity.jsp",map);
     }
 
-    @RequestMapping(value = "addProduct2Cart/{product_id}",method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView addProduct2Cart(HttpServletRequest request,ModelMap map,HttpServletResponse response,@PathVariable int product_id){
-        try {
-            int size = 0;
-
-            //加入购物车
-            String email = request.getParameter("email");
-            String propertyName = request.getParameter("propertyName");
-            ShoppingCart shoppingCart = new ShoppingCart();
-            shoppingCart.setProperty_name(propertyName);
-            shoppingCart.setEmail(email);
-            shoppingCart.setAmount(1);
-            shoppingCart.setProduct_id(product_id);
-
-            SqlSession sqlSessions= MySqlSession.getMySession(response);
-            ProductMapper productMapper = sqlSessions.getMapper(ProductMapper.class);
-
-            productMapper.addProduct2Cart(shoppingCart);
-
-            //为了跳回原界面，再读一次
-            List<ProductPicture> productPictures = productMapper.getProductPictureList(product_id);
-            size = productPictures.size();
-            System.out.println(productPictures.size());
-            map.addAttribute("product_id",product_id);
-            map.addAttribute("size",size);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-
-        return new ModelAndView("redirect:/Shop/ProductInfo.jsp",map);
-    }
 }
 

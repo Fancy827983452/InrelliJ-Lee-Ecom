@@ -4,6 +4,7 @@ import com.Ecom.model.Shop;
 import com.Ecom.model.ShoppingCart;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -21,4 +22,10 @@ public interface ShopMapper {
 
     @Insert("insert into shopping_cart(email,product_id,property_name,amount) values(#{email},#{product_id},#{property_name},1)")
     public int addToCart(ShoppingCart cart);
+
+    @Select("select * from shopping_cart where email=#{email} and product_id=#{product_id} and property_name=#{property_name}")
+    ShoppingCart checkRepeatProduct(ShoppingCart cart);
+
+    @Update("update shopping_cart set amount=#{amount} where cart_id=#{cart_id}")
+    int refreshProductNum(ShoppingCart cart);
 }

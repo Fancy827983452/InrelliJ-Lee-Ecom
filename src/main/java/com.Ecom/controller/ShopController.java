@@ -61,20 +61,32 @@ public class ShopController {
         System.out.println("property_name="+property_name);
 
         SqlSession session= MySqlSession.getMySession(response);
+
         ShopMapper mapper = session.getMapper(ShopMapper.class);
         UserMapper userMapper = session.getMapper(UserMapper.class);
         ProductMapper productMapper=session.getMapper(ProductMapper.class);
+
         User user=(User)request.getSession().getAttribute("user");
         ShoppingCart shoppingCart=new ShoppingCart();
         shoppingCart.setEmail(user.getEmail());
         shoppingCart.setProduct_id(product_id);
         shoppingCart.setProperty_name(property_name);
-        int i=mapper.addToCart(shoppingCart);
 
-        if(i>0) {
+        ShoppingCart tempCart = mapper.checkRepeatProduct(shoppingCart);
+        int result = 0;
+        if (tempCart!=null){
+            tempCart.setAmount(tempCart.getAmount()+1);
+            result=mapper.refreshProductNum(tempCart);
+        }else{
+            result=mapper.addToCart(shoppingCart);
+        }
+
+        if(result>0) {
             List<ShoppingCart> shoppingCartList=userMapper.getCart(user.getEmail());
             List<ProductProperty> productPropertyList=productMapper.getPropertiesById(product_id);
+
             request.getSession().setAttribute("shoppingCartList",shoppingCartList);
+
             map.put("product_id",product_id);
             map.put("size",productPropertyList.size());
             map.put("Message", "Add product to cart Successfully!");

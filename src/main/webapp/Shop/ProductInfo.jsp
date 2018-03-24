@@ -4,6 +4,7 @@
 <%@ page import="com.Ecom.model.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ProductProperty" %>
+<%@ page import="com.Ecom.model.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <% String path = request.getContextPath();
@@ -178,41 +179,27 @@
                 </div>
 
                 <label  class="add-to item_price" id="unit_price">$<%=price%></label>
-                <input type="hidden" id="hiddenprice" value="<%=propertyList.get(0).getUnit_price()%>"/>
-
-                <script type="text/javascript">
-                    function changePrice(price) {
-                        document.getElementById("unit_price").innerHTML = "$"+price;
-                        document.getElementById("hiddenprice").value = "$"+price;
-                    }
-
-                </script>
 
                 <div class="available">
                     <h6>Available Options :</h6>
                     <ul>
                         <%
-                            String propertyName = propertyList.get(0).getProperty_name();
-                        %>
-                        <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(0).getUnit_price()%>)" checked/><%=propertyName%>
-                        </li>
-                        <%
-                            for (int i = 1;i<propertyList.size();i++){
+                            String propertyName = " ";
+                            for (int i = 0;i<propertyList.size();i++){
                                 propertyName = propertyList.get(i).getProperty_name();
                         %>
                         <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(i).getUnit_price()%>)"/><%=propertyName%>
+                            <input type="radio" name="property"  value="<%=propertyName%>"/><%=propertyName%>
                         </li>
                         <%
-                            }
-                        %>
+                        }
+                    %>
                     </ul>
                 </div>
                 <div>
                     <ul>
                         <li>
-                            <span class="glyphicon"></span> Add To Cart</a>
+                            <a href="#" class="cart item_add">Add To Cart</a>
                         </li>
                         <a href="#" class="cart item_add">Buy Now</a>
                     </ul>

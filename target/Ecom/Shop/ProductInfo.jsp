@@ -4,6 +4,7 @@
 <%@ page import="com.Ecom.model.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ProductProperty" %>
+<%@ page import="com.Ecom.model.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <% String path = request.getContextPath();
@@ -178,41 +179,27 @@
                 </div>
 
                 <label  class="add-to item_price" id="unit_price">$<%=price%></label>
-                <input type="hidden" id="hiddenprice" value="<%=propertyList.get(0).getUnit_price()%>"/>
-
-                <script type="text/javascript">
-                    function changePrice(price) {
-                        document.getElementById("unit_price").innerHTML = "$"+price;
-                        document.getElementById("hiddenprice").value = "$"+price;
-                    }
-
-                </script>
 
                 <div class="available">
                     <h6>Available Options :</h6>
                     <ul>
                         <%
-                            String propertyName = propertyList.get(0).getProperty_name();
-                        %>
-                        <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(0).getUnit_price()%>)" checked/><%=propertyName%>
-                        </li>
-                        <%
-                            for (int i = 1;i<propertyList.size();i++){
+                            String propertyName = " ";
+                            for (int i = 0;i<propertyList.size();i++){
                                 propertyName = propertyList.get(i).getProperty_name();
                         %>
                         <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(i).getUnit_price()%>)"/><%=propertyName%>
+                            <input type="radio" name="property"  value="<%=propertyName%>"/><%=propertyName%>
                         </li>
                         <%
-                            }
-                        %>
+                        }
+                    %>
                     </ul>
                 </div>
                 <div>
                     <ul>
-                        <li><a class="cart item_add" role="button" data-toggle="modal" data-target="#add2cart">
-                            <span class="glyphicon"></span> Add To Cart</a>
+                        <li>
+                            <a href="#" class="cart item_add">Add To Cart</a>
                         </li>
                         <a href="#" class="cart item_add">Buy Now</a>
                     </ul>
@@ -426,37 +413,6 @@
     </div>
 
 </div>
-
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="add2cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"></h4>
-            </div>
-            <div class="modal-body">
-                <%
-                    if (session.getAttribute("user")==null||session.getAttribute("user").toString().equals("")){
-                        %>
-                    <div>
-                        <p>Please login</p>
-                    </div>
-                <%
-                    }else {
-
-                        %>
-                <div>
-                    <p>Product is added to cart</p>
-                </div>
-                <%
-                    }
-                %>
-            </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <script src="../js/jquery-3.2.1.min.js" type="text/javascript"></script>
 <script src="../js/bootstrap.min.js" type="text/javascript"></script>

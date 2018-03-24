@@ -1,9 +1,6 @@
 package com.Ecom.mapper;
 
-import com.Ecom.model.Product;
-import com.Ecom.model.ProductCategory;
-import com.Ecom.model.ProductPicture;
-import com.Ecom.model.ProductProperty;
+import com.Ecom.model.*;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -98,5 +95,9 @@ public interface ProductMapper {
     //获取商品属性
     @Select("select * from product_property where product_id=#{product_id}")
     List<ProductProperty> getPropertiesById(int product_id);
+
+    //加入购物车
+    @Insert("insert into shopping_cart(email,product_id,property_name,amount) values(#{email},#{product_id},#{property_name},#{amount})")
+    int addProduct2Cart(ShoppingCart shoppingCart);
 
 }

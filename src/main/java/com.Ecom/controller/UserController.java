@@ -342,4 +342,67 @@ public class UserController {
         }
          return new ModelAndView("redirect:/User/ModifySelfPic.jsp",map);
     }
+
+    @RequestMapping(value="AddToCart",method= RequestMethod.POST)
+    public ModelAndView AddToCart(@RequestParam("product_id") int product_id, @RequestParam("property_name") String property_name,
+                                  HttpServletResponse response, HttpServletRequest request, ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper userMapper = session.getMapper(UserMapper.class);
+        ProductMapper productMapper=session.getMapper(ProductMapper.class);
+
+        User user=(User)request.getSession().getAttribute("user");
+        ShoppingCart shoppingCart=new ShoppingCart();
+        shoppingCart.setEmail(user.getEmail());
+        shoppingCart.setProduct_id(product_id);
+        shoppingCart.setProperty_name(property_name);
+
+        ShoppingCart tempCart = userMapper.checkRepeatProduct(shoppingCart);
+        int result = 0;
+        if (tempCart!=null){
+            tempCart.setAmount(tempCart.getAmount()+1);
+            result=userMapper.refreshProductNum(tempCart);
+        }else{
+            result=userMapper.addToCart(shoppingCart);
+        }
+
+        if(result>0) {
+            List<ShoppingCart> shoppingCartList=userMapper.getCart(user.getEmail());
+            List<ProductProperty> productPropertyList=productMapper.getPropertiesById(product_id);
+
+            request.getSession().setAttribute("shoppingCartList",shoppingCartList);
+
+            map.put("product_id",product_id);
+            map.put("size",productPropertyList.size());
+            map.put("Message", "Add product to cart Successfully!");
+        }
+        else
+            map.put("Message","Add product to cart Failed!");
+
+        session.commit();
+        session.close();
+        return new ModelAndView("redirect:/Shop/ProductInfo.jsp",map);
+    }
+
+    @RequestMapping(value = "deleteCartProduct",method = RequestMethod.POST)
+    public ModelAndView deleteCartProduct(@RequestParam("cart_id") String cart_id,HttpServletResponse response,
+                                                  HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user =(User)request.getSession().getAttribute("user");
+        int i=mapper.deleteCartProduct(Integer.parseInt(cart_id));
+        session.commit();
+        if(i>0) {
+            List<ShoppingCart> shoppingCartList=mapper.getCart(user.getEmail());
+            map.put("id",user.getEmail());
+            map.put("Message", "Delete Product from cart Successfully!");
+            request.getSession().setAttribute("shoppingCartList",shoppingCartList);
+        }
+        else
+        {
+            map.put("id",user.getEmail());
+            map.put("Message", "Delete Product from cart Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/Cart.jsp",map);
+    }
 }

@@ -82,4 +82,16 @@ public interface UserMapper {
             "join product_property on product_property.PROPERTY_NAME=tt.PROPERTY_NAME " +
             "where email=#{email} and tt.SEQUENCE=1;")
     public List<ShoppingCart> getCart(String email);
+
+    @Insert("insert into shopping_cart(email,product_id,property_name,amount) values(#{email},#{product_id},#{property_name},1)")
+    public int addToCart(ShoppingCart cart);
+
+    @Select("select * from shopping_cart where email=#{email} and product_id=#{product_id} and property_name=#{property_name}")
+    ShoppingCart checkRepeatProduct(ShoppingCart cart);
+
+    @Update("update shopping_cart set amount=#{amount} where cart_id=#{cart_id}")
+    int refreshProductNum(ShoppingCart cart);
+
+    @Delete("delete from shopping_cart where cart_id=#{cart_id}")
+    public int deleteCartProduct(int cart_id);
 }

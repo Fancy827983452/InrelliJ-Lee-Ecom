@@ -13,9 +13,21 @@
 	<%
 		List<ShoppingCart> shoppingCartList=(List<ShoppingCart>)session.getAttribute("shoppingCartList");
 	%>
+	<script type="text/javascript">
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+	</script>
 </head>
 
 <body>
+<form action="pay" method="post" id="cart">
 <div class="container">
 	<jsp:include page="../Shared/_Layout.jsp"/>
 	<div class="gwc" style=" margin:auto;">
@@ -67,10 +79,11 @@
 				<td class="tb3_td1">&nbsp;</td>
 				<td class="tb3_td2">Seleted: <label id="Amount" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> </td>
 				<td class="tb3_td3">Total:<span style=" color:#ff5500;"><label id="Total" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label></span></td>
-				<td class="tb3_td4"><span id="jz1">Pay</span><a href="#" style=" display:none;"  class="jz2" id="jz2">Pay</a></td>		</tr>
+				<td class="tb3_td4"><span id="jz1">Pay</span><a href='javascript:document:cart.submit();' style=" display:none;"  class="jz2" id="jz2">Pay</a></td>		</tr>
 		</table>
 	</div>
 </div>
+</form>
 </body>
 <script type="text/javascript">
     $("#c1").click(function(){

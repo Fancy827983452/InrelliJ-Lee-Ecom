@@ -74,10 +74,12 @@ public interface UserMapper {
     public int addUserProfile(User user);
 
     //获取购物车数据
-    @Select("select temp.*,file from (" +
-            "select CART_ID,EMAIL,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT,UNIT_PRICE from shopping_cart " +
+    @Select("select tt.*,UNIT_PRICE from(" +
+            "select temp.*,file,SEQUENCE from (" +
+            "select CART_ID,EMAIL,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT from shopping_cart " +
             "join product on shopping_cart.PRODUCT_ID=product.PRODUCT_ID where email=#{email})as temp " +
-            "join product_picture on temp.PRODUCT_ID=product_picture.PRODUCT_ID " +
-            "where email=#{email} and SEQUENCE=1")
+            "join product_picture on temp.PRODUCT_ID=product_picture.PRODUCT_ID)as tt " +
+            "join product_property on product_property.PROPERTY_NAME=tt.PROPERTY_NAME " +
+            "where email=#{email} and tt.SEQUENCE=1;")
     public List<ShoppingCart> getCart(String email);
 }

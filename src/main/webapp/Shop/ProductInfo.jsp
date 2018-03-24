@@ -25,6 +25,18 @@
     <link href="../css/swiper.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
     <link href="../css/memenu.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+    </script>
 </head>
 <body>
 
@@ -140,6 +152,7 @@
                 </div>
             </div>
         </div>
+        <form action="/AddToCart" method="post">
         <div class="col-md-7 single-top-in">
             <div class="single-para simpleCart_shelfItem">
                 <%
@@ -153,7 +166,8 @@
 
                     List<ProductProperty> propertyList = productMapper.getPropertiesById(product_id);
                 %>
-                <h1><%=name%></h1>
+                <input type="hidden" value="<%=product_id%>" id="product_id" name="product_id" />
+                <h1 id="product_name" name="product_name"><%=name%></h1>
                 <p><%=details%></p>
                 <div class="star-on">
                     <ul>
@@ -180,29 +194,18 @@
                 <label  class="add-to item_price" id="unit_price">$<%=price%></label>
                 <input type="hidden" id="hiddenprice" value="<%=propertyList.get(0).getUnit_price()%>"/>
 
-                <script type="text/javascript">
-                    function changePrice(price) {
-                        document.getElementById("unit_price").innerHTML = "$"+price;
-                        document.getElementById("hiddenprice").value = "$"+price;
-                    }
-
-                </script>
-
                 <div class="available">
                     <h6>Available Options :</h6>
                     <ul>
                         <%
-                            String propertyName = propertyList.get(0).getProperty_name();
+                            String propertyName = null;
                         %>
-                        <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(0).getUnit_price()%>)" checked/><%=propertyName%>
-                        </li>
                         <%
-                            for (int i = 1;i<propertyList.size();i++){
+                            for (int i = 0;i<propertyList.size();i++){
                                 propertyName = propertyList.get(i).getProperty_name();
                         %>
                         <li>
-                            <input type="radio" name="property" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(i).getUnit_price()%>)"/><%=propertyName%>
+                            <input type="radio" name="property_name" id="rd<%=i%>" value="<%=propertyName%>" onclick="changePrice(<%=propertyList.get(i).getUnit_price()%>)"/><%=propertyName%>
                         </li>
                         <%
                             }
@@ -210,15 +213,11 @@
                     </ul>
                 </div>
                 <div>
-                    <ul>
-                        <li>
-                            <span class="glyphicon"></span> Add To Cart</a>
-                        </li>
-                        <a href="#" class="cart item_add">Buy Now</a>
-                    </ul>
+                    <button type="submit" class="cart item_add">Add To Cart</button>
                 </div>
             </div>
         </div>
+        </form>
         <div class="clearfix"> </div>
         <div class="content-top1">
             <div class="col-md-4 col-md3">
@@ -626,6 +625,13 @@
 
     });
 </script>
+<script type="text/javascript">
+    function changePrice(price) {
+        document.getElementById("unit_price").innerHTML = "$"+price;
+        document.getElementById("hiddenprice").value = "$"+price;
+    }
 
+
+</script>
 </body>
 </html>

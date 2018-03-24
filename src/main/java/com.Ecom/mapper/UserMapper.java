@@ -1,6 +1,7 @@
 package com.Ecom.mapper;
 
 import com.Ecom.model.Address;
+import com.Ecom.model.ShoppingCart;
 import com.Ecom.model.User;
 import org.apache.ibatis.annotations.*;
 
@@ -71,4 +72,12 @@ public interface UserMapper {
     //插入头像
     @Update("update user set profile=#{profile} where email=#{email}")
     public int addUserProfile(User user);
+
+    //获取购物车数据
+    @Select("select temp.*,file from (" +
+            "select CART_ID,EMAIL,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT,UNIT_PRICE from shopping_cart " +
+            "join product on shopping_cart.PRODUCT_ID=product.PRODUCT_ID where email=#{email})as temp " +
+            "join product_picture on temp.PRODUCT_ID=product_picture.PRODUCT_ID " +
+            "where email=#{email} and SEQUENCE=1")
+    public List<ShoppingCart> getCart(String email);
 }

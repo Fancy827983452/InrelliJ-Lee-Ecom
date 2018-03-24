@@ -57,6 +57,7 @@ public class UserController {
             ProductMapper productMapper = session.getMapper(ProductMapper.class);
             List<ProductCategory> categoryNames=null;
             List<Product> productList=null;
+            List<ShoppingCart> shoppingCartList=mapper.getCart(email);
             if(shopInfo!=null) {
                 int shop_id=shopMapper.selectShop(email).getShop_id();
                 categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
@@ -69,6 +70,7 @@ public class UserController {
             request.getSession().setAttribute("addressList",addressList);
             request.getSession().setAttribute("categoryNames",categoryNames);
             request.getSession().setAttribute("productList",productList);
+            request.getSession().setAttribute("shoppingCartList",shoppingCartList);
             //设置跳转路径为不在WEB-INF目录下的jsp文件
             return new ModelAndView("redirect:/Home/home.jsp","map",map);
         }

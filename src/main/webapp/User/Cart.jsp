@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.ShoppingCart" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +10,9 @@
 
 	<script type="text/javascript" src="../js/jquery.1.4.2-min.js"></script>
 	<script type="text/javascript" src="../js/Calculation.js"></script>
+	<%
+		List<ShoppingCart> shoppingCartList=(List<ShoppingCart>)session.getAttribute("shoppingCartList");
+	%>
 </head>
 
 <body>
@@ -16,48 +21,45 @@
 	<div class="gwc" style=" margin:auto;">
 		<table cellpadding="0" cellspacing="0" class="gwc_tb1">
 			<tr>
-				<td class="tb1_td1"><input id="c1" type="checkbox"  class="allselect"/></td>
-				<td class="tb1_td1">All</td>
-				<td class="tb1_td3">Product</td>
-				<td class="tb1_td4">Product Information</td>
-				<td class="tb1_td5">Amount</td>
-				<td class="tb1_td6">Price</td>
-				<td class="tb1_td7"></td>
+				<th class="tb2_td1"><input id="c1" type="checkbox"  class="allselect"/></th>
+				<th class="tb2_td2">Picture</th>
+				<th class="tb2_td3">Product Name</th>
+				<th class="tb1_td4">Property</th>
+				<th class="tb1_td5">Amount</th>
+				<th class="tb1_td6">Price</th>
+				<th class="tb1_td7">Delete</th>
 			</tr>
 		</table>
 
-		<table cellpadding="0" cellspacing="0" class="CartTb">
-			<tr>
-				<td class="tb2_td1"><input type="checkbox" value="1" name="c" id="newslist-1" /></td>
-				<td class="tb2_td2"><a href="#"><img src="images/img1.jpg"/></a></td>
-				<td class="tb2_td3"><a href="#">Product Name</a></td>
-				<td class="tb1_td4">Property</td>
-				<td class="tb1_td5">
-					<input id="min1" name=""  style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="-" />
-					<input id="text_box1" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-					<input id="add1" name="" style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="+" />
-				</td>
-				<td class="tb1_td6"><label id="total1" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-				<td class="tb1_td7"><a href="#">Delete</a></td>
-			</tr>
-		</table>
+		<input type="hidden" id="size" name="size" value="<%=shoppingCartList.size()%>"/>
+		<%
+			for(int i=0;i<shoppingCartList.size();i++)
+			{
+		%>
+			<table cellpadding="0" cellspacing="0" class="CartTb">
+				<tr id="<%=i%>">
+					<td class="tb2_td1"><input type="checkbox" value="<%=shoppingCartList.get(i).getCart_id()%>" name="c" id="newslist-<%=i%>" /></td>
+					<td class="tb2_td2"><a href="#"><img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartList.get(i).getProduct_id()%>/1"></a></td>
+					<td class="tb2_td3"><a href="#"><%=shoppingCartList.get(i).getProduct_name()%></a></td>
+					<td class="tb1_td4"><%=shoppingCartList.get(i).getProperty_name()%></td>
+					<td class="tb1_td5" id="td">
+						<input id="min<%=i%>" name=""  style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="-" onclick="minus(this)"/>
+						<input id="text_box<%=i%>" name="" type="text" value="<%=shoppingCartList.get(i).getAmount()%>" style=" width:30px; text-align:center; border:1px solid #ccc;" />
+						<input id="add<%=i%>" name="" style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="+" onclick="add(this)"/>
+					</td>
+					<td class="tb1_td6">
+						<label class="tot" id="total<%=i%>" style="color:#ff5500;font-size:14px; font-weight:bold;" ><%=shoppingCartList.get(i).getUnit_price()%></label>
+						<input type="hidden" id="unit_price<%=i%>" value="<%=shoppingCartList.get(i).getUnit_price()%>"/>
+					</td>
+					<td class="tb1_td7"><a href="#">Delete</a></td>
+				</tr>
+			</table>
+		<%
+			}
+		%>
 
-		<table cellpadding="0" cellspacing="0" class="CartTb">
-			<tr>
-				<td class="tb2_td1"><input type="checkbox" value="1" name="c" id="newslist-2" /></td>
-				<td class="tb2_td2"><a href="#"><img src="images/img2.jpg"/></a></td>
-				<td class="tb2_td3"><a href="#">Product Name</a></td>
-				<td class="tb1_td4">Property</td>
-				<td class="tb1_td5">
-					<input id="min2" name=""  style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="-" />
-					<input id="text_box2" name="" type="text" value="1" style=" width:30px; text-align:center; border:1px solid #ccc;" />
-					<input id="add2" name="" style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="+" />
-				</td>
-				<td class="tb1_td6"><label id="total2" class="tot" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></td>
-				<td class="tb1_td7"><a href="#">Delete</a></td>
-			</tr>
-		</table>
 
+		<%--付款按钮--%>
 		<table cellpadding="0" cellspacing="0" class="gwc_tb3">
 			<tr>
 				<td class="tb1_td1">&nbsp;</td>
@@ -125,47 +127,36 @@
 </script>
 <!---商品加减算总数---->
 <script type="text/javascript">
-    $(function () {
-        var t = $("#text_box1");
-        $("#add1").click(function () {
-            t.val(parseInt(t.val()) + 1)
-            setTotal(); GetCount();
-        })
-        $("#min1").click(function () {
-            if(t.val()>0){
-                t.val(parseInt(t.val()) - 1)
-                setTotal(); GetCount();
-            }
-        })
-        function setTotal() {
-
-            $("#total1").html((parseInt(t.val()) * 9).toFixed(2));
-            $("#newslist-1").val(parseInt(t.val()) * 9);
-            //alert(parseInt( $("#newslist-1").val()));
+    function minus(obj) {
+        //获取onclick的id
+        var id = obj.id;
+        //获取i的值
+        var i=obj.parentNode.parentNode;
+        var text_box = document.getElementById("text_box"+i.id);
+        if(text_box.value>1){
+        	text_box.value = parseInt(text_box.value)-1;
+            setTotal(i.id,text_box.value);
+            GetCount();
         }
-        setTotal();
-    })
-</script>
-<!---商品加减算总数---->
-<script type="text/javascript">
-    $(function () {
-        var t = $("#text_box2");
-        $("#add2").click(function () {
-            t.val(parseInt(t.val()) + 1)
-            setTotal(); GetCount();
-        })
-        $("#min2").click(function () {
-            if(t.val()>0){
-                t.val(parseInt(t.val()) - 1)
-                setTotal(); GetCount();
-            }
-        })
-        function setTotal() {
+    }
 
-            $("#total2").html((parseInt(t.val()) * 8).toFixed(2));
-            $("#newslist-2").val(parseInt(t.val()) * 8);
-        }
-        setTotal();
-    })
+	function add(obj) {
+	    //获取onclick的id
+        var id = obj.id;
+        //获取i的值
+        var i=obj.parentNode.parentNode;
+        var text_box = document.getElementById("text_box"+i.id);
+		text_box.value = parseInt(text_box.value)+1;
+
+		setTotal(i.id,text_box.value);
+		GetCount();
+    }
+
+    function setTotal(id,value) {
+        var unit_price=document.getElementById("unit_price"+id);
+        var total=document.getElementById("total"+id).innerText;
+        total=(parseInt(value)*unit_price.value).toFixed(2);
+        $("#total"+id).html(total);
+    }
 </script>
 </html>

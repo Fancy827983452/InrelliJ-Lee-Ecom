@@ -5,8 +5,11 @@ public class ShoppingCart {
     private int cart_id;
     private String email;
     private int product_id;
+    private String product_name;
     private String property_name;
     private int amount;
+    private float unit_price;
+    private byte[] file;
 
     public int getCart_id() {
         return cart_id;
@@ -32,6 +35,14 @@ public class ShoppingCart {
         this.product_id = product_id;
     }
 
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
     public String getProperty_name() {
         return property_name;
     }
@@ -46,5 +57,21 @@ public class ShoppingCart {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public float getUnit_price() {
+        return unit_price;
+    }
+
+    public void setUnit_price(float unit_price) {
+        this.unit_price = unit_price;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 }

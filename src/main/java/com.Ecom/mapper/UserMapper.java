@@ -1,6 +1,7 @@
 package com.Ecom.mapper;
 
 import com.Ecom.model.Address;
+import com.Ecom.model.Order;
 import com.Ecom.model.ShoppingCart;
 import com.Ecom.model.User;
 import org.apache.ibatis.annotations.*;
@@ -94,4 +95,15 @@ public interface UserMapper {
 
     @Delete("delete from shopping_cart where cart_id=#{cart_id}")
     public int deleteCartProduct(int cart_id);
+
+    //获取订单信息
+    @Select("select t3.*,file,sequence from product_picture join " +
+            "(select t2.*,RECEIVER_NAME,PHONE,ZIP_CODE,ADDRESS from address join " +
+            "(select t1.*,product.PRODUCT_NAME from product join " +
+            "(select self_order.*,shop.SHOP_NAME from self_order join shop on self_order.SHOP_ID=shop.SHOP_ID)as t1 " +
+            "on product.PRODUCT_ID=t1.PRODUCT_ID)as t2 " +
+            "on address.ADDRESS_ID=t2.ADDRESS_ID)as t3 " +
+            "on product_picture.PRODUCT_ID=t3.PRODUCT_ID " +
+            "where t3.EMAIL=#{email} and SEQUENCE=1")
+    public List<Order> getOrder(String email);
 }

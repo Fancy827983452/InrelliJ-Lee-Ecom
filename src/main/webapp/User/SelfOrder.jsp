@@ -10,6 +10,18 @@
     <%
         List<Order> orderList=(List<Order>)session.getAttribute("orderList");
     %>
+    <script type="text/javascript">
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+            window.location.href="SelfOrder.jsp";
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="../Shared/_PersonalCenter.jsp" />
@@ -22,23 +34,30 @@
     </li>
 </ul>
 
+<form action="" method="post" name="form3">
 <%
 for(int i=0;i<orderList.size();i++)
 {
     String status=null;
     int s=orderList.get(i).getStatus();
-    if(s==0)
+    if(s==0)//待发货
         status="Wait for delivery";
-    else if(s==1)
+    else if(s==1)//待收货
         status="Wait for confirmation of receipt";
-    else if(s==2)
+    else if(s==2)//待评价
         status="Waiting for evaluation";
-    else if(s==3)
+    else if(s==3)//交易完成
         status="Transaction completed";
+    else if(s==4)//退款成功
+        status="Refunded Successfully";
 %>
-    <table class="table table-bordered" id="detailtable">
+    <input type="hidden" id="size" value="<%=orderList.size()%>"/>
+    <input type="hidden" id="s<%=i%>" value="<%=orderList.get(i).getStatus()%>"/>
+    <table class="table table-bordered">
         <tr style="background-color:#f5f5f5;">
-            <td><%=orderList.get(i).getTime()%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderID:<%=orderList.get(i).getOrder_id()%></td>
+            <td><%=orderList.get(i).getTime()%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                OrderID:<span id="order_id<%=i%>"><%=orderList.get(i).getOrder_id()%></span>
+            </td>
             <td>Shop Name: <a href="../Shop/ShopIndex.jsp?shop_id=<%=orderList.get(i).getShop_id()%>"><%=orderList.get(i).getShop_name()%></a></td>
             <td colspan=3 >Contact Seller</td>
         </tr>
@@ -53,19 +72,20 @@ for(int i=0;i<orderList.size();i++)
             <td>Unit Price: <br/><%=orderList.get(i).getUnit_price()%></td>
             <td >Amount: <br/><%=orderList.get(i).getAmount()%></td>
             <td>Actual Pay: <br/><%=orderList.get(i).getActual_pay()%></td>
-            <td><%=status%></td>
+            <td id="status<%=i%>"><%=status%></td>
         </tr>
-        <tr>
+        <tr id="<%=i%>">
             <td colspan=5>
-                <button type="button"  class="btn btn-info">Refund</button>
-                <button type="button"  class="btn btn-info">Confirm Received</button>
-                <button type="button"  class="btn btn-info" onclick="changestyle()">Comment</button>
+                <button type="button"  class="btn btn-info" id="Refund<%=i%>" onclick="ConfirmRefund(this)">Refund</button>
+                <button type="button"  class="btn btn-info" onclick="ConfirmReceived(this)" id="ConfirmReceived<%=i%>">Confirm Received</button>
+                <button type="button"  class="btn btn-info" onclick="changestyle()" id="Comment<%=i%>">Comment</button>
             </td>
         </tr>
     </table>
 <%
 }
 %>
+</form>
 
 <%--填写评论--%>
 <form role="form" id="Commentdiv" style="display: none">
@@ -88,5 +108,81 @@ for(int i=0;i<orderList.size();i++)
         var mychar = document.getElementById("Commentdiv");
         mychar.style.display="block";
     }
+
+    function ConfirmReceived(obj) {
+        if(confirm('Are you sure you have received the product?'))
+        {
+            Received(obj);
+            return true;
+        }
+        else
+            return false;
+    }
+    
+    function Received(obj) {
+        //获取onclick的id
+        var this_id = obj.id;
+        //获取i的值
+        var i=obj.parentNode.parentNode;
+        var order_id=document.getElementById("order_id"+i.id);
+        document.form3.action='/ConfirmReceived?order_id='+order_id.innerText;
+        document.form3.submit();
+    }
+
+    function ConfirmRefund(obj) {
+        if(confirm('Are you sure to refund?'))
+        {
+            Refund(obj);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    function Refund(obj) {
+        //获取onclick的id
+        var this_id = obj.id;
+        //获取i的值
+        var i=obj.parentNode.parentNode;
+        var order_id=document.getElementById("order_id"+i.id);
+        document.form3.action='/ConfirmRefund?order_id='+order_id.innerText;
+        document.form3.submit();
+    }
+
+    //根据订单状态控制button的显示与隐藏
+    $(document).ready(function showBtn() {
+        var size=document.getElementById("size");
+        for(var i=0;i<size.value;i++)
+        {
+            var status=document.getElementById("s"+i);
+            var ConfirmReceived=document.getElementById("ConfirmReceived"+i);
+            var Refund=document.getElementById("Refund"+i);
+            var Comment=document.getElementById("Comment"+i);
+            if(status.value==0)//待发货
+            {
+                ConfirmReceived.style.display="none";
+                Refund.style.display="";
+                Comment.style.display="none";
+            }
+            else if(status.value==1)//待收货
+            {
+                ConfirmReceived.style.display="";//显示
+                Refund.style.display="none";//隐藏
+                Comment.style.display="none";//隐藏
+            }
+            else if(status.value==2)//待评价
+            {
+                ConfirmReceived.style.display="none";
+                Refund.style.display="none";
+                Comment.style.display="";
+            }
+            else//退款成功或交易完成
+            {
+                ConfirmReceived.style.display="none";
+                Refund.style.display="none";
+                Comment.style.display="none";
+            }
+        }
+    });
 </script>
 </html>

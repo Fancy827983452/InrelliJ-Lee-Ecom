@@ -5,11 +5,12 @@ import java.util.Date;
 public class Transaction {
 
     private int transaction_id;
+    private int order_id;
     private String card_id;
     private int type;
     private float money;
     private float balance;
-    private Date time;
+    private String time;
     private String details;
 
     public int getTransaction_id() {
@@ -18,6 +19,14 @@ public class Transaction {
 
     public void setTransaction_id(int transaction_id) {
         this.transaction_id = transaction_id;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
     }
 
     public String getCard_id() {
@@ -52,11 +61,11 @@ public class Transaction {
         this.balance = balance;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

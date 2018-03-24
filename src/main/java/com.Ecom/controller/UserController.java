@@ -2,6 +2,7 @@ package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
 import com.Ecom.dao.UploadImageHelper;
+import com.Ecom.mapper.OrderMapper;
 import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.ShopMapper;
 import com.Ecom.mapper.UserMapper;
@@ -58,7 +59,8 @@ public class UserController {
             List<ProductCategory> categoryNames=null;
             List<Product> productList=null;
             List<ShoppingCart> shoppingCartList=mapper.getCart(email);
-            List<Order> orderList=mapper.getOrder(email);
+            OrderMapper orderMapper=session.getMapper(OrderMapper.class);
+            List<Order> orderList=orderMapper.getOrder(email);
             if(shopInfo!=null) {
                 int shop_id=shopMapper.selectShop(email).getShop_id();
                 categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名

@@ -1,21 +1,25 @@
 package com.Ecom.model;
 
-import java.util.Date;
-
 public class Order {
-
     private int order_id;
     private String email;
     private int shop_id;
+    private String shop_name;
     private int product_id;
+    private String product_name;
     private String property_name;
     private float unit_price;
     private int amount;
     private float shipping_fee;
     private float actual_pay;
     private int address_id;
-    private Date datetime;
+    private String receiver_name;
+    private String phone;
+    private int zip_code;
+    private String address;
+    private String Time;
     private int status;
+    private byte[] file;
 
     public int getOrder_id() {
         return order_id;
@@ -41,12 +45,28 @@ public class Order {
         this.shop_id = shop_id;
     }
 
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+    }
+
     public int getProduct_id() {
         return product_id;
     }
 
     public void setProduct_id(int product_id) {
         this.product_id = product_id;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
     }
 
     public String getProperty_name() {
@@ -97,12 +117,44 @@ public class Order {
         this.address_id = address_id;
     }
 
-    public Date getDatetime() {
-        return datetime;
+    public String getReceiver_name() {
+        return receiver_name;
     }
 
-    public void setDatetime(Date datetime) {
-        this.datetime = datetime;
+    public void setReceiver_name(String receiver_name) {
+        this.receiver_name = receiver_name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public int getZip_code() {
+        return zip_code;
+    }
+
+    public void setZip_code(int zip_code) {
+        this.zip_code = zip_code;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
     }
 
     public int getStatus() {
@@ -111,5 +163,13 @@ public class Order {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
     }
 }

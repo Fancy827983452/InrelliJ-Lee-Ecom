@@ -4,6 +4,7 @@
 <%@ page import="com.Ecom.model.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ProductProperty" %>
+<%@ page import="com.Ecom.model.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <% String path = request.getContextPath();
@@ -152,7 +153,8 @@
                 </div>
             </div>
         </div>
-        <form action="/AddToCart" method="post">
+
+        <form action="/AddToCart" method="post" id="product_form" onsubmit="return checkLoginAndSelected()">
         <div class="col-md-7 single-top-in">
             <div class="single-para simpleCart_shelfItem">
                 <%
@@ -198,7 +200,7 @@
                     <h6>Available Options :</h6>
                     <ul>
                         <%
-                            String propertyName = null;
+                            String propertyName = "";
                         %>
                         <%
                             for (int i = 0;i<propertyList.size();i++){
@@ -212,6 +214,7 @@
                         %>
                     </ul>
                 </div>
+
                 <div>
                     <button type="submit" class="cart item_add">Add To Cart</button>
                 </div>
@@ -631,7 +634,26 @@
         document.getElementById("hiddenprice").value = "$"+price;
     }
 
+    function checkLoginAndSelected() {
+            var name = document.getElementsByName("property_name");
+            var isChoose = false;
+            for(var i=0;i<name.length;i++){
+                if(name[i].checked){
+                    isChoose = true;
+                    break;
+                }
+            }
 
+            if(!isChoose){
+                alert("Please choose a kind");
+                return false;
+            }else if((<%=session.getAttribute("user")%>) == null) {
+                alert("Please Login");
+                return false;
+            }
+
+            return true;
+        }
 </script>
 </body>
 </html>

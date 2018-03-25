@@ -33,5 +33,6 @@
       <mapper class="com.Ecom.mapper.UserMapper"/>
       <mapper class="com.Ecom.mapper.ShopMapper"/>
       <mapper class="com.Ecom.mapper.ProductMapper"/>
+      <mapper class="com.Ecom.mapper.OrderMapper"/>
   </mappers>
 </configuration>

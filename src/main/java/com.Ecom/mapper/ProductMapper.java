@@ -62,8 +62,8 @@ public interface ProductMapper {
     @Select("select ifnull(max(sequence),0) from product_picture where product_id=#{product_id}")
     public int getMaxSequence(int product_id);
 
-    @Select("select ifnull(max(product_id),0) from product where shop_id=#{shop_id}")
-    public int getProduct_ID(int shop_id);
+    @Select("select ifnull(max(product_id),0) from product")
+    public int getProduct_ID();
 
     @Select("select * from product where shop_id=#{shop_id}")
     public List<Product> getProductList(int shop_id);

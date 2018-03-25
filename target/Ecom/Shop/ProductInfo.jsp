@@ -633,27 +633,26 @@
         document.getElementById("unit_price").innerHTML = "$"+price;
         document.getElementById("hiddenprice").value = "$"+price;
     }
-
+</script>
+<script>
     function checkLoginAndSelected() {
-            var name = document.getElementsByName("property_name");
-            var isChoose = false;
-            for(var i=0;i<name.length;i++){
-                if(name[i].checked){
-                    isChoose = true;
-                    break;
-                }
+        var name = document.getElementsByName("property_name");
+        var isChoose = false;
+        for(var i=0;i<name.length;i++){
+            if(name[i].checked){
+                isChoose = true;
+                break;
             }
-
-            if(!isChoose){
-                alert("Please choose a kind");
-                return false;
-            }else if((<%=session.getAttribute("user")%>) == null) {
-                alert("Please Login");
-                return false;
-            }
-
-            return true;
         }
+        if(!isChoose){
+            alert("Please choose a property!");
+            return false;
+        }else if((<%=session.getAttribute("user")%>) == null) {
+            alert("Please Login first!");
+            return false;
+        }
+        return true;
+    }
 </script>
 </body>
 </html>

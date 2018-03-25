@@ -39,7 +39,7 @@ public class ProductController {
         int shop_id = myShop.getShop_id();
 
         //获取product_id
-        int product_id = productMapper.getProduct_ID(shop_id) + 1;
+        int product_id = productMapper.getProduct_ID() + 1;
 
         //获取当前系统时间
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

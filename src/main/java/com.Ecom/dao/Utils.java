@@ -36,42 +36,6 @@ public class Utils {
         return mapper.getProductPictureList(product_id);
     }
 
-    //去除map中value相同的元素，保留key最小的那个值
-    public static Map<Integer,String> RemoveRepFromMap(Map<Integer,String> map){
-
-        Set<Map.Entry<Integer,String>> set = map.entrySet();
-        List<Map.Entry<Integer,String>> list = new ArrayList<Map.Entry<Integer,String>>(set);
-
-        //重载compare函数  对list集合进行排序，根据value值进行排序，
-        Collections.sort(list,new Comparator<Map.Entry<Integer,String>>(){
-            public int compare(Map.Entry<Integer,String> entry1, Map.Entry<Integer,String> entry2){
-                return Integer.valueOf(entry1.getValue().hashCode()-entry2.getValue().hashCode());
-            }
-        });
-
-        for(int i=0;i<list.size();i++)
-        {//删除重复的元素
-            Integer key = list.get(i).getKey();
-            String value = list.get(i).getValue();
-
-            int j=i+1;//map中的下一个
-            if(j<list.size()){
-                Integer next_key = list.get(j).getKey();
-                String next_value = list.get(j).getValue();
-
-                if(value == next_value){
-                    if(key.hashCode() < next_key.hashCode()) {
-                        map.remove(next_key);
-                    }list.remove(j);
-                }else{
-                    map.remove(key);list.remove(i);
-                }
-                i--;
-            }
-        }
-        return map;
-    }
-
     public static boolean notZero(int[] a) {
         for (int i = 0; i < a.length; i++) {
             if (a[i] != 0) {
@@ -81,5 +45,116 @@ public class Utils {
                 return false;
         }
         return true;//不为0
+    }
+
+    //获取重复元素重复了几次
+    public int[] getRepeatNum(Map<Object,Object> map)
+    {
+        Object keys[]=getKeys(map);
+        Object values[]=getValues(map);
+        int size=map.size();
+        int repeatNum[]=new int[size];
+        for(int i=0;i<size;i++)
+        {
+            repeatNum[i]=0;
+            for(int j=i+1;j<size;j++)
+            {
+                if(values[i].equals(values[j]))
+                {
+                    repeatNum[i]++;
+                }
+            }
+        }
+        repeatNum=removeZero(repeatNum);
+        return repeatNum;
+    }
+
+    public int[] removeZero(int[] a) {
+        int j = 0;
+        // 这个for循环计算出你传入的这个数组去掉0后的长度
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != 0) {
+                j++;
+            }
+        }
+        // 定义数组的长度
+        int[] newarr = new int[j];
+        j = 0;
+        // 将不为零的copy到新数组中去
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != 0) {
+                newarr[j] = a[i];
+                j++;
+            }
+        }
+        return newarr;
+    }
+
+    //去除map中value相同的元素，保留key最小的那个值
+    public Map<Object,Object> RemoveRepFromMap(Map<Object,Object> map)
+    {
+        Object keys[]=getKeys(map);
+        Object values[]=getValues(map);
+        int size=map.size();
+        int index[]=new int[size];
+        for(int i=0;i<size;i++)
+        {
+            for(int j=i+1;j<size;j++)
+            {
+                if(values[i].equals(values[j]))
+                {
+                    index[i]=Integer.parseInt(keys[j].toString());
+                }
+            }
+        }
+        for(int i=0;i<index.length;i++)
+        {
+            if(index[i]!=0)
+                map.remove(index[i]);
+        }
+        return map;
+    }
+
+    public Object[] getKeys(Map<Object,Object> map)
+    {
+        Iterator iter = map.entrySet().iterator();
+        Object keys[]=new Object[map.size()];
+        int i=0;
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            Object key = entry.getKey();
+            keys[i]=key;
+            i++;
+        }
+        return keys;
+    }
+
+    public Object[] getValues(Map<Object,Object> map)
+    {
+        Iterator iter = map.entrySet().iterator();
+        Object values[]=new Object[map.size()];
+        int i=0;
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+            Object value = entry.getValue();
+            values[i]=value;
+            i++;
+        }
+        return values;
+    }
+
+    public static void main(String[] args) {
+        Map<Object,Object> map=new HashMap<Object,Object>();
+        map.put(1,"123");
+        map.put(2,"123");
+        map.put(3,"789's Shop");
+        map.put(4,"789's Shop");
+
+        Utils utils=new Utils();
+        int []a=utils.getRepeatNum(map);
+        map=utils.RemoveRepFromMap(map);
+        System.out.println(map);
+        for(int i=0;i< a.length;i++)
+            System.out.println(a[i]);
     }
 }

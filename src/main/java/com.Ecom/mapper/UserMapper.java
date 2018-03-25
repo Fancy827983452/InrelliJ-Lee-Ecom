@@ -74,13 +74,15 @@ public interface UserMapper {
     public int addUserProfile(User user);
 
     //获取购物车数据
-    @Select("select tt.*,UNIT_PRICE from(" +
-            "select temp.*,file,SEQUENCE from (" +
-            "select CART_ID,EMAIL,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT from shopping_cart " +
-            "join product on shopping_cart.PRODUCT_ID=product.PRODUCT_ID where email=#{email})as temp " +
-            "join product_picture on temp.PRODUCT_ID=product_picture.PRODUCT_ID)as tt " +
-            "join product_property on product_property.PROPERTY_NAME=tt.PROPERTY_NAME " +
-            "where email=#{email} and tt.SEQUENCE=1;")
+    @Select("select t3.*,SHOP_NAME from(" +
+            "select t2.*,UNIT_PRICE from(" +
+            "select t1.*,file,SEQUENCE from (" +
+            "select CART_ID,EMAIL,product.shop_id,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT from shopping_cart " +
+            "join product on shopping_cart.PRODUCT_ID=product.PRODUCT_ID where email=#{0})as t1 " +
+            "join product_picture on t1.PRODUCT_ID=product_picture.PRODUCT_ID)as t2 " +
+            "join product_property on product_property.PROPERTY_NAME=t2.PROPERTY_NAME)as t3 " +
+            "join shop on shop.SHOP_ID=t3.shop_id " +
+            "where t3.email=#{0} and t3.SEQUENCE=1")
     public List<ShoppingCart> getCart(String email);
 
     @Insert("insert into shopping_cart(email,product_id,property_name,amount) values(#{email},#{product_id},#{property_name},1)")
@@ -94,4 +96,16 @@ public interface UserMapper {
 
     @Delete("delete from shopping_cart where cart_id=#{cart_id}")
     public int deleteCartProduct(int cart_id);
+
+    //获取购物车某条数据
+    @Select("select t3.*,SHOP_NAME from(" +
+            "select t2.*,UNIT_PRICE from(" +
+            "select t1.*,file,SEQUENCE from (" +
+            "select CART_ID,EMAIL,product.shop_id,shopping_cart.PRODUCT_ID,PRODUCT_NAME,PROPERTY_NAME,AMOUNT from shopping_cart " +
+            "join product on shopping_cart.PRODUCT_ID=product.PRODUCT_ID where email=#{0})as t1 " +
+            "join product_picture on t1.PRODUCT_ID=product_picture.PRODUCT_ID)as t2 " +
+            "join product_property on product_property.PROPERTY_NAME=t2.PROPERTY_NAME)as t3 " +
+            "join shop on shop.SHOP_ID=t3.shop_id " +
+            "where t3.email=#{0} and t3.SEQUENCE=1 and t3.cart_id=#{1};")
+    public ShoppingCart getCartItem(String email,int cart_id);
 }

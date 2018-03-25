@@ -50,10 +50,15 @@
 			{
 		%>
 			<table cellpadding="0" cellspacing="0" class="CartTb">
+                <tr class="table-bordered">
+                    <td colspan="8" style="padding-left: 70px">Shop Name:
+                        <a href="../Shop/ShopIndex.jsp?shop_id=<%=shoppingCartList.get(i).getShop_id()%>"><%=shoppingCartList.get(i).getShop_name()%></a>
+                    </td>
+                </tr>
 				<tr id="<%=i%>">
-					<td class="tb2_td1"><input type="checkbox" value="<%=shoppingCartList.get(i).getCart_id()%>" name="c" id="newslist-<%=i%>" /></td>
+					<td class="tb2_td1"><input type="checkbox" name="c" id="newslist-<%=i%>" value="<%=shoppingCartList.get(i).getCart_id()%>"/></td>
 					<td class="tb2_td2"><a href="#"><img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartList.get(i).getProduct_id()%>/1"></a></td>
-					<td class="tb2_td3"><a href="#"><%=shoppingCartList.get(i).getProduct_name()%></a></td>
+					<td class="tb2_td3"><a href="http://localhost:8080/productinfo/<%=shoppingCartList.get(i).getProduct_id()%>"><%=shoppingCartList.get(i).getProduct_name()%></a></td>
 					<td class="tb1_td4"><%=shoppingCartList.get(i).getProperty_name()%></td>
 					<td class="tb1_td5">
 						<label id="unit_price<%=i%>" style="color:#ff5500;font-size:14px; font-weight:bold;" ><%=shoppingCartList.get(i).getUnit_price()%></label>
@@ -82,7 +87,10 @@
 				<td class="tb3_td1">&nbsp;</td>
 				<td class="tb3_td2">Seleted: <label id="Amount" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> </td>
 				<td class="tb3_td3">Total:<span style=" color:#ff5500;"><label id="Total" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label></span></td>
-				<td class="tb3_td4"><span id="jz1">Pay</span><a style=" display:none;"  class="jz2" id="jz2">Pay</a></td>		</tr>
+				<td class="tb3_td4">
+                    <span id="jz1">Pay</span>
+                    <a style=" display:none;"  class="jz2" id="jz2" onclick="pay()">Pay</a>
+                </td></tr>
 		</table>
 	</div>
 </div>
@@ -206,6 +214,20 @@
         else
             return false;
     }
-
+    
+    function pay() {
+        obj = document.getElementsByName("c");
+        check_val = [];
+        for (k in obj) {
+            if (obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        if (check_val.length == 0)
+            alert("Please select an item!");
+        else {
+            document.form1.action = '/SettleAccount?cart_id=' + check_val;
+            document.form1.submit();
+        }
+    }
 </script>
 </html>

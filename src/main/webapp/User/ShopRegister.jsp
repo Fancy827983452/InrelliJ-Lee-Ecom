@@ -22,7 +22,7 @@
             </li>
         </ul>
         <center>
-            <form method="post" action="/ShopRegister" class="form-horizontal" style="width:550px">
+            <form method="post" action="/ShopRegister" class="form-horizontal" style="width:550px" enctype="multipart/form-data">
 
                 <div class="form-group" >
                     <label for="email" class="col-sm-2 control-label">EmailID</label>

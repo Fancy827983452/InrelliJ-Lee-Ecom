@@ -89,14 +89,15 @@ body {
 }
 
 /*****购物车*********/
-.gwc{ width:950px;overflow:hidden;}
+.gwc{ width:1000px;overflow:hidden;}
 .gwc_tb1{ width:100%; border-top:5px solid #c0c0c0; background:#eeeeee; height:38px; margin-top:20px; overflow:hidden;}
 .tb1_td1{ width:35px; text-align:center;}
 .tb1_td3{ width:260px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
-.tb1_td4{ width:260px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
-.tb1_td5{ width:115px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
+.tb1_td4{ width:120px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
+.tb1_td5{ width:120px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
 .tb1_td6{ width:135px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
-.tb1_td7{ text-align:center;}
+.tb1_td7{ width:120px; text-align:center; background:url(../images/td1.jpg) right no-repeat;}
+.tb1_td8 { width: 100px; text-align:center; }
 
 
 .CartTb{ width:100%; margin-top:20px; border:1px solid #e5e5e5; padding-top:20px; padding-bottom:20px;}

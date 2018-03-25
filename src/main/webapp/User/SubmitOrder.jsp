@@ -1,3 +1,6 @@
+<%@ page import="com.Ecom.model.Address" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.Ecom.model.ShoppingCart" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,109 +8,96 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
     <link href="../css/mystyle.css" rel="stylesheet">
+    <%
+        int num=Integer.parseInt(request.getParameter("num"));
+        List<Address> addressList=(List<Address>)session.getAttribute("addressList");
+        ShoppingCart[] shoppingCartItem=new ShoppingCart[num];
+    %>
 </head>
 <body>
 <div class="container">
     <jsp:include page="../Shared/_Layout.jsp"/>
-    <h4>Select the shipping address</h4>
-    <table class="table table-hover" id="table1">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Recipient</th>
-            <th>Address</th>
-            <th>Phone</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input type = "radio" name = "check" id = "check"/></td>
-            <td>Tanmay</td>
-            <td>Bangalore</td>
-            <td>560001</td>
-        </tr>
-        <tr>
-            <td><input type = "radio" name = "check" id = "check"/></td>
-            <td>Sachin</td>
-            <td>Mumbai</td>
-            <td>400003</td>
-        </tr>
-        <tr>
-            <td><input type = "radio" name = "check" id = "check"/></td>
-            <td>Uma</td>
-            <td>Pune</td>
-            <td>411027</td>
-        </tr>
-        </tbody>
-    </table>
+    <h4>Select the shipping address:</h4>
+    <%--地址表格--%>
+    <form name="form1" method="post" action="">
+        <table class="table table-hover" id="addresstable">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Receiver Name</th>
+                <th>Address</th>
+                <th>Zip Code</th>
+                <th>Phone</th>
+                <th>Default</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <div class="modal fade" id="addaddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Address</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" method="post" action="/AddSelfAddress" id="Addressform" name="Addressform">
-                        <div class="form-group row">
-                            <label for="receiver_name" class="col-md-offset-2 col-md-2 control-label" ><span style="color:red">*&nbsp;</span>Receiver Name:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="receiver_name" name="receiver_name"></div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="address" class="col-md-offset-2 col-md-2 control-label" ><span style="color:red">*&nbsp;</span>Address:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="address" name="address"></div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-offset-2 col-md-2 control-label" ><span style="color:red">*&nbsp;</span>Phone:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="phone" name="phone"></div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="zip_code" class="col-md-offset-2 col-md-2 control-label" ><span style="color:red">*&nbsp;</span>Zip Code:</label>
-                            <div class="col-md-6"><input type="text" class="form-control" id="zip_code" name="zip_code"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <!--<button type="button" class="btn btn-default" style="border: none">Forget Password</button>-->
-                            <center><button type="submit" class="btn btn-primary">Add</button></center>
-                        </div>
-                    </form>
-                </div>
+            <%
+                if(!addressList.isEmpty()){
+                    for(int i=0;i<addressList.size();i++){//行数
+            %>
+            <tr>
+                <td class="tb2_td1">
+                    <input type = "radio" name = "check" id = "check" value="<%=addressList.get(i).getAddress_id()%>"/>
+                </td>
+                <td><%=addressList.get(i).getReceiver_name()%></td>
+                <td><%=addressList.get(i).getAddress()%></td>
+                <td><%=addressList.get(i).getZip_code()%></td>
+                <td><%=addressList.get(i).getPhone()%></td>
+                <td>
+                    <%
+                        if(addressList.get(i).getDefault_address()!=0){
+                    %>
+                    <label class="btn-primary">Default</label>
+                    <%}%>
+                </td>
+            <tr>
+                    <%
+                }
+            }
+        %>
+            </tbody>
+        </table>
 
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    <a href="ManageSelfAddress.jsp">->Go to manage the address</a>
+    <br/><br/>
 
-    <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#addaddress">Add New Address</button>
-    <button type="submit" class="btn btn-default">Modify Address</button>
-
-    <table class="table table-bordered" id="detailtable" style="margin-top:40px;">
-        <tr style="background-color:#f5f5f5;">
-            <td>2018-3-13 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OrderID:12456789</td>
-            <td><a href="../Shop/ShopIndex.jsp">ShopName</a></td>
-            <td colspan=3 >
-                Contact Seller
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="float:left;width:50%; text-align:center;"><img alt="no image" src="../images/pc.jpg"></div>
-                <div style="float:left;width:50%; text-align:left;"><a href="#">ProductName</a><br> property</div>
-            </td>
-            <td>
-                price
-            </td>
-            <td >
-                Amount
-            </td>
-            <td>
-                Total Price
-            </td>
-            <td>
-                Shipping fee
-            </td>
-        </tr>
-    </table>
-    <button type="submit" class="btn btn-default" style="float: right;color: red;">Pay</button>
+        <%--订单--%>
+        <form action="" method="post" name="form3">
+            <%
+                for(int i=0;i<num;i++)
+                {
+                    shoppingCartItem[i]=(ShoppingCart)session.getAttribute("shoppingCartItem"+i);
+                    float unit_price=shoppingCartItem[i].getUnit_price();
+                    int amount=shoppingCartItem[i].getAmount();
+                    float actual_pay=unit_price*amount;
+            %>
+            <table class="table table-bordered">
+                <tr style="background-color:#f5f5f5;">
+                    <td colspan="4" style="text-align: center">Shop Name: <a href="#"><%=shoppingCartItem[i].getShop_name()%></a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="float:left;width:50%; text-align:center;"><img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartItem[i].getProduct_id()%>/1"></div>
+                        <div style="float:left;width:50%; text-align:left;">
+                            Product Name: <a href="http://localhost:8080/productinfo/<%=shoppingCartItem[i].getProduct_id()%>"><%=shoppingCartItem[i].getProduct_name()%></a>
+                            <br />
+                            Property: <%=shoppingCartItem[i].getProperty_name()%></div>
+                    </td>
+                    <td>Unit Price: <br/><%=unit_price%></td>
+                    <td >Amount: <br/><%=amount%></td>
+                    <td>Actual Pay: <br/><%=actual_pay%></td>
+                </tr>
+            </table>
+            <%
+                }
+            %>
+        </form>
+    <button type="submit" class="btn btn-default btn-primary" style="float: right;">Submit Order</button>
+        <br/><br/><br/><br/>
 </div>
 </body>
+
+
 </html>

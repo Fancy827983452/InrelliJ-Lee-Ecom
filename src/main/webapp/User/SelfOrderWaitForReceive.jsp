@@ -1,3 +1,5 @@
+<%@ page import="com.Ecom.model.Order" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,6 +7,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Shop</title>
+    <%
+        List<Order> orderList=(List<Order>)session.getAttribute("orderList");
+    %>
 </head>
 <body>
 <jsp:include page="../Shared/_PersonalCenter.jsp" />
@@ -17,251 +22,73 @@
     </li>
 </ul>
 
-<button type="button"  class="btn btn-info">Confirm Received
-</button>
-<table class="table table-striped table-hover">
-    <thead>
-    <tr>
-        <th>
-            <input type = "checkbox" id = "allCheck"/>
-        </th>
-        <th>
-            OrderID
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Address
-        </th>
-        <th>
-            ShopName
-        </th>
-        <th>
-            ProductImg
-        </th>
-        <th>
-            ProductName
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Amount
-        </th>
-        <th>
-            Time
-        </th>
-        <th>
-            Status
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-   <a href="SelfOrderDetails.jsp"><tr>
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
-        <td>
-            1
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr></a>
-   <tr class="success">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
-        <td>
-            2
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc1.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr>
-    <tr class="error">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
-        <td>
-            3
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc2.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr>
-    <tr class="warning">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
-        <td>
-            4
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc3.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr>
-    <tr class="info">
-        <td class="tb2_td1">
-            <input type = "checkbox" name = "check"/>
-        </td>
-        <td>
-            5
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            <img alt="no image" src="../images/pc4.jpg">
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-        <td>
-            Default
-        </td>
-    </tr>
-    </tbody>
-</table>
+<form action="" method="post" name="form3">
+    <%
+        for(int i=0;i<orderList.size();i++)
+        {
+            String status=null;
+            int s=orderList.get(i).getStatus();
+            if(s==1)//待收货
+            {    status="Wait for confirmation of receipt";
+
+    %>
+    <input type="hidden" id="size" value="<%=orderList.size()%>"/>
+    <input type="hidden" id="s<%=i%>" value="<%=orderList.get(i).getStatus()%>"/>
+    <table class="table table-bordered">
+        <tr style="background-color:#f5f5f5;">
+            <td><%=orderList.get(i).getTime()%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                OrderID:<span id="order_id<%=i%>"><%=orderList.get(i).getOrder_id()%></span>
+            </td>
+            <td>Shop Name: <a href="../Shop/ShopIndex.jsp?shop_id=<%=orderList.get(i).getShop_id()%>"><%=orderList.get(i).getShop_name()%></a></td>
+            <td colspan=3 >Contact Seller</td>
+        </tr>
+        <tr>
+            <td>
+                <div style="float:left;width:50%; text-align:center;"><img  alt="no image" src="http://localhost:8080/productimage/<%=orderList.get(i).getProduct_id()%>/1"></div>
+                <div style="float:left;width:50%; text-align:left;">
+                    Product Name: <a href="#"><%=orderList.get(i).getProduct_name()%></a>
+                    <br />
+                    Property: <%=orderList.get(i).getProperty_name()%></div>
+            </td>
+            <td>Unit Price: <br/><%=orderList.get(i).getUnit_price()%></td>
+            <td >Amount: <br/><%=orderList.get(i).getAmount()%></td>
+            <td>Actual Pay: <br/><%=orderList.get(i).getActual_pay()%></td>
+            <td id="status<%=i%>"><%=status%></td>
+        </tr>
+        <tr id="<%=i%>">
+            <td colspan=5>
+                <button type="button"  class="btn btn-info" onclick="ConfirmReceived(this)" id="ConfirmReceived<%=i%>">Confirm Received</button>
+            </td>
+        </tr>
+    </table>
+    <%
+            }
+            else
+                continue;
+        }
+    %>
+</form>
+
 </body>
 <script>
-    $("#allCheck").click(function(){
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        if(a.checked){
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = true;
-            }
-        }else{
-            for(var i = 0; i < b.length; i++){
-                b[i].checked = false;
-            }
+    function ConfirmReceived(obj) {
+        if(confirm('Are you sure you have received the product?'))
+        {
+            Received(obj);
+            return true;
         }
-    })
-    //单选框
-    $("input[name='check']").click(function(){
-        var flag = true;
-        var a = document.getElementById("allCheck");
-        var b = document.getElementsByName("check");
-        for(var i = 0; i < b.length; i++){
-            if(!b[i].checked){
-                flag = false;
-                break;
-            }
-        }
-        a.checked = flag;
-    });
+        else
+            return false;
+    }
+
+    function Received(obj) {
+        //获取onclick的id
+        var this_id = obj.id;
+        //获取i的值
+        var i=obj.parentNode.parentNode;
+        var order_id=document.getElementById("order_id"+i.id);
+        document.form3.action='/ConfirmReceived?order_id='+order_id.innerText;
+        document.form3.submit();
+    }
 </script>
 </html>

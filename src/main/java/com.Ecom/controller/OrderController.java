@@ -2,7 +2,9 @@ package com.Ecom.controller;
 
 import com.Ecom.dao.MySqlSession;
 import com.Ecom.mapper.OrderMapper;
+import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.Order;
+import com.Ecom.model.ShoppingCart;
 import com.Ecom.model.Transaction;
 import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
@@ -83,5 +85,25 @@ public class OrderController {
 
         session.close();
         return new ModelAndView("redirect:/User/SelfOrder.jsp",map);
+    }
+
+    @RequestMapping(value = "SettleAccount",method = RequestMethod.POST)
+    public ModelAndView SettleAccount(@RequestParam("cart_id") String cart_ids,HttpServletResponse response,
+                                          HttpServletRequest request,ModelMap map) throws IOException {
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        User user =(User)request.getSession().getAttribute("user");
+
+        String cart_id[]=cart_ids.split(",");
+        int num=cart_id.length;
+        ShoppingCart[] shoppingCartItem=new ShoppingCart[num];
+        for(int i=0;i<num;i++)
+        {
+            shoppingCartItem[i]=mapper.getCartItem(user.getEmail(),Integer.parseInt(cart_id[i]));
+            request.getSession().setAttribute("shoppingCartItem"+i,shoppingCartItem[i]);
+        }
+        session.close();
+        map.put("num",num);
+        return new ModelAndView("redirect:/User/SubmitOrder.jsp");
     }
 }

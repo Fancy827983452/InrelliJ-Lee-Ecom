@@ -23,13 +23,25 @@ public interface OrderMapper {
     @Update("update self_order set status=#{0} where order_id=#{1} and email=#{2}")
     public int ConfirmReceived(int status,int order_id,String email);
 
-    //退款
+    //插入交易记录
     @Insert("insert into transaction(order_id,card_id,type,money,balance,time,details) " +
             "values(#{order_id},#{card_id},#{type},#{money},#{balance},#{time},#{details})")
-    public int Refund(Transaction transaction);
+    public int InsertTransaction(Transaction transaction);
 
     //获取个人交易记录
     @Select("SELECT transaction.*,EMAIL FROM transaction join user_bank_card on transaction.CARD_ID=user_bank_card.CARD_ID " +
             "where EMAIL=#{email}")
     public List<Transaction> getTransactions(String email);
+
+    @Select("select ifnull(max(order_id),0) FROM self_order")
+    public int getMaxOrderID();
+
+    @Insert("insert into self_order(order_id,email,shop_id,product_id,property_name,unit_price,amount,shipping_fee,actual_pay,address_id,time,status) " +
+            "values(#{order_id},#{email},#{shop_id},#{product_id},#{property_name},#{unit_price},#{amount},#{shipping_fee},#{actual_pay},#{address_id},#{time},#{status})")
+    public int insertOrder(Order order);
+
+    //获取余额
+    @Select("SELECT BALANCE FROM transaction join user_bank_card on transaction.CARD_ID=user_bank_card.CARD_ID " +
+            "where EMAIL=#{email} order by Time desc limit 1")
+    public float getBalance(String email);
 }

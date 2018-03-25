@@ -108,4 +108,8 @@ public interface UserMapper {
             "join shop on shop.SHOP_ID=t3.shop_id " +
             "where t3.email=#{0} and t3.SEQUENCE=1 and t3.cart_id=#{1};")
     public ShoppingCart getCartItem(String email,int cart_id);
+
+    //读取用户绑定银行卡卡号
+    @Select("SELECT card_id FROM user_bank_card where email=#{email}")
+    public List<String> getCardID(String email);
 }

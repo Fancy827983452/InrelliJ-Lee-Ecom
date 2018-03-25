@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ShoppingCart" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -50,13 +51,21 @@
 			{
 		%>
 			<table cellpadding="0" cellspacing="0" class="CartTb">
+                <tr class="table-bordered">
+                    <td colspan="8" style="padding-left: 70px">Shop Name:
+                        <a href="../Shop/ShopIndex.jsp?shop_id=<%=shoppingCartList.get(i).getShop_id()%>"><%=shoppingCartList.get(i).getShop_name()%></a>
+                    </td>
+                </tr>
 				<tr id="<%=i%>">
-					<td class="tb2_td1"><input type="checkbox" value="<%=shoppingCartList.get(i).getCart_id()%>" name="c" id="newslist-<%=i%>" /></td>
+					<td class="tb2_td1"><input type="checkbox" name="c" id="newslist-<%=i%>" value="<%=shoppingCartList.get(i).getCart_id()%>"/></td>
 					<td class="tb2_td2"><a href="#"><img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartList.get(i).getProduct_id()%>/1"></a></td>
-					<td class="tb2_td3"><a href="#"><%=shoppingCartList.get(i).getProduct_name()%></a></td>
+					<td class="tb2_td3"><a href="http://localhost:8080/productinfo/<%=shoppingCartList.get(i).getProduct_id()%>"><%=shoppingCartList.get(i).getProduct_name()%></a></td>
 					<td class="tb1_td4"><%=shoppingCartList.get(i).getProperty_name()%></td>
 					<td class="tb1_td5">
-						<label id="unit_price<%=i%>" style="color:#ff5500;font-size:14px; font-weight:bold;" ><%=shoppingCartList.get(i).getUnit_price()%></label>
+						<span style="color:#ff5500;font-size:14px; font-weight:bold;">￥</span>
+						<label id="unit_price<%=i%>" style="color:#ff5500;font-size:14px; font-weight:bold;" >
+							<%=shoppingCartList.get(i).getUnit_price()%>
+						</label>
 					</td>
 					<td class="tb1_td6" id="td">
 						<input id="min<%=i%>" name=""  style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="-" onclick="minus(this)"/>
@@ -64,6 +73,7 @@
 						<input id="add<%=i%>" name="" style=" width:20px; height:24px;border:1px solid #ccc;" type="button" value="+" onclick="add(this)"/>
 					</td>
 					<td class="tb1_td7">
+						<span style="color:#ff5500;font-size:14px; font-weight:bold;">￥</span>
 						<label class="tot" id="total<%=i%>" style="color:#ff5500;font-size:14px; font-weight:bold;" ></label>
 					</td>
 					<td class="tb1_td8"><a id="delete" onclick="confirmDelete(this)">Delete</a></td>
@@ -81,8 +91,11 @@
 				<td class="tb1_td1">&nbsp;</td>
 				<td class="tb3_td1">&nbsp;</td>
 				<td class="tb3_td2">Seleted: <label id="Amount" style="color:#ff5500;font-size:14px; font-weight:bold;">0</label> </td>
-				<td class="tb3_td3">Total:<span style=" color:#ff5500;"><label id="Total" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label></span></td>
-				<td class="tb3_td4"><span id="jz1">Pay</span><a style=" display:none;"  class="jz2" id="jz2">Pay</a></td>		</tr>
+				<td class="tb3_td3">Total:<span style=" color:#ff5500;">￥<label id="Total" style="color:#ff5500;font-size:14px; font-weight:bold;">0.00</label></span></td>
+				<td class="tb3_td4">
+                    <span id="jz1">Pay</span>
+                    <a style=" display:none;"  class="jz2" id="jz2" onclick="pay()">Pay</a>
+                </td></tr>
 		</table>
 	</div>
 </div>
@@ -130,12 +143,12 @@
             if(b[i].checked)
             {
                 aa++;
-                num = parseInt(num) + parseInt($(len[i]).text());
+                num = parseFloat(num) + parseFloat($(len[i]).text());
 
             }
         }
         $("#Amount").text(aa);
-        $("#Total").html((parseInt(num).toFixed(2)));
+        $("#Total").html((parseFloat(num).toFixed(2)));
         $("#jz1").css("display", "none");
         $("#jz2").css("display", "block");
 
@@ -206,6 +219,20 @@
         else
             return false;
     }
-
+    
+    function pay() {
+        var obj = document.getElementsByName("c");
+        check_val = [];
+        for (k in obj) {
+            if (obj[k].checked)
+                check_val.push(obj[k].value);
+        }
+        if (check_val.length == 0)
+            alert("Please select an item!");
+        else {
+            document.form1.action = '/SettleAccount?cart_id=' + check_val;
+            document.form1.submit();
+        }
+    }
 </script>
 </html>

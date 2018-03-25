@@ -88,6 +88,8 @@ body {
 	margin-right:auto;
 }
 
+.a-custom{text-decoration:none;color:#000000;}
+
 /*****购物车*********/
 .gwc{ width:1000px;overflow:hidden;}
 .gwc_tb1{ width:100%; border-top:5px solid #c0c0c0; background:#eeeeee; height:38px; margin-top:20px; overflow:hidden;}
@@ -116,3 +118,5 @@ body {
 .tb3_td4{ width:110px;text-align:center;}
 .jz2{ width:100px; height:46px; line-height:46px; text-align:center; font-size:18px; color:#fff; background:#ee0000; display:block; float:right;}
 #jz1{font-size:18px;}
+
+

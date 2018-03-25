@@ -44,6 +44,7 @@ public class UploadImageHelper {
                         rowData.put(item.getFieldName(), new String(item.get(), "UTF-8"));
                         itemlist.add(rowData);
                     } else {
+                        if (item.getSize()!=0){
                         //是文件上传，获取文件的名字
                         fis = (FileInputStream) item.getInputStream();
                         //获取流大小，确定byte数组大小
@@ -55,11 +56,14 @@ public class UploadImageHelper {
                         Map <String, byte[]> imgData = new HashMap <String, byte[]>();
                         imgData.put("picture", imgByte);
                         picturelist.add(imgData);
+                        }
                     }
                 }
             }
             return imgByte;
         }
+
+
 
     public static void showImg(byte[] imgByte, HttpServletResponse response,HttpServletRequest request) throws IOException {
         if (imgByte.length!=0) {

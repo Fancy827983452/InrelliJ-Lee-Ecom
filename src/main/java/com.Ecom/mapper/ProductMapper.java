@@ -77,8 +77,15 @@ public interface ProductMapper {
     @Select("select * from product where product_id=#{product_id}")
     Product getProductById(int product_id);
 
+    //根据关键词搜索
     @Select("select * from product where product_name like #{keyword}")
     List<Product> getProductsByKeyword(String keyword);
+
+    //根据店铺名搜索
+    @Select("select product.* from product join " +
+            "(select * from shop where SHOP_NAME like #{keyword}) as t1 " +
+            "on product.SHOP_ID = t1.SHOP_ID")
+    List<Product> getProductsByShopName(String keyword);
 
     //删除product表中数据
     @Delete("delete from product where product_id=#{product_id}")

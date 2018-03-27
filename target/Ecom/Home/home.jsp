@@ -22,6 +22,7 @@
     <link href="../css/flexslider.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
 
+
     <script type="text/javascript">
         var message="${param.Message}";
         if(message.length == 0 || null == message)
@@ -81,10 +82,14 @@
         <!-- /.col-lg-8 -->
         <form action="/searchProduct" method="post">
         <div class="col-lg-4" style="padding-top:90px;">
-            <ul class="nav nav-tabs nav-justified" style="width:20px;">
-                <li><a href="#" style="font-size:15px;">Commodity</a></li>
-                <li><a href="#" style="font-size:15px;">Store</a></li>
-            </ul>
+            <%--<ul class="nav nav-tabs nav-justified" style="width:20px;">--%>
+                <%--<li><a href="#" style="font-size:15px;">Commodity</a></li>--%>
+                <%--<li><a href="#" style="font-size:15px;">Store</a></li>--%>
+            <%--</ul>--%>
+                <select  name="keywordStyle" title="Commodity">
+                    <option>Commodity</option>
+                    <option>Store</option>
+                </select>
             <div class="input-group">
 
                 <input type="text" class="form-control" name="keyword" required>
@@ -188,6 +193,7 @@
 <script src="../js/simpleCart.min.js" type="text/javascript"></script>
 <script src="../js/uisearch.js" type="text/javascript"></script>
 <script src="../js/modernizr.custom.72111.js" type="text/javascript"></script>
+
 
 <script type="text/javascript">
     jQuery(function() {

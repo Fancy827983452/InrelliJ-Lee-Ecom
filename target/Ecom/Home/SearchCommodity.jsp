@@ -3,6 +3,8 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.Ecom.dao.MySqlSession" %>
 <%@ page import="com.Ecom.mapper.ProductMapper" %>
+<%@ page import="com.Ecom.model.Shop" %>
+<%@ page import="com.Ecom.mapper.ShopMapper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -48,10 +50,10 @@
                         Commodity
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Commodity</a></li>
-                        <li><a href="#">Store</a></li>
-                    </ul>
+                    <select  name="keywordStyle" title="Commodity">
+                        <option>Commodity</option>
+                        <option>Store</option>
+                    </select>
                 </div><!-- /btn-group -->
 
                     <input type="text" class="form-control" name="keyword" required>
@@ -81,12 +83,18 @@
     <div class="content-mid">
         <%
 
-           String keyword = request.getParameter("keyword");
+            String keyword = request.getParameter("keyword");
+            String keywordStyle = request.getParameter("keywordStyle");
 
             SqlSession sqlSessions= MySqlSession.getMySession(response);
             ProductMapper productMapper = sqlSessions.getMapper(ProductMapper.class);
 
-            List<Product> productList = productMapper.getProductsByKeyword(keyword);
+            List<Product> productList = null;
+            if (keywordStyle.equals("Commodity")){
+                productList = productMapper.getProductsByKeyword(keyword);
+            }else if (keywordStyle.equals("Store")){
+                productList = productMapper.getProductsByShopName(keyword);
+            }
 
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行

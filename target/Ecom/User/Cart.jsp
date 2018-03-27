@@ -219,7 +219,7 @@
         else
             return false;
     }
-    
+
     function pay() {
         var obj = document.getElementsByName("c");
         check_val = [];

@@ -46,11 +46,8 @@
         <form action="/searchProduct" method="post">
             <div class="input-group" style="width:500px; height:30px;margin:0 auto;top:10px;">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        Commodity
-                        <span class="caret"></span>
-                    </button>
-                    <select  name="keywordStyle" title="Commodity">
+
+                    <select  name="keywordStyle" title="Commodity" class="btn btn-default dropdown-toggle">
                         <option>Commodity</option>
                         <option>Store</option>
                     </select>
@@ -117,9 +114,9 @@
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
                     <div class="pro-img">
-                        <img src="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" class="img-responsive" alt="">
+                        <img src="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
-                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%>" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
                             <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                         </div>
                     </div>

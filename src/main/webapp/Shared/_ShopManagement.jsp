@@ -18,6 +18,8 @@
             var status="${sessionScope.shopInfo.status}";
             if(status==0)
                 alert("Your shop application has not been approved by the administrator. Please wait patiently!");
+            if(status==2)
+                alert("Your shop application has not been approved,please change your information")
         };
     </script>
 </head>

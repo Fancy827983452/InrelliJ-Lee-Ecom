@@ -7,18 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b97012f-60f6-4126-8f51-1a255d993933" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/Shop/ModifyShopInfo.jsp" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ShopMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ShopMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Shared/_ShopManagement.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Shared/_ShopManagement.jsp" />
       <change beforePath="$PROJECT_DIR$/target/Ecom.war" afterPath="$PROJECT_DIR$/target/Ecom.war" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/Home/SearchCommodity.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Home/SearchCommodity.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/Home/SearchStore.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Home/SearchStore.jsp" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/Home/LogOut.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Home/LogOut.jsp" />
       <change beforePath="$PROJECT_DIR$/target/Ecom/Home/home.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Home/home.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/Ecom/META-INF/MANIFEST.MF" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/Shared/_ShopManagement.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Shared/_ShopManagement.jsp" />
+      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/OrderController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/OrderController.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,31 +27,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/home.jsp">
+      <file leaf-file-name="ShopManagementIndex.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ShopManagementIndex.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="36" column="13" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Check.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp">
+      <file leaf-file-name="_ShopManagement.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_ShopManagement.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="97" column="79" lean-forward="true" selection-start-line="97" selection-start-column="79" selection-end-line="97" selection-end-column="79" />
+            <state relative-caret-position="299">
+              <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewSelfCard.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ViewSelfCard.jsp">
+      <file leaf-file-name="ModifyShopInfo.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ModifyShopInfo.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+            <state relative-caret-position="437">
+              <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductManagement.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductManagement.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="31" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopRegister.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ShopRegister.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="93" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="93" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -63,43 +80,76 @@
       <file leaf-file-name="ShopController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="299">
               <caret line="94" column="43" lean-forward="false" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="43" />
               <folding>
                 <element signature="method#ShopRegister#0;class#ShopController#0" expanded="false" />
+                <element signature="method#ShopCheck#0;class#ShopController#0" expanded="false" />
+                <element signature="method#ShopCheck#1;class#ShopController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UploadImageHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+            <state relative-caret-position="49">
+              <caret line="234" column="76" lean-forward="false" selection-start-line="234" selection-start-column="76" selection-end-line="234" selection-end-column="76" />
               <folding>
-                <element signature="e#4329#5006#0" expanded="false" />
+                <element signature="method#login#0;class#UserController#0" expanded="false" />
+                <element signature="method#register#0;class#UserController#0" expanded="false" />
+                <element signature="method#ModifySelfInfo#0;class#UserController#0" expanded="false" />
+                <element signature="method#ModifySelfPwd#0;class#UserController#0" expanded="false" />
+                <element signature="method#ModifySelfPayPwd#0;class#UserController#0" expanded="false" />
+                <element signature="method#AddSelfAddress#0;class#UserController#0" expanded="false" />
+                <element signature="method#ModifySelfAddress#0;class#UserController#0" expanded="false" />
+                <element signature="method#getSelectedSelfAddress#0;class#UserController#0" expanded="false" />
+                <element signature="method#deleteSelectedSelfAddress#0;class#UserController#0" expanded="false" />
+                <element signature="method#SetDefaultSelfAddress#0;class#UserController#0" expanded="false" />
+                <element signature="method#image#0;class#UserController#0" expanded="false" />
+                <element signature="method#addUserProfile#0;class#UserController#0" expanded="false" />
+                <element signature="method#AddToCart#0;class#UserController#0" expanded="false" />
+                <element signature="method#deleteCartProduct#0;class#UserController#0" expanded="false" />
+                <element signature="method#addSelfCard#0;class#UserController#0" expanded="false" />
+                <element signature="method#deleteSelectedCard#0;class#UserController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ShopMapper.java">
+      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/HomeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+            <state relative-caret-position="115">
+              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding>
+                <element signature="method#ShowProducts#0;class#HomeController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/FormController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DemoController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/DemoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+              <folding>
+                <element signature="method#update#0;class#DemoController#0" expanded="false" />
+                <element signature="method#update#1;class#DemoController#0" expanded="false" />
+                <element signature="method#show#0;class#DemoController#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,6 +171,8 @@
       <find>addtocart</find>
       <find>　</find>
       <find>getProduct</find>
+      <find>My</find>
+      <find>My Shop</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -163,6 +215,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ShopMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/Shared/_ShopManagement.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/Shop/ModifyShopInfo.jsp" />
       </list>
     </option>
   </component>
@@ -284,6 +338,22 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ecom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InrelliJ-Lee-Ecom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Ecom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InrelliJ-Lee-Ecom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Shop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Ecom" type="b2602c69:ProjectViewProjectNode" />
@@ -527,7 +597,7 @@
       <workItem from="1522201377073" duration="11257000" />
       <workItem from="1522216633508" duration="3674000" />
       <workItem from="1522220875351" duration="5459000" />
-      <workItem from="1522232972003" duration="7257000" />
+      <workItem from="1522232972003" duration="11843000" />
     </task>
     <task id="LOCAL-00001" summary="完成：结算-&gt;提交订单-&gt;选择银行卡，输入密码-&gt;付款。ps:提交订单SubmitOrder和购物车页面在显示店铺名的时候有小bug，同店铺的商品合并问题">
       <created>1521986076759</created>
@@ -571,11 +641,25 @@
       <option name="project" value="LOCAL" />
       <updated>1522226339824</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="finish admin approve/disapprove store function">
+      <created>1522240409779</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1522240409779</updated>
+    </task>
+    <task id="LOCAL-00008" summary="finish admin approve/disapprove store function">
+      <created>1522241049379</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1522241049379</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104245000" />
+    <option name="totallyTimeSpent" value="108831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="7" width="1936" height="1081" extended-state="0" />
@@ -590,7 +674,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4065934" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4065934" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -598,10 +682,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33406594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33406594" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2953813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2953813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -683,18 +767,11 @@
     <MESSAGE value="finish add bank card function" />
     <MESSAGE value="finish delete card function" />
     <MESSAGE value="finish search store function" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish search store function" />
+    <MESSAGE value="finish admin approve/disapprove store function" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish admin approve/disapprove store function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java</url>
-          <line>490</line>
-          <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="22" />
     </breakpoint-manager>
     <watches-manager>
@@ -704,68 +781,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/SearchCommodity.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2024">
-          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ProductMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="87" column="49" lean-forward="false" selection-start-line="87" selection-start-column="49" selection-end-line="87" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ProductController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="394" column="65" lean-forward="false" selection-start-line="394" selection-start-column="65" selection-end-line="394" selection-end-column="65" />
-          <folding>
-            <element signature="method#AddProduct#0;class#ProductController#0" expanded="false" />
-            <element signature="method#AddProductCategory#0;class#ProductController#0" expanded="false" />
-            <element signature="method#image#0;class#ProductController#0" expanded="false" />
-            <element signature="method#deleteProduct#0;class#ProductController#0" expanded="false" />
-            <element signature="method#getParameters#0;class#ProductController#0" expanded="false" />
-            <element signature="method#AddProduct#1;class#ProductController#0" expanded="false" />
-            <element signature="method#productinfo#0;class#ProductController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductInfo.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="226" column="14" lean-forward="false" selection-start-line="226" selection-start-column="14" selection-end-line="226" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="83" column="75" lean-forward="false" selection-start-line="83" selection-start-column="75" selection-end-line="83" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/SearchCommodity.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="34" column="46" lean-forward="true" selection-start-line="34" selection-start-column="46" selection-end-line="34" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -830,16 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/OrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="159" column="41" lean-forward="true" selection-start-line="159" selection-start-column="41" selection-end-line="159" selection-end-column="41" />
-          <folding>
-            <element signature="method#ConfirmReceived#0;class#OrderController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -888,14 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_Layout.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5267">
-          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1067,38 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ShopRegister.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="61" column="22" lean-forward="true" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_PersonalCenter.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="27" column="120" lean-forward="false" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="120" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/home.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="36" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ViewSelfCard.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/mapper/ShopMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -1117,6 +1082,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2461">
+          <caret line="107" column="20" lean-forward="false" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ViewSelfCard.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="45" column="32" lean-forward="false" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_PersonalCenter.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Home/home.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1702">
+          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_Layout.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="31" column="227" lean-forward="false" selection-start-line="31" selection-start-column="220" selection-end-line="31" selection-end-column="227" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/dao/UploadImageHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -1125,11 +1130,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="94" column="43" lean-forward="false" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="43" />
+          <folding>
+            <element signature="method#ShopRegister#0;class#ShopController#0" expanded="false" />
+            <element signature="method#ShopCheck#0;class#ShopController#0" expanded="false" />
+            <element signature="method#ShopCheck#1;class#ShopController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="334" column="113" lean-forward="false" selection-start-line="334" selection-start-column="113" selection-end-line="334" selection-end-column="113" />
+        <state relative-caret-position="49">
+          <caret line="234" column="76" lean-forward="false" selection-start-line="234" selection-start-column="76" selection-end-line="234" selection-end-column="76" />
           <folding>
+            <element signature="method#login#0;class#UserController#0" expanded="false" />
             <element signature="method#register#0;class#UserController#0" expanded="false" />
             <element signature="method#ModifySelfInfo#0;class#UserController#0" expanded="false" />
             <element signature="method#ModifySelfPwd#0;class#UserController#0" expanded="false" />
@@ -1144,24 +1162,91 @@
             <element signature="method#AddToCart#0;class#UserController#0" expanded="false" />
             <element signature="method#deleteCartProduct#0;class#UserController#0" expanded="false" />
             <element signature="method#addSelfCard#0;class#UserController#0" expanded="false" />
+            <element signature="method#deleteSelectedCard#0;class#UserController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/ShopController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="94" column="43" lean-forward="false" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="43" />
+        <state relative-caret-position="115">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding>
-            <element signature="method#ShopRegister#0;class#ShopController#0" expanded="false" />
+            <element signature="method#ShowProducts#0;class#HomeController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/Admin/Check.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/FormController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="97" column="79" lean-forward="true" selection-start-line="97" selection-start-column="79" selection-end-line="97" selection-end-column="79" />
+        <state relative-caret-position="138">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/OrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="method#ConfirmReceived#0;class#OrderController#0" expanded="false" />
+            <element signature="method#ConfirmRefund#0;class#OrderController#0" expanded="false" />
+            <element signature="method#SettleAccount#0;class#OrderController#0" expanded="false" />
+            <element signature="method#SubmitOrder#0;class#OrderController#0" expanded="false" />
+            <element signature="method#ConfirmPayPassword#0;class#OrderController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.Ecom/controller/DemoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="method#update#0;class#DemoController#0" expanded="false" />
+            <element signature="method#update#1;class#DemoController#0" expanded="false" />
+            <element signature="method#show#0;class#DemoController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ShopManagementIndex.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/User/ShopRegister.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="93" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="93" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shared/_ShopManagement.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="28" column="4" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ProductManagement.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="31" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/Shop/ModifyShopInfo.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
           <folding />
         </state>
       </provider>

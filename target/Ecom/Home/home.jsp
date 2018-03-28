@@ -22,6 +22,12 @@
     <link href="../css/flexslider.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
 
+    <%
+//        Object List=request.getParameter("productListAll");
+        Object List=session.getAttribute("productListAll");
+        //获取所有在售商品
+        List<Product> productList = (List<Product>)List;
+    %>
 
     <script type="text/javascript">
         var message="${param.Message}";
@@ -108,12 +114,10 @@
         <h3>Trending Items</h3>
         <label class="line"></label>
         <%
-            SqlSession sqlSession= MySqlSession.getMySession(response);
-            ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+            System.out.println(request.getParameter("Message"));
 
-            //获取所有在售商品
-            List<Product> productList = productMapper.getProductList();
-
+            if(productList!=null)
+            {
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行
             if (outerRowLeft>0) outerRow = outerRow+1;

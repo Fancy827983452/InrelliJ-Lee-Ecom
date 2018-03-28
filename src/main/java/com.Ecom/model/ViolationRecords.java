@@ -1,8 +1,9 @@
 package com.Ecom.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ViolationRecords {
+public class ViolationRecords implements Serializable {
 
     private int record_id;
     private String email;

@@ -1,8 +1,9 @@
 package com.Ecom.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ComplaintReport {
+public class ComplaintReport implements Serializable {
 
     private int complaint_id;
     private int shop_id;

@@ -1,11 +1,5 @@
 <%@ page import="com.Ecom.model.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.Ecom.mapper.ProductMapper" %>
-<%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="com.Ecom.dao.MySqlSession" %>
-<%@ page import="com.Ecom.mapper.ShopMapper" %>
-<%@ page import="com.Ecom.model.ProductPicture" %>
-<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,8 +16,14 @@
     <link href="../css/flexslider.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
 
+    <%
+//        Object List=request.getParameter("productListAll");
+        Object List=session.getAttribute("productListAll");
+        //获取所有在售商品
+        List<Product> productList = (List<Product>)List;
+    %>
 
-    <script type="text/javascript">
+    <script>
         var message="${param.Message}";
         if(message.length == 0 || null == message)
         {
@@ -35,6 +35,7 @@
             window.location.href="home.jsp";
         }
     </script>
+
 </head>
 <body>
 <div class="container">
@@ -108,25 +109,20 @@
         <h3>Trending Items</h3>
         <label class="line"></label>
         <%
-            SqlSession sqlSession= MySqlSession.getMySession(response);
-            ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
+            System.out.println(request.getParameter("Message"));
 
-            //获取所有在售商品
-            List<Product> productList = productMapper.getProductList();
-
+            if(productList!=null)
+            {
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行
             if (outerRowLeft>0) outerRow = outerRow+1;
-
             int count = 0;            //用于标记商品的计数器
-
             for (int i = 0;i<outerRow;i++)
             {
         %>
         <div class="mid-popular">
             <%
                 for (int j=0;j<4;j++){
-
                     //统一获取指定的值，方便html的调用
                     int product_id = productList.get(count).getProduct_id();
                     String product_name = productList.get(count).getProduct_name();
@@ -137,7 +133,7 @@
                     <div class="pro-img product-img-index-div">
                         <img class="auto-fix-img" src="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
-                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=1%> " height="100%" width="100%" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%> " height="100%" width="100%" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
                             <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                         </div>
                     </div>
@@ -171,6 +167,7 @@
             <div class="clearfix"></div>
         </div>
         <%
+                }
             }
         %>
     </div>
@@ -222,6 +219,6 @@
     });
 </script>
 
-
 </body>
+
 </html>

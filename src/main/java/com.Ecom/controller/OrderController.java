@@ -3,6 +3,7 @@ package com.Ecom.controller;
 import com.Ecom.dao.MySqlSession;
 import com.Ecom.dao.Utils;
 import com.Ecom.mapper.OrderMapper;
+import com.Ecom.mapper.ProductMapper;
 import com.Ecom.mapper.UserMapper;
 import com.Ecom.model.*;
 import org.apache.ibatis.session.SqlSession;
@@ -57,7 +58,7 @@ public class OrderController {
                 transaction.setCard_id(transactionList.get(i).getCard_id());
                 transaction.setType(1);
                 transaction.setMoney(transactionList.get(i).getMoney());
-                transaction.setBalance(transactionList.get(i).getBalance());
+                transaction.setBalance(transactionList.get(i).getBalance()+transactionList.get(i).getMoney());
                 //获取当前系统时间
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date();
@@ -202,14 +203,23 @@ public class OrderController {
             //删除购物车中提交的数据
             ShoppingCart[] shoppingCartItem=(ShoppingCart[])request.getSession().getAttribute("shoppingCartItem");
             int result3[]=new int[shoppingCartItem.length];
+            int result4[]=new int[shoppingCartItem.length];
+            int result5[]=new int[shoppingCartItem.length];
             for(int k=0;k<shoppingCartItem.length;k++)
             {
                 result3[k]=mapper.deleteCartProduct(shoppingCartItem[k].getCart_id());
+                //修改product_property表中商品的库存和销量
+                result4[k]=orderMapper.updateProperty(shoppingCartItem[k].getAmount(),shoppingCartItem[k].getProduct_id(),shoppingCartItem[k].getProperty_name());
+
+                //修改product表商品的总库存和销量
+                result5[k]=orderMapper.updateProductSales(shoppingCartItem[k].getAmount(),shoppingCartItem[k].getProduct_id());
             }
 
             boolean a= Utils.notZero(result);
             boolean b= Utils.notZero(result3);
-            if(a==true && result2>0 && b==true)
+            boolean c= Utils.notZero(result4);
+            boolean d= Utils.notZero(result4);
+            if(a==true && result2>0 && b==true && c==true && d==true)
             {
                 session.commit();
                 List<Order> orderList=orderMapper.getOrder(user.getEmail());

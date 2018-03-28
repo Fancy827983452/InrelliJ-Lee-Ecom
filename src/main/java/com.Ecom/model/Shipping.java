@@ -1,8 +1,9 @@
 package com.Ecom.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Shipping {
+public class Shipping implements Serializable {
 
     private int shipping_id;
     private int order_id;

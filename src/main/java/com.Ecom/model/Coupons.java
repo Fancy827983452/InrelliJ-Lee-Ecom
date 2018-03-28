@@ -1,8 +1,9 @@
 package com.Ecom.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Coupons {
+public class Coupons implements Serializable {
 
     private int coupon_id;
     private String coupon_name;

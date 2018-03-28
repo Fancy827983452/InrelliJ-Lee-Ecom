@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class Shop {
+import java.io.Serializable;
+
+public class Shop implements Serializable {
 
     private int shop_id;
     private String email;

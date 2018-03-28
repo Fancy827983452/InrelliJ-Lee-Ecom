@@ -193,7 +193,7 @@
                     <div class="clearfix"> </div>
                 </div>
 
-                <label  class="add-to item_price" id="unit_price">$<%=price%></label>
+                <label  class="add-to item_price" id="unit_price">￥<%=price%></label>
                 <input type="hidden" id="hiddenprice" value="<%=propertyList.get(0).getUnit_price()%>"/>
 
                 <div class="available">
@@ -630,8 +630,8 @@
 </script>
 <script type="text/javascript">
     function changePrice(price) {
-        document.getElementById("unit_price").innerHTML = "$"+price;
-        document.getElementById("hiddenprice").value = "$"+price;
+        document.getElementById("unit_price").innerHTML = "￥"+price;
+        document.getElementById("hiddenprice").value = "￥"+price;
     }
 </script>
 <script>

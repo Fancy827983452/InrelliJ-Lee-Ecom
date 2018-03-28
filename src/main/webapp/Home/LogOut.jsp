@@ -12,7 +12,7 @@
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 
 	session.invalidate();
-	response.sendRedirect(basePath+"/Home/home.jsp");
+	response.sendRedirect(basePath+"/Home/Welcome.jsp");
 %>
 
 </body>

@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class ShoppingCart {
+import java.io.Serializable;
+
+public class ShoppingCart implements Serializable {
 
     private int cart_id;
     private String email;

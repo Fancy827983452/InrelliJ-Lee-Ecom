@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class ProductCategory {
+import java.io.Serializable;
+
+public class ProductCategory implements Serializable {
     int category_id;
     int shop_id;
     String category_name;

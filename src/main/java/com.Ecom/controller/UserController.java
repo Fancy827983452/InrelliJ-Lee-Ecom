@@ -50,33 +50,64 @@ public class UserController {
 
         if(checkUser!=null)
         {
-            LoginMessage="Login Successfully!";
-            user=mapper.selectUser(email);
-            ShopMapper shopMapper=session.getMapper(ShopMapper.class);
-            Shop shopInfo=shopMapper.selectShop(email);
-            List<Address> addressList=mapper.showAllAddress(email);
-            ProductMapper productMapper = session.getMapper(ProductMapper.class);
-            List<ProductCategory> categoryNames=null;
-            List<Product> productList=null;
-            List<ShoppingCart> shoppingCartList=mapper.getCart(email);
-            OrderMapper orderMapper=session.getMapper(OrderMapper.class);
-            List<Order> orderList=orderMapper.getOrder(email);
-            if(shopInfo!=null) {
-                int shop_id=shopMapper.selectShop(email).getShop_id();
-                categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
-                productList=productMapper.getProductListByID(shop_id);//获取所有商品
+            if(checkUser.getRole()==1){
+                LoginMessage="Login Successfully!";
+                user=mapper.selectUser(email);
+                ShopMapper shopMapper=session.getMapper(ShopMapper.class);
+                Shop shopInfo=shopMapper.selectShop(email);
+                List<Address> addressList=mapper.showAllAddress(email);
+                ProductMapper productMapper = session.getMapper(ProductMapper.class);
+                List<ProductCategory> categoryNames=null;
+                List<Product> productList=null;
+                List<ShoppingCart> shoppingCartList=mapper.getCart(email);
+                OrderMapper orderMapper=session.getMapper(OrderMapper.class);
+                List<Order> orderList=orderMapper.getOrder(email);
+                if(shopInfo!=null) {
+                    int shop_id=shopMapper.selectShop(email).getShop_id();
+                    categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
+                    productList=productMapper.getProductListByID(shop_id);//获取所有商品
+                }
+                session.close();
+                map.put("Message",LoginMessage);
+                request.getSession().setAttribute("user",user);
+                request.getSession().setAttribute("shopInfo",shopInfo);
+                request.getSession().setAttribute("addressList",addressList);
+                request.getSession().setAttribute("categoryNames",categoryNames);
+                request.getSession().setAttribute("productList",productList);
+                request.getSession().setAttribute("shoppingCartList",shoppingCartList);
+                request.getSession().setAttribute("orderList",orderList);
+
+                return new ModelAndView("redirect:/Admin/Check.jsp","map",map);
+            }else{
+                LoginMessage="Login Successfully!";
+                user=mapper.selectUser(email);
+                ShopMapper shopMapper=session.getMapper(ShopMapper.class);
+                Shop shopInfo=shopMapper.selectShop(email);
+                List<Address> addressList=mapper.showAllAddress(email);
+                ProductMapper productMapper = session.getMapper(ProductMapper.class);
+                List<ProductCategory> categoryNames=null;
+                List<Product> productList=null;
+                List<ShoppingCart> shoppingCartList=mapper.getCart(email);
+                OrderMapper orderMapper=session.getMapper(OrderMapper.class);
+                List<Order> orderList=orderMapper.getOrder(email);
+                if(shopInfo!=null) {
+                    int shop_id=shopMapper.selectShop(email).getShop_id();
+                    categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
+                    productList=productMapper.getProductListByID(shop_id);//获取所有商品
+                }
+                session.close();
+                map.put("Message",LoginMessage);
+                request.getSession().setAttribute("user",user);
+                request.getSession().setAttribute("shopInfo",shopInfo);
+                request.getSession().setAttribute("addressList",addressList);
+                request.getSession().setAttribute("categoryNames",categoryNames);
+                request.getSession().setAttribute("productList",productList);
+                request.getSession().setAttribute("shoppingCartList",shoppingCartList);
+                request.getSession().setAttribute("orderList",orderList);
+                //设置跳转路径为不在WEB-INF目录下的jsp文件
+                return new ModelAndView("redirect:/Home/home.jsp","map",map);
             }
-            session.close();
-            map.put("Message",LoginMessage);
-            request.getSession().setAttribute("user",user);
-            request.getSession().setAttribute("shopInfo",shopInfo);
-            request.getSession().setAttribute("addressList",addressList);
-            request.getSession().setAttribute("categoryNames",categoryNames);
-            request.getSession().setAttribute("productList",productList);
-            request.getSession().setAttribute("shoppingCartList",shoppingCartList);
-            request.getSession().setAttribute("orderList",orderList);
-            //设置跳转路径为不在WEB-INF目录下的jsp文件
-            return new ModelAndView("redirect:/Home/home.jsp","map",map);
+
         }
         else
         {

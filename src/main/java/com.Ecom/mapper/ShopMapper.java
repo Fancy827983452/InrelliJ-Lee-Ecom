@@ -19,4 +19,15 @@ public interface ShopMapper {
 
     @Select("select * from shop where shop_name like #{keyword}")
     List<Shop> getShopsByKeyword(String keyword);
+
+    @Select("select * from shop where status=0")
+    List<Shop> getUnCheckedShops();
+
+    //店铺过审
+    @Update("UPDATE shop SET STATUS=1 WHERE SHOP_ID=#{0}")
+    int approveShop(int shop_id);
+
+    //店铺不过审
+    @Update("UPDATE shop SET STATUS=2 WHERE SHOP_ID=#{0}")
+    int disapproveShop(int shop_id);
 }

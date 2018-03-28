@@ -12,10 +12,7 @@ import com.Ecom.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,5 +73,39 @@ public class ShopController {
         }
 
         return new ModelAndView("redirect:/Shop/ShopIndex.jsp",map);
+    }
+
+    @RequestMapping(value = "ShopApprove/{shop_id}", method = RequestMethod.POST)
+    public ModelAndView ShopCheck(@PathVariable int shop_id, HttpServletResponse response, HttpServletRequest request, ModelMap map) throws IOException{
+        SqlSession sqlSession= MySqlSession.getMySession(response);
+        ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
+
+        int result = shopMapper.approveShop(shop_id);
+        if (result > 0){
+            map.put("Message", "Approve Success!");
+        }else {
+            map.put("Message", "Approve Failed!");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+
+        return new ModelAndView("redirect:/Admin/Check.jsp",map);
+    }
+
+    @RequestMapping(value = "ShopDisapprove/{shop_id}", method = RequestMethod.POST)
+    public ModelAndView ShopCheck(@PathVariable int shop_id, HttpServletResponse response,  ModelMap map) throws IOException{
+        SqlSession sqlSession= MySqlSession.getMySession(response);
+        ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
+
+        int result = shopMapper.disapproveShop(shop_id);
+        if (result > 0){
+            map.put("Message", "Disapprove Success!");
+        }else {
+            map.put("Message", "Disapprove Failed!");
+        }
+        sqlSession.commit();
+        sqlSession.close();
+
+        return new ModelAndView("redirect:/Admin/Check.jsp",map);
     }
 }

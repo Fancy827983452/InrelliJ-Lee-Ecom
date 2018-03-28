@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface UserMapper {
-    @Select("select email, password from user where email = #{email} and password =#{password}")
+    @Select("select * from user where email = #{email} and password =#{password}")
     public User checkLogin(User user);
 
     @Insert("insert into user(email,name,password,role,actual_name,phone,gender,status) " +
@@ -39,7 +39,7 @@ public interface UserMapper {
     public List<User> showAll();
 
     @Select("select * from user where email=#{email}")
-    public User getUserByEmail(String email);
+    User getUserByEmail(String email);
 
     @Insert("insert into address(email,receiver_name,phone,zip_code,address) " +
             "values(#{email},#{receiver_name},#{phone},#{zip_code},#{address})")

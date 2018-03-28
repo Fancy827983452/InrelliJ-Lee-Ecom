@@ -109,7 +109,6 @@
         <label class="line"></label>
         <%
             SqlSession sqlSession= MySqlSession.getMySession(response);
-            ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
             ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 
             //获取所有在售商品

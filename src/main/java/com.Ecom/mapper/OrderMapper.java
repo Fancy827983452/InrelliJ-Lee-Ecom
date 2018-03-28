@@ -45,4 +45,10 @@ public interface OrderMapper {
     @Select("SELECT ifnull(max(BALANCE),1000) FROM transaction join user_bank_card on transaction.CARD_ID=user_bank_card.CARD_ID " +
             "where EMAIL=#{email} order by Time desc limit 1")
     public float getBalance(String email);
+
+    @Update("update product_property set STOCK=STOCK-#{0}, SALES=SALES+#{0} where PRODUCT_ID=#{1} and PROPERTY_NAME=#{2}")
+    public int updateProperty(int amount,int product_id,String property_name);
+
+    @Update("update product set STOCK=STOCK-#{0}, SALES=SALES+#{0} where PRODUCT_ID=#{1}")
+    public int updateProductSales(int amount,int product_id);
 }

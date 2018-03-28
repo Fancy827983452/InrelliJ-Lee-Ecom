@@ -127,7 +127,6 @@
                     int product_id = productList.get(count).getProduct_id();
                     String product_name = productList.get(count).getProduct_name();
                     float product_price = productList.get(count).getUnit_price();
-                    count++;
             %>
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
@@ -162,6 +161,7 @@
                 </div>
             </div>
             <%
+                    count++;
                 }
             %>
             <div class="clearfix"></div>

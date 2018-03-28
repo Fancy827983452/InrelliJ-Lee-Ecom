@@ -450,4 +450,22 @@ public class UserController {
         session.close();
         return new ModelAndView("redirect:/User/ViewSelfCard.jsp",map);
     }
+
+    @RequestMapping(value = "/deleteSelectedCard/{card_id}",method = RequestMethod.POST)
+    public ModelAndView deleteSelectedCard(@PathVariable String card_id,HttpServletResponse response,ModelMap map) throws IOException{
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        int i=mapper.deleteCard(card_id);
+        session.commit();
+        if(i>0) {
+            map.put("Message", "Delete Card Successfully!");
+        }
+        else
+        {
+            map.put("Message", "Delete Card Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ViewSelfCard.jsp",map);
+    }
 }

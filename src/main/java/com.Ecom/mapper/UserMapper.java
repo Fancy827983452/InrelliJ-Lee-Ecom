@@ -123,6 +123,11 @@ public interface UserMapper {
     @Select("SELECT * FROM ecom.bank_card_details where CARD_ID=#{card_id} and BANK_NAME=#{bank_name} and Type=#{type} and CARD_HOLDER=#{card_holder} and RESERVE_PHONE_NUMBER=#{reserve_phone_number} and PASSWORD=#{password}")
     BankCard checkCard(BankCard bankCard);
 
+    //建立银行卡连接
     @Insert("insert into user_bank_card(email,card_id) values(#{0},#{1})")
     int inserCard(String email,String card_id);
+
+    @Delete("delete from user_bank_card where card_id=#{0}")
+    int deleteCard(String card_id);
+
 }

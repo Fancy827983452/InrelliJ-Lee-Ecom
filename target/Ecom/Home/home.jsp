@@ -112,8 +112,8 @@
             ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
             ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 
-            //获取商品，用于获取商品的id，这里只有一家店铺，之后需要改进
-            List<Product> productList = productMapper.getProductList(1);
+            //获取所有在售商品
+            List<Product> productList = productMapper.getProductList();
 
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行
@@ -138,7 +138,7 @@
                     <div class="pro-img product-img-index-div">
                         <img class="auto-fix-img" src="http://localhost:8080/productimage/<%=product_id%>/<%=1%>" class="img-responsive" alt="">
                         <div class="zoom-icon ">
-                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=0%> " height="100%" width="100%" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                            <a class="picture" href="http://localhost:8080/productimage/<%=product_id%>/<%=1%> " height="100%" width="100%" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
                             <a href="http://localhost:8080/productinfo/<%=product_id%>"><i class="glyphicon glyphicon-menu-right icon"></i></a>
                         </div>
                     </div>

@@ -214,7 +214,10 @@
                         %>
                     </ul>
                 </div>
-
+                <div class="available">
+                    <h6>Stock :<%=product.getStock()%></h6>&nbsp;
+                    <h6>Sales :<%=product.getSales()%><br></h6>
+                </div>
                 <div>
                     <button type="submit" class="cart item_add">Add To Cart</button>
                 </div>

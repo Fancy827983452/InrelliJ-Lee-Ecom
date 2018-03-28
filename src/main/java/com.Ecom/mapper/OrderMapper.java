@@ -41,7 +41,8 @@ public interface OrderMapper {
     public int insertOrder(Order order);
 
     //获取余额
-    @Select("SELECT BALANCE FROM transaction join user_bank_card on transaction.CARD_ID=user_bank_card.CARD_ID " +
+    //*如果该用户初始未购买过任何商品，则将余额设为一个默认值1000（待改）
+    @Select("SELECT ifnull(max(BALANCE),1000) FROM transaction join user_bank_card on transaction.CARD_ID=user_bank_card.CARD_ID " +
             "where EMAIL=#{email} order by Time desc limit 1")
     public float getBalance(String email);
 }

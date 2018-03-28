@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class ProductProperty {
+import java.io.Serializable;
+
+public class ProductProperty implements Serializable {
     int property_id;
     int product_id;
     String property_name;

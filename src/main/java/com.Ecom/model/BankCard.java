@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class BankCard {
+import java.io.Serializable;
+
+public class BankCard implements Serializable {
 
     private String card_id;
     private String bank_name;

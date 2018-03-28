@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class Rule {
+import java.io.Serializable;
+
+public class Rule implements Serializable {
 
     private int rule_id;
     private String rule_name;

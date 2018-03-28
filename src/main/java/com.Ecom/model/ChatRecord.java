@@ -1,8 +1,9 @@
 package com.Ecom.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ChatRecord {
+public class ChatRecord implements Serializable {
 
     private int message_id;
     private String sender;

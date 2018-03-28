@@ -19,15 +19,18 @@ import java.util.List;
 public class HomeController {
 
     @RequestMapping(value = "ShowProducts",method = {RequestMethod.POST,RequestMethod.GET})
-    public ModelAndView ShowProducts(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public ModelAndView ShowProducts(HttpServletRequest request, HttpServletResponse response,ModelMap map) throws Exception{
         SqlSession sqlSession= MySqlSession.getMySession(response);
         ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
         ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 
         //获取所有在售商品
         List<Product> productList = productMapper.getProductList();
+//        map.addAttribute("productListAll",productList);
         request.getSession().setAttribute("productListAll",productList);
 
-        return new ModelAndView("redirect:/Home/home.jsp");
+        sqlSession.close();
+
+        return new ModelAndView("redirect:/Home/home.jsp",map);
     }
 }

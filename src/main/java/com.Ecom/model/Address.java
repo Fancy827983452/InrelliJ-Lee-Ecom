@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private int address_id;
     private String email;

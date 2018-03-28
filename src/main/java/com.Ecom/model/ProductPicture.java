@@ -1,6 +1,8 @@
 package com.Ecom.model;
 
-public class ProductPicture {
+import java.io.Serializable;
+
+public class ProductPicture implements Serializable {
 
     int picture_id;
     int product_id;

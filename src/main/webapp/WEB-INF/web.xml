@@ -48,7 +48,7 @@
   </listener>
 
   <welcome-file-list>
-  <welcome-file>/Home/home.jsp</welcome-file>
+  <welcome-file>/Home/Welcome.jsp</welcome-file>
 </welcome-file-list>
 
 </web-app>

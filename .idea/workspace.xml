@@ -6,26 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b97012f-60f6-4126-8f51-1a255d993933" name="Default" comment="finish add bank card function">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/User/AddSelfCard.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/User/ViewSelfCard.jsp" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="4b97012f-60f6-4126-8f51-1a255d993933" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/controller/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com.Ecom/mapper/UserMapper.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Home/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Home/home.jsp" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Shared/_PersonalCenter.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Shared/_PersonalCenter.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom.war" afterPath="$PROJECT_DIR$/target/Ecom.war" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/Home/home.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Home/home.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/Shared/_PersonalCenter.jsp" afterPath="$PROJECT_DIR$/target/Ecom/Shared/_PersonalCenter.jsp" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/ProductController.class" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/UserController.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/controller/UserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/ProductMapper.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/ProductMapper.class" />
-      <change beforePath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/Ecom/WEB-INF/classes/com/Ecom/mapper/UserMapper.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/controller/ProductController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/controller/UserController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/ProductMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/ProductMapper.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/UserMapper.class" afterPath="$PROJECT_DIR$/target/classes/com/Ecom/mapper/UserMapper.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -490,7 +472,7 @@
       <workItem from="1522147122622" duration="2054000" />
       <workItem from="1522201377073" duration="11257000" />
       <workItem from="1522216633508" duration="3674000" />
-      <workItem from="1522220875351" duration="2539000" />
+      <workItem from="1522220875351" duration="2753000" />
     </task>
     <task id="LOCAL-00001" summary="完成：结算-&gt;提交订单-&gt;选择银行卡，输入密码-&gt;付款。ps:提交订单SubmitOrder和购物车页面在显示店铺名的时候有小bug，同店铺的商品合并问题">
       <created>1521986076759</created>
@@ -506,11 +488,18 @@
       <option name="project" value="LOCAL" />
       <updated>1522210773751</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finish delete card function">
+      <created>1522223572183</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1522223572183</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94068000" />
+    <option name="totallyTimeSpent" value="94282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="7" width="1936" height="1081" extended-state="0" />
@@ -616,7 +605,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="完成：结算-&gt;提交订单-&gt;选择银行卡，输入密码-&gt;付款。ps:提交订单SubmitOrder和购物车页面在显示店铺名的时候有小bug，同店铺的商品合并问题" />
     <MESSAGE value="finish add bank card function" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish add bank card function" />
+    <MESSAGE value="finish delete card function" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish delete card function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -968,6 +958,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
           <caret line="88" column="32" lean-forward="false" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

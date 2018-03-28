@@ -3,8 +3,6 @@
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
 <%@ page import="com.Ecom.dao.MySqlSession" %>
 <%@ page import="com.Ecom.mapper.ProductMapper" %>
-<%@ page import="com.Ecom.model.Shop" %>
-<%@ page import="com.Ecom.mapper.ShopMapper" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

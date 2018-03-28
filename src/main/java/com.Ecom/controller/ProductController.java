@@ -400,6 +400,11 @@ public class ProductController {
 
             map.addAttribute("keyword",keyword);
             map.addAttribute("keywordStyle",keywordStyle);
+            if (keywordStyle.equals("Commodity")){
+                return new ModelAndView("redirect:/Home/SearchCommodity.jsp",map);
+            }else{
+                return new ModelAndView("redirect:/Home/SearchStore.jsp",map);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

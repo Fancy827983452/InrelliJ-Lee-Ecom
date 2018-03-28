@@ -66,7 +66,10 @@ public interface ProductMapper {
     public int getProduct_ID();
 
     @Select("select * from product where shop_id=#{shop_id}")
-    public List<Product> getProductList(int shop_id);
+    public List<Product> getProductListByID(int shop_id);
+
+    @Select("select * from product where status=0")
+    public List<Product> getProductList();
 
     @Select("select * from product_picture where product_id=#{product_id}")
     public List<ProductPicture> getProductPictureList(int product_id);

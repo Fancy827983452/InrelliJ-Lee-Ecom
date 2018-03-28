@@ -112,8 +112,8 @@
             ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
             ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
 
-            //获取商品，用于获取商品的id，这里只有一家店铺，之后需要改进
-            List<Product> productList = productMapper.getProductList(1);
+            //获取所有在售商品
+            List<Product> productList = productMapper.getProductList();
 
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行

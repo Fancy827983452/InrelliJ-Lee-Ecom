@@ -64,7 +64,7 @@ public class UserController {
             if(shopInfo!=null) {
                 int shop_id=shopMapper.selectShop(email).getShop_id();
                 categoryNames = productMapper.getCategory(shop_id);//获取所有的分类名
-                productList=productMapper.getProductList(shop_id);//获取所有商品
+                productList=productMapper.getProductListByID(shop_id);//获取所有商品
             }
             session.close();
             map.put("Message",LoginMessage);

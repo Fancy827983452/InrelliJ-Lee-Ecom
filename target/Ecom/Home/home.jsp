@@ -1,11 +1,5 @@
 <%@ page import="com.Ecom.model.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.Ecom.mapper.ProductMapper" %>
-<%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="com.Ecom.dao.MySqlSession" %>
-<%@ page import="com.Ecom.mapper.ShopMapper" %>
-<%@ page import="com.Ecom.model.ProductPicture" %>
-<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,17 +16,16 @@
     <link href="../css/flexslider.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
 
+    <%
+        Object List=session.getAttribute("productListAll");
+        //获取所有在售商品
+        List<Product> productList = (List<Product>)List;
+    %>
 
     <script type="text/javascript">
-        var message="${param.Message}";
-        if(message.length == 0 || null == message)
+        if((<%=productList%>)==null)//首次加载
         {
-            message=null;
-        }
-        else
-        {
-            alert(message);
-            window.location.href="home.jsp";
+            window.location.href = "/ShowProducts";
         }
     </script>
 </head>
@@ -108,30 +101,25 @@
         <h3>Trending Items</h3>
         <label class="line"></label>
         <%
-            SqlSession sqlSession= MySqlSession.getMySession(response);
-            ShopMapper shopMapper = sqlSession.getMapper(ShopMapper.class);
-            ProductMapper productMapper = sqlSession.getMapper(ProductMapper.class);
-
-            //获取商品，用于获取商品的id，这里只有一家店铺，之后需要改进
-            List<Product> productList = productMapper.getProductList(1);
+            if(productList!=null)
+            {
+            System.out.println(productList);
 
             int outerRow = productList.size()/4;            //每行展示4个商品
             int outerRowLeft = productList.size()%4;            //如果有商品剩下，那么需要多加一行
             if (outerRowLeft>0) outerRow = outerRow+1;
-
             int count = 0;            //用于标记商品的计数器
-
             for (int i = 0;i<outerRow;i++)
             {
         %>
         <div class="mid-popular">
             <%
                 for (int j=0;j<4;j++){
-
                     //统一获取指定的值，方便html的调用
                     int product_id = productList.get(count).getProduct_id();
                     String product_name = productList.get(count).getProduct_name();
                     float product_price = productList.get(count).getUnit_price();
+                    count++;
             %>
             <div class="col-md-3 item-grid simpleCart_shelfItem">
                 <div class=" mid-pop">
@@ -166,12 +154,12 @@
                 </div>
             </div>
             <%
-                    count++;
                 }
             %>
             <div class="clearfix"></div>
         </div>
         <%
+                }
             }
         %>
     </div>
@@ -225,4 +213,20 @@
 
 
 </body>
+
+<script>
+    // $(document).ready(
+     window.onload=function () {
+        alert(123);
+        var message="${param.Message}";
+        if(message.length == 0 || null == message)
+        {
+            message=null;
+        }
+        else
+        {
+            alert(message);
+        }
+    }
+</script>
 </html>

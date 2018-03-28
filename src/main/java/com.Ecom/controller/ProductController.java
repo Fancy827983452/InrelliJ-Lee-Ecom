@@ -132,7 +132,7 @@ public class ProductController {
             //存取图片
             List <ProductPicture> productPictureList = productMapper.getProductPictureList(product_id);
             //存取商品
-            List <Product> productList = productMapper.getProductList(shop_id);
+            List <Product> productList = productMapper.getProductListByID(shop_id);
             request.getSession().setAttribute("productList", productList);
         } else
             map.put("Message", "Add Product Failed!");
@@ -191,7 +191,7 @@ public class ProductController {
             ShopMapper shopMapper = session.getMapper(ShopMapper.class);
             User user = (User) request.getSession().getAttribute("user");
             int shop_id = shopMapper.selectShop(user.getEmail()).getShop_id();
-            List <Product> productList = productMapper.getProductList(shop_id);
+            List <Product> productList = productMapper.getProductListByID(shop_id);
             request.getSession().setAttribute("productList", productList);
         }
         else
@@ -363,7 +363,7 @@ public class ProductController {
             session.commit();
             map.put("Message", "Edit Product Successfully!");
             //存取商品
-            List <Product> productList = productMapper.getProductList(shop_id);
+            List <Product> productList = productMapper.getProductListByID(shop_id);
             request.getSession().setAttribute("productList", productList);
         } else
             map.put("Message", "Edit Product Failed!");

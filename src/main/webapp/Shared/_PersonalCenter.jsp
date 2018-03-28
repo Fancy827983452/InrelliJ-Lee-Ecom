@@ -54,6 +54,9 @@
 				<div class="panel-body">
 					<a href="../User/ManageSelfAddress.jsp">Modify Address</a>
 				</div>
+				<div class="panel-body">
+					<a href="../User/ViewSelfCard.jsp">Card Management</a>
+				</div>
 			</div>
 		</div>
 		
@@ -84,3 +87,5 @@
 		</div>
 	</div>
 	<div class="col-md-9 column">	
+	</div>
+	</div>

@@ -395,9 +395,11 @@ public class ProductController {
     public ModelAndView searchProduct(HttpServletRequest request,ModelMap map){
         try{
             String keyword = request.getParameter("keyword");
+            String keywordStyle = request.getParameter("keywordStyle");
             keyword = "%"+keyword+"%";
 
             map.addAttribute("keyword",keyword);
+            map.addAttribute("keywordStyle",keywordStyle);
         }catch (Exception e){
             e.printStackTrace();
         }

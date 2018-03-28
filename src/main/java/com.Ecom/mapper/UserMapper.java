@@ -1,6 +1,7 @@
 package com.Ecom.mapper;
 
 import com.Ecom.model.Address;
+import com.Ecom.model.BankCard;
 import com.Ecom.model.ShoppingCart;
 import com.Ecom.model.User;
 import org.apache.ibatis.annotations.*;
@@ -112,4 +113,16 @@ public interface UserMapper {
     //读取用户绑定银行卡卡号
     @Select("SELECT card_id FROM user_bank_card where email=#{email}")
     public List<String> getCardID(String email);
+
+    //读取银行卡信息
+    @Select("select bank_card_details.* from bank_card_details " +
+            "join(SELECT * FROM user_bank_card where EMAIL=#{email})as t1 on bank_card_details.CARD_ID = t1.card_id;")
+    List<BankCard> getLinkedCards(String email);
+
+    //检测银行卡
+    @Select("SELECT * FROM ecom.bank_card_details where CARD_ID=#{card_id} and BANK_NAME=#{bank_name} and Type=#{type} and CARD_HOLDER=#{card_holder} and RESERVE_PHONE_NUMBER=#{reserve_phone_number} and PASSWORD=#{password}")
+    BankCard checkCard(BankCard bankCard);
+
+    @Insert("insert into user_bank_card(email,card_id) values(#{0},#{1})")
+    int inserCard(String email,String card_id);
 }

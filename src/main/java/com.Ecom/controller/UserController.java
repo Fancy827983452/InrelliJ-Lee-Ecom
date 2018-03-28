@@ -409,4 +409,63 @@ public class UserController {
         session.close();
         return new ModelAndView("redirect:/User/Cart.jsp",map);
     }
+
+    @RequestMapping(value = "addSelfCard",method = RequestMethod.POST)
+    public ModelAndView addSelfCard(HttpServletRequest request,HttpServletResponse response,ModelMap map)throws IOException{
+        String card_id = request.getParameter("CardNum");
+        String cardType = request.getParameter("CardType");
+        String bankName = request.getParameter("BankName");
+        String cardHolder = request.getParameter("CardHolder");
+        String reversePhone = request.getParameter("ReservePhone");
+        int password = Integer.parseInt(request.getParameter("Pwd"));
+        String email = request.getParameter("email");
+
+        int type = 0;
+        if (cardType.equals("Credit Card"))
+            type = 1;
+
+        BankCard bankCard = new BankCard();
+        bankCard.setCard_id(card_id);
+        bankCard.setCard_holder(cardHolder);
+        bankCard.setBank_name(bankName);
+        bankCard.setReserve_phone_number(reversePhone);
+        bankCard.setType(type);
+        bankCard.setPassword(password);
+
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        bankCard = mapper.checkCard(bankCard);
+
+        if (bankCard==null){
+            map.put("Message", "Card do not exist");
+        }else {
+            int result = mapper.inserCard(email,card_id);
+            session.commit();
+            if (result > 0){
+                map.put("Message", "Add Success");
+            }else {
+                map.put("Message", "Add Failed");
+            }
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ViewSelfCard.jsp",map);
+    }
+
+    @RequestMapping(value = "/deleteSelectedCard/{card_id}",method = RequestMethod.POST)
+    public ModelAndView deleteSelectedCard(@PathVariable String card_id,HttpServletResponse response,ModelMap map) throws IOException{
+        SqlSession session= MySqlSession.getMySession(response);
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        int i=mapper.deleteCard(card_id);
+        session.commit();
+        if(i>0) {
+            map.put("Message", "Delete Card Successfully!");
+        }
+        else
+        {
+            map.put("Message", "Delete Card Failed!");
+        }
+        session.close();
+        return new ModelAndView("redirect:/User/ViewSelfCard.jsp",map);
+    }
 }

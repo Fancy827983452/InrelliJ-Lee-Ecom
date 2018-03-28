@@ -395,9 +395,16 @@ public class ProductController {
     public ModelAndView searchProduct(HttpServletRequest request,ModelMap map){
         try{
             String keyword = request.getParameter("keyword");
+            String keywordStyle = request.getParameter("keywordStyle");
             keyword = "%"+keyword+"%";
 
             map.addAttribute("keyword",keyword);
+            map.addAttribute("keywordStyle",keywordStyle);
+            if (keywordStyle.equals("Commodity")){
+                return new ModelAndView("redirect:/Home/SearchCommodity.jsp",map);
+            }else{
+                return new ModelAndView("redirect:/Home/SearchStore.jsp",map);
+            }
         }catch (Exception e){
             e.printStackTrace();
         }

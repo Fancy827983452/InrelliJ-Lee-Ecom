@@ -2,11 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.Ecom.model.ShoppingCart" %>
 <%@ page import="java.util.Map" %>
-<%@ page import="static javafx.scene.input.KeyCode.M" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="javax.rmi.CORBA.Util" %>
 <%@ page import="com.Ecom.dao.Utils" %>
-<%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,20 +16,19 @@
         List<Address> addressList=(List<Address>)session.getAttribute("addressList");
         ShoppingCart[] shoppingCartItem=new ShoppingCart[num];
         //用map存储店铺名
-        Map<Integer,String> map=new HashMap<Integer,String>();
+        Map<Object,Object> map=new HashMap<Object,Object>();
         for(int i=0;i<num;i++) {
             shoppingCartItem[i] = (ShoppingCart) session.getAttribute("shoppingCartItem" + i);
             map.put(i,shoppingCartItem[i].getShop_name());
         }
         float total=0;
+        Utils utils=new Utils();
+        //获取店铺名重复了几次
+        int[] repeat=utils.getRepeatNum(map);
+
         //保留不重复的店铺名
-        map=Utils.RemoveRepFromMap(map);
-        Iterator iter = map.entrySet().iterator();
-        Object key=null;//此处有bug，只能获取map中的最后一个key的值
-        while (iter.hasNext()) {
-            Map.Entry entry = (Map.Entry) iter.next();
-            key = entry.getKey();
-        }
+        map=utils.RemoveRepFromMap(map);
+        Object[] keys=utils.getKeys(map);
     %>
 </head>
 <body>
@@ -56,19 +52,19 @@
 
             <%
                 if(!addressList.isEmpty()){
-                    for(int i=0;i<addressList.size();i++){//行数
+                    for(int i1=0;i1<addressList.size();i1++){//行数
             %>
             <tr>
                 <td class="tb2_td1">
-                    <input type = "radio" name = "check" id = "check" value="<%=addressList.get(i).getAddress_id()%>"/>
+                    <input type = "radio" name = "check" id = "check" value="<%=addressList.get(i1).getAddress_id()%>"/>
                 </td>
-                <td><%=addressList.get(i).getReceiver_name()%></td>
-                <td><%=addressList.get(i).getAddress()%></td>
-                <td><%=addressList.get(i).getZip_code()%></td>
-                <td><%=addressList.get(i).getPhone()%></td>
+                <td><%=addressList.get(i1).getReceiver_name()%></td>
+                <td><%=addressList.get(i1).getAddress()%></td>
+                <td><%=addressList.get(i1).getZip_code()%></td>
+                <td><%=addressList.get(i1).getPhone()%></td>
                 <td>
                     <%
-                        if(addressList.get(i).getDefault_address()!=0){
+                        if(addressList.get(i1).getDefault_address()!=0){
                     %>
                     <label class="btn-primary">Default</label>
                     <%}%>
@@ -88,44 +84,48 @@
             <%
                 for(int j=0;j<map.size();j++)//判断店铺个数
                 {
+                    int index=Integer.parseInt(keys[j].toString());
             %>
             <table class="table table-bordered">
                 <tr style="background-color:#f5f5f5;">
-                    <%--如果提交订单时有多个店铺的商品，此处会出错--%>
-                    <td colspan="4" style="text-align: center">Shop Name: <a href="#" name="shop_name"><%=map.get(key)%></a></td>
+                    <td colspan="4" style="text-align: center">Shop Name: <a href="#" name="shop_name"><%=map.get(index)%></a></td>
                 </tr>
                 <%
-                    for(int i=0;i<num;i++)//记录数
+                    for(int i2=0;i2<num;i2++)//提交的购物车中商品条数
                     {
-                        float[] unit_price=new float[num];
-                        int amount[]=new int[num];
-                        float actual_pay[]=new float[num];
-                        unit_price[i]=shoppingCartItem[i].getUnit_price();
-                        amount[i]=shoppingCartItem[i].getAmount();
-                        actual_pay[i]=unit_price[i] * amount[i];
-                        total+=actual_pay[i];
+                        //判断哪些商品是同一个店铺的
+                        if(shoppingCartItem[i2].getShop_name().equals(map.get(index).toString()))
+                        {
+                            float[] unit_price=new float[num];
+                            int amount[]=new int[num];
+                            float actual_pay[]=new float[num];
+                            unit_price[i2]=shoppingCartItem[i2].getUnit_price();
+                            amount[i2]=shoppingCartItem[i2].getAmount();
+                            actual_pay[i2]=unit_price[i2] * amount[i2];
+                            total+=actual_pay[i2];
                 %>
                 <tr>
                     <td>
                         <div style="float:left;width:50%; text-align:center;">
-                            <img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartItem[i].getProduct_id()%>/1">
+                            <img  alt="no image" src="http://localhost:8080/productimage/<%=shoppingCartItem[i2].getProduct_id()%>/1">
                         </div>
                         <div style="float:left;width:50%; text-align:left;">
                             Product Name:
-                            <a name="product_name<%=i%>" href="http://localhost:8080/productinfo/<%=shoppingCartItem[i].getProduct_id()%>">
-                                <%=shoppingCartItem[i].getProduct_name()%>
+                            <a name="product_name<%=i2%>" href="http://localhost:8080/productinfo/<%=shoppingCartItem[i2].getProduct_id()%>">
+                                <%=shoppingCartItem[i2].getProduct_name()%>
                             </a>
                             <br />
                             Property:
-                            <a name="property_name<%=i%>" style="text-decoration:none;color:#000000;">
-                                <%=shoppingCartItem[i].getProperty_name()%></a>
+                            <a name="property_name<%=i2%>" style="text-decoration:none;color:#000000;">
+                                <%=shoppingCartItem[i2].getProperty_name()%></a>
                         </div>
                     </td>
-                    <td>Unit Price: <br/>￥<a name="unit_price<%=i%>" style="text-decoration:none;color:#000000;"><%=unit_price[i]%></a></td>
-                    <td >Amount: <br/><a name="amount<%=i%>" style="text-decoration:none;color:#000000;"><%=amount[i]%></a></td>
-                    <td>Actual Pay: <br/>￥<a name="actual_pay<%=i%>" style="text-decoration:none;color:#000000;"><%=actual_pay[i]%></a></td>
+                    <td>Unit Price: <br/>￥<a name="unit_price<%=i2%>" style="text-decoration:none;color:#000000;"><%=unit_price[i2]%></a></td>
+                    <td >Amount: <br/><a name="amount<%=i2%>" style="text-decoration:none;color:#000000;"><%=amount[i2]%></a></td>
+                    <td>Actual Pay: <br/>￥<a name="actual_pay<%=i2%>" style="text-decoration:none;color:#000000;"><%=actual_pay[i2]%></a></td>
                 </tr>
                 <%
+                            }
                         }
                     }
                 %>
